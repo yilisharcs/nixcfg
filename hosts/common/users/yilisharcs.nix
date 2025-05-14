@@ -85,5 +85,6 @@
       yq                             # cli json, yaml, and xml processor
     ];
   };
-  home-manager.users.yilisharcs = import yilisharcs/${config.networking.hostName}.nix;
+  home-manager.users.yilisharcs =
+    import ../../../home/yilisharcs/${config.networking.hostName}.nix;
 }
