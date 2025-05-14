@@ -7,6 +7,9 @@
     https://github.com/Misterio77/nix-starter-configs
     https://github.com/Misterio77/nix-config
 
+    https://www.youtube.com/watch?v=I-tiCR5ehpE&list=PLCQqUlIAw2cCuc3gRV9jIBGHeekVyBUnC&index=3
+    https://code.m3ta.dev/m3tam3re/nixcfg
+
     Please also check out the starter configs mentioned above.
   '';
 
