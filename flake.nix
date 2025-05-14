@@ -48,6 +48,7 @@
         extraSpecialArgs = { inherit inputs outputs; };
         modules = [
           ./home/yilisharcs/nixos.nix
+          inputs.home-manager.nixosModules.default
         ];
       };
     };
