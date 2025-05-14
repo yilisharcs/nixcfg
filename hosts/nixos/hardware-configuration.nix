@@ -13,6 +13,11 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  # Disable the touchscreen
+  services.udev.extraRules = ''
+    ATTRS{name}=="Atmel Atmel maXTouch Digitizer", ENV{ID_INPUT_TOUCHSCREEN}="0", ENV{ID_INPUT}="0", OPTIONS+="ignore_device"
+  '';
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/152a10e2-a457-4e1b-b5f7-a399a425f7c3";
       fsType = "ext4";
