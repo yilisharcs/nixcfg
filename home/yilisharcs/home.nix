@@ -26,7 +26,6 @@
 # programs.gnupg.agent, ssh.agent
 
     # background code checker
-
     bacon = {
       enable = true;
       settings = {
@@ -159,13 +158,14 @@
       enableNushellIntegration = true;
     };
 
-    # # automatic invocation of shell.nix with .envrc
-    # direnv = {
-    #   enable = true;
-    #   # enableBashIntegration = true;
-    #   # loadInNixShell = true;
-    #   nix-direnv.enable = true;
-    # };
+    # automatic invocation of shell.nix with .envrc
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      enableNushellIntegration = true;
+      nix-direnv.enable = true;
+      # config = { };
+    };
 
     # distributed version control system
     git = {
@@ -224,6 +224,12 @@
       };
     };
 
+    # better find
+    fd = {
+      enable = true;
+      hidden = true;
+    };
+
     # lf = {
     #   enable = true;
     #   previewer = "${pkgs.ctpv}/bin/bash";
@@ -235,6 +241,26 @@
       extraPackages = with pkgs; [
         gcc
       ];
+      # withNodeJs = true;
+      # withPython3 = true;
+      # withRuby = true;
+    };
+
+    # graphical neovim client
+    neovide = {
+      enable = true;
+      settings = {
+        font = {
+          normal = [
+            "JetBrainsMono Nerd Font"
+            "Noto Color Emoji"
+          ];
+          size = 13;
+        };
+        maximized = true;
+        no-multigrid = false;
+        wsl = false;
+      };
     };
 
     nushell = {
@@ -357,6 +383,14 @@
       };
     };
 
+    # peer-to-peer file sync
+    syncthing = {
+      enable = true;
+      settings = {
+        gui.theme = "black";
+      };
+    };
+
     # terminal multiplexer
     tmux = {
       enable = true;
@@ -450,21 +484,17 @@
     atool                          # compression and extraction tools
     chafa                          # terminal image visualizer
     ctpv                           # lf previewer
-    fd                             # better find
     ffmpeg
     ffmpegthumbnailer
     # imagemagick
     man-pages                      # Linux man pages
     mesa                           # graphics lib
-    neovide                        # graphical neovim client
-    # nushellPlugins.skim #regex,units,highlight
     pandoc                         # markup converter
     pass                           # cli password manager #optionally: `pass-wayland` with gnome de
     # picard                         # music metadata editor
     porsmo                         # cli pomodoro app
     speedtest-rs
     stow                           # symlink manager
-    syncthing                      # peer-to-peer file sync
     trash-cli
     tree                           # dir viewer
 
@@ -474,7 +504,6 @@
     vim-language-server
 
     # dev libs and tools
-    bacon                          # background code checker
     cargo-audit
     cargo-auditable
     cargo-binstall
@@ -484,7 +513,6 @@
     cargo-sweep
     cargo-update
     dioxus-cli
-    direnv                         # automatic invocation of shell.nix with .envrc
     # fnm                            # fast node version manager
     # go
     jq                             # cli json processor
