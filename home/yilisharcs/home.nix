@@ -149,6 +149,12 @@
       };
     };
 
+    tmux = {
+      enable = true;
+      focusEvents = true;
+      mouse = true;
+    };
+
     yt-dlp = {
       enable = true;
       settings = {
