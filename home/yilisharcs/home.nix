@@ -25,6 +25,75 @@
 
 # programs.gnupg.agent, ssh.agent
 
+    # background code checker
+
+    bacon = {
+      enable = true;
+      settings = {
+        summary = true;
+        wrap = false;
+        reverse = false;
+        help_line = false;
+        on_change_strategy = "kill_then_restart";
+        exports.locations = {
+          auto = false;
+          exporter = "locations";
+          path = ".bacon-locations";
+          line_format = "{kind} {path}:{line}:{column} {message}";
+        };
+        sound.enabled = false;
+      };
+    };
+
+    bash = {
+      enable = true;
+      # enableCompletion = true; # test with carapace first
+      bashrcExtra = ''
+        PS1="''\${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+        PROMPT_COMMAND='history -a'
+        HISTTIMEFORMAT="%F %T "
+      '';
+      historyControl = [ "ignoreboth" ];
+      historyIgnore = [
+        "vi"
+        "vim"
+        "nvim"
+        ":q"
+        "l[fs]"
+        "pwd"
+        "[bf]g"
+        "tmuxa"
+      ];
+      shellAliases = {
+        # muscle memory
+        vi = "nvim";
+        vim = "nvim";
+        ":q" = "exit";
+
+        # guard-rails
+        cp = "cp -iv";
+        rm = "rm -I";
+
+        # convenience
+        fetch = "fastfetch";
+        grep = "grep --color=auto";
+        ls = "ls --color=auto";
+        nsp = "nix search nixpkgs";
+        pomo = "porsmo";
+        speedtest = "speedtest-rs";
+        # wiki = "wiki-tui";
+
+        # # nushell scripts
+        # gitcon = "gitcon.nu";
+        # gitlist = "gstat.nu";
+        # tokeicon = "tokeicon.nu";
+      };
+      shellOptions = [
+        "checkwinsize"
+        "histappend"
+      ];
+    };
+
     # # automatic invocation of shell.nix with .envrc
     # direnv = {
     #   enable = true;
@@ -47,6 +116,23 @@
         ".env"
         "/blueprint"
       ];
+    };
+
+    # git-compatible version control system
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          name = "yilisharcs";
+          email = "yilisharcs@gmail.com";
+        };
+        ui = {
+          default-command = [ "log" "--reversed" ];
+        };
+        aliases = {
+          init = [ "git" "init" ];
+        };
+      };
     };
 
     nushell = {
@@ -162,7 +248,7 @@
     # multishell prompt engine
     starship = {
       enable = true;
-      # enableBashIntegration = false; # FIXME: doesn't work
+      enableBashIntegration = false;
       enableNushellIntegration = true;
       settings = {
         add_newline = false;
@@ -315,7 +401,7 @@
     direnv                         # automatic invocation of shell.nix with .envrc
     # fnm                            # fast node version manager
     # go
-    # unstable.jujutsu             # git-compatible version control system
+    jq                             # cli json processor
     mold                           # better linker
     # pipx                           # python package manager
     # python314
@@ -323,9 +409,7 @@
     # rustup                         # rust toolchain manager
     sccache                        # build cache tool
     sqlite
-    # tmux
     tokei                          # loc counter
-    yq                             # cli json, yaml, and xml processor
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
