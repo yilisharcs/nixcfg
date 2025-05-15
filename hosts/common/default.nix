@@ -1,6 +1,14 @@
 # Common configuration for all hosts
 
-{ lib, inputs, outputs, ... }: {
+{
+  lib,
+  inputs,
+  outputs,
+  pkgs,
+  ...
+}:
+
+{
   imports = [
     ./users
     inputs.home-manager.nixosModules.default
@@ -51,4 +59,5 @@
       ((lib.filterAttrs (_: lib.isType "flake")) inputs);
     nixPath = [ "/etc/nix/path" ];
   };
+  users.defaultUserShell = pkgs.nushell;
 }

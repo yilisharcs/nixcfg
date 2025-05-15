@@ -129,6 +129,7 @@
     git                            # distributed version control system
     man                            # man command
     neovim                         # extensible text editor
+    nushell
     wget
     xclip
   ];

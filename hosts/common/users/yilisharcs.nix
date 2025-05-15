@@ -36,7 +36,7 @@
       ncdu                           # disk space checker
       # unstable.neovim      # extensible text editor #unset unstable once 1.0.0 is out
       neovide                        # graphical neovim client
-      nushell
+      # nushell
       nushellPlugins.gstat
       nushellPlugins.query
       nushellPlugins.skim #regex,units,highlight
