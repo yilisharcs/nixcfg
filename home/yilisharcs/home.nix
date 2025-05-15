@@ -19,6 +19,16 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
+  services = {
+    # peer-to-peer file sync
+    syncthing = {
+      enable = true;
+      settings = {
+        gui.theme = "black";
+      };
+    };
+  };
+
   programs = {
 
 # I might be able to configure brave with chromium
@@ -380,14 +390,6 @@
           deleted = "[✕](italic red)";
         };
         package.format = "(is [󰏗 $version]($style) )";
-      };
-    };
-
-    # peer-to-peer file sync
-    syncthing = {
-      enable = true;
-      settings = {
-        gui.theme = "black";
       };
     };
 
