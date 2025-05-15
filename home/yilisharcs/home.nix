@@ -19,12 +19,153 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
+  programs = {
+
+# I might be able to configure brave with chromium
+
+# programs.gnupg.agent, ssh.agent
+
+    # # automatic invocation of shell.nix with .envrc
+    # direnv = {
+    #   enable = true;
+    #   # enableBashIntegration = true;
+    #   # loadInNixShell = true;
+    #   nix-direnv.enable = true;
+    # };
+
+    # distributed version control system
+    git = {
+      enable = true;
+      userName = "yilisharcs";
+      userEmail = "yilisharcs@gmail.com";
+      aliases = {
+        graph = "log --decorate --oneline --graph";
+        last = "log -1 HEAD";
+        unstage = "reset HEAD --";
+      };
+      ignores = [
+        ".env"
+        "/blueprint"
+      ];
+    };
+
+    nushell = {
+      enable = true;
+      environmentVariables = {
+        GREETING = "hello world";
+      };
+      plugins = with pkgs.nushellPlugins; [
+        gstat
+        # highlight #regex
+        query
+        # skim
+        # units
+      ];
+      settings = {
+        show_banner = false;
+        buffer_editor = "nvim";
+      };
+    };
+
+    # fuzzy finder
+    skim = {
+      enable = true;
+      # FIXME: none of these options are working
+      defaultCommand = "fd --color=never --hidden --follow --type f --type l --exclude .git";
+      defaultOptions = [
+        "--preview 'bat {} --color=always --wrap=never --style=plain --line-range=:500'"
+        "--layout=reverse"
+        "--multi"
+        "--bind='ctrl-j:preview-page-down'"
+        "--bind='ctrl-k:preview-page-up'"
+        "--bind='ctrl-h:backward-char+delete-charEOF'"
+        "--bind='F4:toggle-preview'"
+      ];
+    };
+
+    # multishell prompt engine
+    starship = {
+      enable = true;
+      # enableInteractive = true;
+      enableNushellIntegration = true;
+      settings = {
+        add_newline = false;
+        command_timeout = 300;
+      };
+    };
+
+    # better cd
+    zoxide = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+
+  };
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+
+    atool                          # compression and extraction tools
+    bat                            # better cat
+    btop                           # tui system monitor
+    carapace                       # multishell completion engine
+    chafa                          # terminal image visualizer
+    ctpv                           # lf previewer
+    fastfetch
+    fd                             # better find
+    ffmpeg
+    ffmpegthumbnailer
+    # imagemagick
+    man-pages                      # Linux man pages
+    mesa                           # graphics lib
+    neovide                        # graphical neovim client
+    # nushellPlugins.gstat
+    # nushellPlugins.query
+    # nushellPlugins.skim #regex,units,highlight
+    pandoc                         # markup converter
+    pass                           # cli password manager #optionally: `pass-wayland` with gnome de
+    # picard                         # music metadata editor
+    porsmo                         # cli pomodoro app
+    ripgrep                        # better grep #optionally: `ripgrep-all` for extended features
+    speedtest-rs
+    # starship                       # shell prompt tool
+    stow                           # symlink manager
+    syncthing                      # peer-to-peer file sync
+    trash-cli
+    tree                           # dir viewer
+    yt-dlp
+    zk
+    # zoxide                         # better cd
+
+    # dev libs and tools
+    bacon                          # background code checker
+    cargo-audit
+    cargo-auditable
+    cargo-binstall
+    cargo-generate
+    cargo-modules
+    cargo-nextest
+    cargo-sweep
+    cargo-update
+    dioxus-cli
+    direnv                         # automatic invocation of shell.nix with .envrc
+    # fnm                            # fast node version manager
+    # go
+    # unstable.jujutsu             # git-compatible version control system
+    mold                           # better linker
+    # pipx                           # python package manager
+    # python314
+    ra-multiplex                   # rust-analyzer multiplex server
+    # rustup                         # rust toolchain manager
+    sccache                        # build cache tool
+    sqlite
+    # tmux
+    tokei                          # loc counter
+    yq                             # cli json, yaml, and xml processor
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -70,9 +211,9 @@
   #
   #  /etc/profiles/per-user/m3tam3re/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
+  # home.sessionVariables = {
+  #   EDITOR = "nvim";
+  # };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

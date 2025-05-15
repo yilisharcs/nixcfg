@@ -119,18 +119,71 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  programs = {
+    # distributed version control system
+    git = {
+      enable = true;
+      config = {
+        init.defaultBranch = "main";
+        core.editor = "nvim";
+        diff.tool = "nvimdiff";
+        merge.tool = "nvimdiff";
+        pull.rebase = true;
+        rebase.autoStash = true;
+        safe.directory = "/etc/nixos";
+      };
+    };
+
+    # pager utility
+    less = {
+      enable = true;
+      envVariables = {
+        LESS = "-FRX";
+      };
+    };
+
+    # extensible text editor
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      # withPython3 = true;
+    };
+
+    # multishell prompt engine
+    starship = {
+      enable = true;
+      presets = [ "nerd-font-symbols" ];
+    };
+
+    # terminal multiplexer
+    tmux = {
+      enable = true;
+      baseIndex = 1;
+      clock24 = true;
+      escapeTime = 0;
+      historyLimit = 5000;
+      keyMode = "emacs";
+      newSession = true;
+      shortcut = "t";
+      terminal = "tmux-256color";
+    };
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    # home-manager # try to use it as a flake instead?
     bibata-cursors
+    brave                          # chromium browser fork with built-in adblocker
     curl
-    git                            # distributed version control system
+    gh                             # github cli tool
+    lf                             # tui file explorer
     man                            # man command
-    neovim                         # extensible text editor
+    ncdu                           # disk space analyzer
     nushell
     wget
+    wl-clipboard                   # pass dependency
     xclip
   ];
 
