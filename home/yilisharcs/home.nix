@@ -146,6 +146,22 @@
       settings = {
         add_newline = false;
         command_timeout = 300;
+        character = {
+          success_symbol = "[➜](bold green)";
+          error_symbol = "[➜](bold red)";
+        };
+        git_status = {
+          format = lib.concatStrings [
+            "([\\["
+            "$all_status"
+            "$ahead_behind"
+            "\\]]("
+            "$style"
+            ") )"
+          ];
+          deleted = "[✕](italic red)";
+        };
+        package.format = "(is [󰏗 $version]($style) )";
       };
     };
 
