@@ -51,8 +51,13 @@
 
     nushell = {
       enable = true;
+      envFile.text = ''
+        $env.SUDO_PROMPT = $'(ansi red_bold)[sudo](ansi reset) password for %u: '
+      '';
       environmentVariables = {
-        GREETING = "hello world";
+        SUDO_EDITOR = "nvim";
+        STARSHIP_LOG = "error";
+        SQLITE_HISTORY = "${config.home.homeDirectory}/.local/state/sqlite3/sqlite_history";
       };
       plugins = with pkgs.nushellPlugins; [
         gstat
@@ -123,6 +128,21 @@
       };
     };
 
+    # better grep
+    ripgrep-all.enable = true;
+    ripgrep = {
+      enable = true;
+      arguments = [
+        "--hidden"
+        "--follow"
+        "--glob=!.cache/*"
+        "--glob=!.git/*"
+        "--glob=!.npm/*"
+        "--glob=!Trash/*"
+        "--smart-case"
+      ];
+    };
+
     # fuzzy finder
     skim = {
       enable = true;
@@ -142,6 +162,7 @@
     # multishell prompt engine
     starship = {
       enable = true;
+      # enableBashIntegration = false; # FIXME: doesn't work
       enableNushellIntegration = true;
       settings = {
         add_newline = false;
@@ -165,12 +186,14 @@
       };
     };
 
+    # terminal multiplexer
     tmux = {
       enable = true;
       focusEvents = true;
       mouse = true;
     };
 
+    # YouTube downloader
     yt-dlp = {
       enable = true;
       settings = {
@@ -249,8 +272,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
+    # Adds the 'hello' command to your environment. It prints a friendly
+    # "Hello, world!" when run.
     # pkgs.hello
 
     atool                          # compression and extraction tools
@@ -267,14 +290,11 @@
     man-pages                      # Linux man pages
     mesa                           # graphics lib
     neovide                        # graphical neovim client
-    # nushellPlugins.gstat
-    # nushellPlugins.query
     # nushellPlugins.skim #regex,units,highlight
     pandoc                         # markup converter
     pass                           # cli password manager #optionally: `pass-wayland` with gnome de
     # picard                         # music metadata editor
     porsmo                         # cli pomodoro app
-    ripgrep                        # better grep #optionally: `ripgrep-all` for extended features
     speedtest-rs
     stow                           # symlink manager
     syncthing                      # peer-to-peer file sync
@@ -350,10 +370,11 @@
   # or
   #
   #  /etc/profiles/per-user/m3tam3re/etc/profile.d/hm-session-vars.sh
-  #
-  # home.sessionVariables = {
-  #   EDITOR = "nvim";
-  # };
+
+  # FIXME: why doesn't this work?
+  home.sessionVariables = {
+    # EDITOR = "nvim";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

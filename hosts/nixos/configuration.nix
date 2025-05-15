@@ -214,31 +214,15 @@
   # it ads ~/.local/state/nix/profile/bin instead
   # environment.localBinInPath = true;
 
-  # # this only works for bash idk why
-  # environment.shellAliases = {
-  #   ":q" = "exit";
-  #   cp = "cp -iv";
-  #   rm = "rm -I";
-  #   visudo = "sudo visudo";
-  # };
-
-  # FIXME this is wrong
+  # # NOTE: doesn't work
   # environment.variables = {
   #   SUDO_EDITOR = "nvim";
-  #   EDITOR = "nvim"; # this makes lf call neovide instead of opening a nested vim session; <e> still broken
   #   VISUAL = "nvim";
-  #   # LESS = "-FRX"; # FIXME: doesn't appear to work
-  #   # MANPAGER = "nvim +Man!"; # FIXME: doesn't appear to work
-  #   # RIPGREP_CONFIG_PATH = "$XDG_CONFIG_HOME/ripgrep/ripgreprc";
-  #   # SKIM_DEFAULT_COMMAND = "fd --color=never --hidden --follow --type f --type l --exclude .git"; # FIXME: doesn't appear to work
-  #   #   SKIM_DEFAULT_OPTIONS = "--bind='ctrl-j:preview-page-down,ctrl-k:preview-page-up' \
-  #   # --layout=reverse --multi --bind='F4:toggle-preview,ctrl-h:backward-char+delete-charEOF' \
-  #   # --preview 'bat {} --color=always --wrap=never --style=plain --line-range=:500'";
-  #   # SQLITE_HISTORY = "$HOME/.local/state/sqlite3/sqlite_history";
-  #   STARSHIP_LOG = "error";
-  #   # ZK_NOTEBOOK_DIR = "$HOME/notebook";
-  #   # XDG_CONFIG_HOME = "$HOME/.config";
+  #   EDITOR = "nvim";
   # };
+  # security.sudo.extraConfig = ''
+  #   Defaults passprompt="\033[1;31m[sudo] password for %p:\033[0m "
+  # '';
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
