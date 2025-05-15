@@ -142,11 +142,77 @@
     # multishell prompt engine
     starship = {
       enable = true;
-      # enableInteractive = true;
       enableNushellIntegration = true;
       settings = {
         add_newline = false;
         command_timeout = 300;
+      };
+    };
+
+    yt-dlp = {
+      enable = true;
+      settings = {
+        extract-audio = true;
+        no-mtime = true;
+        no-playlist = true;
+      };
+      extraConfig = ''
+        -o ~/YouTube/%(title)s.%(ext)s
+        -f bv*[height<=?1080]+ba/best
+      '';
+    };
+
+    # zettelkasten helper
+    zk = {
+      enable = true;
+      settings = {
+        notebook = {
+          dir = "~/notebook";
+        };
+        note = {
+          language = "en";
+          default-title = "Untitled";
+          filename = "{{id}}-{{slug title}}";
+          extension = "md";
+          template = "default.md";
+          id-charset = "hex";
+          id-length = 7;
+          id-case = "lower";
+        };
+        extra = {
+          author = "以利沙";
+        };
+        group.journal = {
+          paths = ["journal/weekly" "journal/daily"];
+          note.filename = "{{format-date now}}";
+        };
+        format.markdown = {
+          hashtags = false;
+          colon-tags = false;
+          multiword-tags = true;
+        };
+        tool = {
+          editor = "nvim";
+          shell = "${pkgs.bash}/bin/bash";
+          pager = "less -FRX";
+          fzf-preview = "bat -p --color always {-1}";
+        };
+        lsp.diagnostics = {
+          wiki-title = "hint";
+          dead-link = "error";
+        };
+        filter = {
+          recents = "--sort created- --created-after 'last two weeks'";
+        };
+        alias = {
+          ls = "zk list $@";
+          list = "zk list --quiet $@";
+          editlast = "zk edit --limit 1 --sort modified- $@";
+          recent = "zk edit --sort created- --created-after 'last two weeks' --interactive";
+          path = "zk list --quiet --format {{path}} --delimiter , $@";
+          lucky = "zk list --quiet --format full --sort random --limit 1";
+          hist = "zk list --format path --delimiter0 --quiet $@ | xargs -t -0 git log --patch --";
+        };
       };
     };
 
@@ -188,14 +254,10 @@
     porsmo                         # cli pomodoro app
     ripgrep                        # better grep #optionally: `ripgrep-all` for extended features
     speedtest-rs
-    # starship                       # shell prompt tool
     stow                           # symlink manager
     syncthing                      # peer-to-peer file sync
     trash-cli
     tree                           # dir viewer
-    yt-dlp
-    zk
-    # zoxide                         # better cd
 
     # dev libs and tools
     bacon                          # background code checker
