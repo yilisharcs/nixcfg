@@ -49,7 +49,7 @@
       enable = true;
       # enableCompletion = true; # test with carapace first
       bashrcExtra = ''
-        PS1="''\${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+        PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
         PROMPT_COMMAND='history -a'
         HISTTIMEFORMAT="%F %T "
       '';
@@ -65,28 +65,9 @@
         "tmuxa"
       ];
       shellAliases = {
-        # muscle memory
-        vi = "nvim";
-        vim = "nvim";
-        ":q" = "exit";
-
-        # guard-rails
         cp = "cp -iv";
         rm = "rm -I";
-
-        # convenience
-        fetch = "fastfetch";
-        grep = "grep --color=auto";
         ls = "ls --color=auto";
-        nsp = "nix search nixpkgs";
-        pomo = "porsmo";
-        speedtest = "speedtest-rs";
-        # wiki = "wiki-tui";
-
-        # # nushell scripts
-        # gitcon = "gitcon.nu";
-        # gitlist = "gstat.nu";
-        # tokeicon = "tokeicon.nu";
       };
       shellOptions = [
         "checkwinsize"
@@ -194,24 +175,7 @@
         #   };
         # };
       };
-      shellAliases = {
-        # muscle memory
-        vi = "nvim";
-        vim = "nvim";
-        ":q" = "exit";
-
-        # convenience
-        fetch = "fastfetch";
-        nsp = "nix search nixpkgs";
-        pomo = "porsmo";
-        speedtest = "speedtest-rs";
-        # wiki = "wiki-tui";
-
-        # # nushell scripts
-        # gitcon = "gitcon.nu";
-        # gitlist = "gstat.nu";
-        # tokeicon = "tokeicon.nu";
-      };
+      # shellAliases = { };
     };
 
     # better grep
@@ -458,6 +422,26 @@
   # FIXME: why doesn't this work?
   home.sessionVariables = {
     # EDITOR = "nvim";
+  };
+
+  home.shellAliases = {
+    # muscle memory
+    vi = "nvim";
+    vim = "nvim";
+    ":q" = "exit";
+
+    # convenience
+    grep = "grep --color=auto";
+    fetch = "fastfetch";
+    nsp = "nix search nixpkgs";
+    pomo = "porsmo";
+    speedtest = "speedtest-rs";
+    # wiki = "wiki-tui";
+
+    # # nushell scripts
+    # gitcon = "gitcon.nu";
+    # gitlist = "gstat.nu";
+    # tokeicon = "tokeicon.nu";
   };
 
   # Let Home Manager install and manage itself.
