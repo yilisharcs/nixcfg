@@ -52,6 +52,9 @@
         PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
         PROMPT_COMMAND='history -a'
         HISTTIMEFORMAT="%F %T "
+
+        bind -x '"\C-g":"tmux-sessionizer"'
+        bind    '"\C-o": edit-and-execute-command'
       '';
       historyControl = [ "ignoreboth" ];
       historyIgnore = [
@@ -74,6 +77,19 @@
         "histappend"
       ];
     };
+
+    # better cat
+    bat = {
+      enable = true;
+      config = {
+        pager = "less -FR";
+        theme = "ansi";
+      };
+    };
+
+    # btop = {
+    #
+    # };
 
     # # automatic invocation of shell.nix with .envrc
     # direnv = {
@@ -327,7 +343,6 @@
     # pkgs.hello
 
     atool                          # compression and extraction tools
-    bat                            # better cat
     btop                           # tui system monitor
     carapace                       # multishell completion engine
     chafa                          # terminal image visualizer
@@ -350,6 +365,11 @@
     syncthing                      # peer-to-peer file sync
     trash-cli
     tree                           # dir viewer
+
+    # LSP
+    lua-language-server
+    nil
+    vim-language-server
 
     # dev libs and tools
     bacon                          # background code checker

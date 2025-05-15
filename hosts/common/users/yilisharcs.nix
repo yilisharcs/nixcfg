@@ -15,9 +15,6 @@
       "networkmanager"
       "wheel"
     ];
-
-    # packages = with pkgs; [
-    # ];
   };
   home-manager.users.yilisharcs =
     import ../../../home/yilisharcs/${config.networking.hostName}.nix;
