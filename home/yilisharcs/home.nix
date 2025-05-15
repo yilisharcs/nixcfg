@@ -56,14 +56,70 @@
       };
       plugins = with pkgs.nushellPlugins; [
         gstat
-        # highlight #regex
+        highlight #regex
         query
-        # skim
-        # units
+        # skim  ### NOTE: these seem to be outdated
+        # units ### NOTE: mismatched versions
       ];
       settings = {
         show_banner = false;
         buffer_editor = "nvim";
+        history = {
+          file_format = "plaintext";
+          max_size = 10000000;
+          sync_on_enter = true;
+          isolation = false;
+        };
+        plugin_gc = {
+          default = {
+            enabled = true;
+            # stop_after = "10sec";
+          };
+          # plugins = {
+          #   gstat.stop_after = 1min;
+          #   inc.stop_after = 0sec;
+          # };
+        };
+        # keybindings = {
+        #   # {
+        #   #   name = "tmux_sessionizer";
+        #   #   modifier = "control";
+        #   #   keycode = "char_g";
+        #   #   mode = [ "emacs", "vi_insert", "vi_normat" ];
+        #   #   event = {
+        #   #     send = "executehostcommand";
+        #   #     cmd = "tmux-sessionizer";
+        #   #   };
+        #   # };
+        #   {
+        #     name = "job_to_foreground";
+        #     modifier = "control";
+        #     keycode = "char_z";
+        #     mode = [ "emacs", "vi_insert", "vi_normal" ];
+        #     event = {
+        #       send = "executehostcommand";
+        #       cmd = "job unfreeze";
+        #     };
+        #   };
+        # };
+      };
+      shellAliases = {
+        # muscle memory
+        vi = "nvim";
+        vim = "nvim";
+        ":q" = "exit";
+
+        # convenience
+        fetch = "fastfetch";
+        nsp = "nix search nixpkgs";
+        pomo = "porsmo";
+        speedtest = "speedtest-rs";
+        # wiki = "wiki-tui";
+
+        # # nushell scripts
+        # gitcon = "gitcon.nu";
+        # gitlist = "gstat.nu";
+        # tokeicon = "tokeicon.nu";
       };
     };
 
