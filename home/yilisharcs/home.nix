@@ -19,8 +19,135 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
+  dconf.settings = with lib.hm.gvariant; {
+    "org/gnome/Geary" = {
+      images-trusted-domains = [ "*" ];
+      run-in-background = true;
+    };
+    "org/gnome/GWeather4" = {
+      temperature-unit = "centigrade";
+    };
+    "org/gnome/desktop/a11y" = {
+      always-show-universal-access-status = true;
+    };
+    "org/gnome/desktop/a11y/interface" = {
+      high-contrast = true;
+      show-status-shapes = true;
+    };
+    "org/gnome/desktop/datetime" = {
+      automatic-timezone = true;
+    };
+    "org/gnome/desktop/interface" = {
+      accent-color = "green";
+      color-scheme = "prefer-dark";
+      cursor-size = 32;
+      cursor-theme = "Bibata-Modern-Ice";
+    };
+    "org/gnome/desktop/input-sources" = {
+      sources = [ (mkTuple [ "xkb" "br" ]) ];
+    };
+    "org/gnome/desktop/peripherals/keyboard" = {
+      delay = lib.hm.gvariant.mkUint32 375;
+      repeat = true;
+      repeat-interval = lib.hm.gvariant.mkUint32 18;
+    };
+    "org/gnome/desktop/peripherals/keyboard" = {
+      edge-scrolling-enabled = true;
+      natural-scroll = false;
+      two-finger-scrolling-enabled = false;
+    };
+    "org/gnome/desktop/sound" = {
+      allow-volume-above-100-percent = true;
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      move-to-workspace-left = [ "<Shift><Super>minus" ];
+      move-to-workspace-right = [ "<Shift><Super>equal" ];
+      switch-to-workspace-left = [ "<Super>minus" ];
+      switch-to-workspace-right = [ "<Super>equal" ];
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = "appmenu:minimize,close";
+      focus-mode = "sloppy";
+    };
+    "org/gnome/evince/default" = {
+      inverted-colors = true;
+      show-sidebar = false;
+      sizing-mode = "fit-width";
+    };
+    "org/gnome/evolution/calendar" = {
+      use-24hour-format = true;
+    };
+    "org/gnome/nautilus/preferences" = {
+      click-policy = "single";
+    };
+    "org/gnome/settings-daemon/plugins/color" = {
+      night-light-enabled = false; # TODO: set to true later
+      night-light-schedule-automatic = false;
+    };
+    "org/gnome/settings-daemon/plugins/power" = {
+      sleep-inactive-ac-type = "nothing";
+    };
+    "org/gnome/shell" = {
+      favorite-apps = [ "neovide.desktop" "org.gnome.Geary.desktop" "brave-browser.desktop" "org.inkscape.Inkscape.desktop" "gimp.desktop" "org.gnome.Calendar.desktop" "org.gnome.Music.desktop" "org.gnome.Nautilus.desktop" ];
+      last-selected-power-profile = "performance";
+    };
+    "org/gnome/shell/extensions/clipboard-indicator" = {
+      clear-on-boot = false;
+      disable-down-arrow = true;
+      display-mode = 2;
+      keep-selected-on-clear = true;
+      move-item-first = true;
+      notify-on-copy = false;
+      notify-on-cycle = false;
+      private-mode-binding = [ "<Control>F8" ];
+      topbar-preview-size = 11;
+    };
+    "org/gnome/shell/extensions/dash-to-dock" = {
+      background-opacity = 0.80000000000000004;
+      dash-max-icon-size = 48;
+      dock-position = "BOTTOM";
+      height-fraction = 0.90000000000000002;
+      intellihide-mode = "ALL_WINDOWS";
+      multi-monitor = true;
+      preferred-monitor = -2;
+      preferred-monitor-by-connector = "LVDS-1";
+    };
+    "org/gnome/shell/extensions/vitals" = {
+      hide-zeros = false;
+      hot-sensors = [ "_memory_usage_" "_system_load_1m_" "__network-rx_max__" "_storage_free_" ];
+      icon-style = 0;
+      menu-centered = true;
+      position-in-panel = 0;
+      show-battery = false;
+      show-fan = false;
+      use-higher-precision = false;
+    };
+    "org/gnome/shell/weather" = {
+      automatic-location = true;
+    };
+    "org/gtk/gtk4/settings/file-chooser" = {
+      show-hidden = true;
+    };
+    "org/gtk/settings/file-chooser" = {
+      show-hidden = true;
+      sort-directories-first = true;
+    };
+  };
+
   services = {
+    # gnome = {
+    #   gnome-keyring = {
+    #     enable = true;
+    #   };
+    # };
     # peer-to-peer file sync
+
+    gpg-agent = {
+      enable = true;
+      enableNushellIntegration = true;
+      enableSshSupport = true;
+    };
+
     syncthing = {
       enable = true;
       settings = {
@@ -190,6 +317,19 @@
       ignores = [
         ".env"
         "/blueprint"
+      ];
+    };
+
+    gpg = {
+      enable = true;
+    };
+
+    gnome-shell = {
+      enable = true;
+      extensions = with pkgs; [
+        { package = gnomeExtensions.dash-to-dock; }
+        { package = gnomeExtensions.clipboard-indicator; }
+        { package = gnomeExtensions.vitals; }
       ];
     };
 
@@ -471,9 +611,9 @@
     # better cd
     zoxide = {
       enable = true;
+      enableBashIntegration = true;
       enableNushellIntegration = true;
     };
-
   };
 
   # The home.packages option allows you to install Nix packages into your
@@ -486,13 +626,18 @@
     atool                          # compression and extraction tools
     chafa                          # terminal image visualizer
     ctpv                           # lf previewer
+    dconf-editor
+    evolution                      # mail client
     ffmpeg
     ffmpegthumbnailer
+    gimp                           # image editor
+    gnome-tweaks
     # imagemagick
+    inkscape                       # image editor
     man-pages                      # Linux man pages
     mesa                           # graphics lib
+    obs-studio
     pandoc                         # markup converter
-    pass                           # cli password manager #optionally: `pass-wayland` with gnome de
     # picard                         # music metadata editor
     porsmo                         # cli pomodoro app
     speedtest-rs

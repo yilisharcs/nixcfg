@@ -134,6 +134,11 @@
       };
     };
 
+    gnupg.agent = {
+      enable = true;
+      pinentryPackage = pkgs.pinentry-gnome3;
+    };
+
     # pager utility
     less = {
       enable = true;
@@ -200,8 +205,9 @@
     man                            # man command
     ncdu                           # disk space analyzer
     nushell
+    pinentry-gnome3                # gnupg deps
     wget
-    wl-clipboard                   # pass dependency
+    wl-clipboard
     xclip
   ];
 
