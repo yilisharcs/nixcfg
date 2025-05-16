@@ -76,7 +76,6 @@
     "org/gnome/evolution/mail" = {
       composer-magic-smileys = true;
       # composer-mode = "html";
-      composer-spell-languages = [ "en_US" "pt_BR" ];
       composer-unicode-smileys = true;
       # hpaned-size = 1571673;
       image-loading-policy = "always";
@@ -87,7 +86,7 @@
       show-to-do-bar = false;
     };
     "org/gnome/evolution/plugin/external-editor" = {
-      command = "neovide";
+      command = "neovide -- -c 'set spell'";
       launch-on-key-press = true;
     };
     "org/gnome/evolution/shell" = {
