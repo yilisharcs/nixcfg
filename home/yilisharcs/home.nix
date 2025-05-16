@@ -2,7 +2,7 @@
 #
 # home-manager init ./
 
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -442,7 +442,7 @@
 
     neovim = {
       enable = true;
-      # package = pkgs.neovim-nightly;
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
       extraPackages = with pkgs; [
         gcc
       ];
