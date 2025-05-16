@@ -220,15 +220,9 @@
   # it ads ~/.local/state/nix/profile/bin instead
   # environment.localBinInPath = true;
 
-  # # NOTE: doesn't work
-  # environment.variables = {
-  #   SUDO_EDITOR = "nvim";
-  #   VISUAL = "nvim";
-  #   EDITOR = "nvim";
-  # };
-  # security.sudo.extraConfig = ''
-  #   Defaults passprompt="\033[1;31m[sudo] password for %p:\033[0m "
-  # '';
+  environment.variables = {
+    SUDO_EDITOR = "nvim";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

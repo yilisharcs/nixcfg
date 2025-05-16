@@ -232,19 +232,6 @@
         "[bf]g"
         "tmuxa"
       ];
-      sessionVariables = {
-        # TODO: remove this once the problem is fixed
-        SKIM_DEFAULT_COMMAND = "fd --color=never --hidden --follow --type f --type l --exclude .git";
-        SKIM_DEFAULT_OPTIONS = lib.concatStrings [
-          "--preview 'bat {} --color=always --wrap=never --style=plain --line-range=:500' "
-          "--layout=reverse "
-          "--multi "
-          "--bind='ctrl-j:preview-page-down' "
-          "--bind='ctrl-k:preview-page-up' "
-          "--bind='ctrl-h:backward-char+delete-charEOF' "
-          "--bind='F4:toggle-preview'"
-        ];
-      };
       shellAliases = {
         cp = "cp -iv";
         rm = "rm -I";
@@ -456,22 +443,6 @@
       envFile.text = ''
         $env.SUDO_PROMPT = $'(ansi red_bold)[sudo](ansi reset) password for %u: '
       '';
-      environmentVariables = {
-        SUDO_EDITOR = "nvim";
-        STARSHIP_LOG = "error";
-        SQLITE_HISTORY = "${config.home.homeDirectory}/.local/state/sqlite3/sqlite_history";
-        # TODO: remove this once the problem is fixed
-        SKIM_DEFAULT_COMMAND = "fd --color=never --hidden --follow --type f --type l --exclude .git";
-        SKIM_DEFAULT_OPTIONS = lib.concatStrings [
-          "--preview 'bat {} --color=always --wrap=never --style=plain --line-range=:500' "
-          "--layout=reverse "
-          "--multi "
-          "--bind='ctrl-j:preview-page-down' "
-          "--bind='ctrl-k:preview-page-up' "
-          "--bind='ctrl-h:backward-char+delete-charEOF' "
-          "--bind='F4:toggle-preview'"
-        ];
-      };
       plugins = with pkgs.nushellPlugins; [
         gstat
         highlight #regex
@@ -780,10 +751,24 @@
   #
   #  /etc/profiles/per-user/m3tam3re/etc/profile.d/hm-session-vars.sh
 
-  # FIXME: doesn't work if default shell isn't bash
   home.sessionVariables = {
-    FOO = "bar";
-    # EDITOR = "nvim";
+    SUDO_EDITOR = "nvim";
+    VISUAL = "nvim";
+    EDITOR = "nvim";
+    SQLITE_HISTORY = "${config.home.homeDirectory}/.local/state/sqlite3/sqlite_history";
+    STARSHIP_LOG = "error";
+    # TODO: remove this once the problem is fixed
+    SKIM_DEFAULT_COMMAND = "fd --color=never --hidden --follow --type f --type l --exclude .git";
+    SKIM_DEFAULT_OPTIONS = lib.concatStrings [
+      "--preview 'bat {} --color=always --wrap=never --style=plain --line-range=:500' "
+      "--layout=reverse "
+      "--multi "
+      "--bind='ctrl-j:preview-page-down' "
+      "--bind='ctrl-k:preview-page-up' "
+      "--bind='ctrl-h:backward-char+delete-charEOF' "
+      "--bind='F4:toggle-preview'"
+    ];
+
   };
 
   home.shellAliases = {

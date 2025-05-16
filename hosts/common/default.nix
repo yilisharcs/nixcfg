@@ -59,5 +59,6 @@
       ((lib.filterAttrs (_: lib.isType "flake")) inputs);
     nixPath = [ "/etc/nix/path" ];
   };
-  users.defaultUserShell = pkgs.nushell;
+  ## NOTE: this interferes with home-manager's sessionVariables
+  # users.defaultUserShell = pkgs.nushell;
 }
