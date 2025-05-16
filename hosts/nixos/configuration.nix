@@ -229,7 +229,6 @@
     bibata-cursors
     brave                          # chromium browser fork with built-in adblocker
     curl
-    gh                             # github cli tool
     lf                             # tui file explorer
     man                            # man command
     ncdu                           # disk space analyzer

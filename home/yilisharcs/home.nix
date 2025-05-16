@@ -351,6 +351,14 @@
       # config = { };
     };
 
+    # github cli tool
+    gh = {
+      enable = true;
+      settings = {
+        git_protocol = "ssh";
+      };
+    };
+
     # distributed version control system
     git = {
       enable = true;
