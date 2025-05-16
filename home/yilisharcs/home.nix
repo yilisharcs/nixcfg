@@ -475,28 +475,41 @@
           #   inc.stop_after = 0sec;
           # };
         };
-        # keybindings = {
-        #   # {
-        #   #   name = "tmux_sessionizer";
-        #   #   modifier = "control";
-        #   #   keycode = "char_g";
-        #   #   mode = [ "emacs", "vi_insert", "vi_normat" ];
-        #   #   event = {
-        #   #     send = "executehostcommand";
-        #   #     cmd = "tmux-sessionizer";
-        #   #   };
-        #   # };
-        #   {
-        #     name = "job_to_foreground";
-        #     modifier = "control";
-        #     keycode = "char_z";
-        #     mode = [ "emacs", "vi_insert", "vi_normal" ];
-        #     event = {
-        #       send = "executehostcommand";
-        #       cmd = "job unfreeze";
-        #     };
-        #   };
-        # };
+        keybindings = [
+          {
+            name = "job_to_foreground";
+            modifier = "control";
+            keycode = "char_z";
+            mode = [ "emacs" "vi_insert" "vi_normal" ];
+            event = {
+              send = "executehostcommand";
+              cmd = "job unfreeze";
+            };
+          }
+          {
+            name = "fuzzy_history";
+            modifier = "control";
+            keycode = "char_r";
+            mode = [ "emacs" "vi_normal" "vi_insert" ];
+            event = {
+              send = "executehostcommand";
+              cmd = ''commandline edit --replace (
+                history
+                | get command
+                | reverse
+                | uniq
+                | str join (char -i 0)
+                | ^sk
+                --read0
+                --layout reverse
+                --query (commandline)
+                --preview-window hidden
+                | decode utf-8
+                | str trim
+              )'';
+            };
+          }
+        ];
       };
       # shellAliases = { };
     };
