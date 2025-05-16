@@ -564,6 +564,28 @@
           deleted = "[✕](italic red)";
         };
         package.format = "(is [󰏗 $version]($style) )";
+        time = {
+          disabled = false;
+          format = " [$time]($style)";
+          style = "bold green";
+          time_format = "%a %F %T";
+          use_12hr = false;
+        };
+        fill.symbol = " ";
+        format = lib.concatStrings [
+          "$all"
+          "$fill"
+          "$time"
+          "$line_break"
+          "$jobs"
+          "$battery"
+          "$status"
+          "$os"
+          "$container"
+          "$netns"
+          "$shell"
+          "$character"
+        ];
       };
     };
 
