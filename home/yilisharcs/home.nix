@@ -36,7 +36,7 @@
     "org/gnome/desktop/interface" = {
       accent-color = "green";
       color-scheme = "prefer-dark";
-      cursor-size = 32;
+      cursor-size = 24;
       cursor-theme = "Bibata-Modern-Ice";
     };
     "org/gnome/desktop/input-sources" = {
@@ -703,6 +703,15 @@
       enable = true;
     };
   };
+
+  home.pointerCursor = {
+    enable = true;
+    name = "Bibata-Modern-Ice";
+    size = 24;
+    package = pkgs.bibata-cursors;
+    gtk.enable = true;
+  };
+  gtk.enable = true; # Must be set to activate above config
 
   xdg.mimeApps = {
     enable = true;
