@@ -113,8 +113,9 @@
     noto-fonts-emoji
   ];
 
-  # # Install firefox.
-  # programs.firefox.enable = true;
+  # Uninstall firefox.
+  programs.firefox.enable = false;
+  programs.geary.enable = false;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

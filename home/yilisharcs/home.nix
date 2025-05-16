@@ -20,10 +20,6 @@
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
   dconf.settings = with lib.hm.gvariant; {
-    "org/gnome/Geary" = {
-      images-trusted-domains = [ "*" ];
-      run-in-background = true;
-    };
     "org/gnome/GWeather4" = {
       temperature-unit = "centigrade";
     };
@@ -77,6 +73,24 @@
     "org/gnome/evolution/calendar" = {
       use-24hour-format = true;
     };
+    "org/gnome/evolution/mail" = {
+      composer-magic-smileys = true;
+      # composer-mode = "html";
+      composer-spell-languages = [ "en_US" "pt_BR" ];
+      composer-unicode-smileys = true;
+      # hpaned-size = 1571673;
+      image-loading-policy = "always";
+      layout = 1;
+      # paned-size = 1621669;
+      message-list-sort-on-header-click = "always";
+      show-animated-images = true;
+      show-to-do-bar = false;
+    };
+    "org/gnome/evolution/shell" = {
+      icon-only-buttons-in-header-bar = true;
+      statusbar-visible = false;
+      webkit-minimum-font-size = 16;
+    };
     "org/gnome/nautilus/preferences" = {
       click-policy = "single";
     };
@@ -88,7 +102,7 @@
       sleep-inactive-ac-type = "nothing";
     };
     "org/gnome/shell" = {
-      favorite-apps = [ "neovide.desktop" "org.gnome.Geary.desktop" "brave-browser.desktop" "org.inkscape.Inkscape.desktop" "gimp.desktop" "org.gnome.Calendar.desktop" "org.gnome.Music.desktop" "org.gnome.Nautilus.desktop" ];
+      favorite-apps = [ "neovide.desktop" "org.gnome.Evolution.desktop" "brave-browser.desktop" "org.inkscape.Inkscape.desktop" "gimp.desktop" "org.gnome.Calendar.desktop" "org.gnome.Music.desktop" "org.gnome.Nautilus.desktop" ];
       last-selected-power-profile = "performance";
     };
     "org/gnome/shell/extensions/clipboard-indicator" = {
@@ -159,8 +173,6 @@
   programs = {
 
 # I might be able to configure brave with chromium
-
-# programs.gnupg.agent, ssh.agent
 
     # background code checker
     bacon = {
