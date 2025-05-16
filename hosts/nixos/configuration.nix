@@ -120,6 +120,34 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Enable Syncthing for peer-to-peer file sync
+  services.syncthing = {
+    enable = true;
+    systemService = true;
+    user = "yilisharcs";
+    dataDir = "${config.users.users.yilisharcs.home}";
+    overrideDevices = true;
+    settings = {
+      devices = {
+        "samsumg" = {
+          id = "MF6IH63-BX3WP45-ZH42ZJM-ZKA45EZ-JNDUF5L-ZDLO5KH-H5B6XRJ-O4CTEQW";
+          autoAcceptFolders = true;
+        };
+      };
+      folders = {
+        "notebook" = {
+          enable = true;
+          devices = [ "samsumg" ];
+          path = "~/notebook";
+        };
+      };
+      options = {
+        localAnnounceEnabled = true;
+        urAccepted = 3;
+      };
+    };
+  };
+
   programs = {
     # distributed version control system
     git = {

@@ -184,18 +184,10 @@
     #     enable = true;
     #   };
     # };
-    # peer-to-peer file sync
 
     gpg-agent = {
       enable = true;
       enableSshSupport = true;
-    };
-
-    syncthing = {
-      enable = true;
-      settings = {
-        gui.theme = "black";
-      };
     };
   };
 
@@ -551,6 +543,11 @@
       #   "--bind='ctrl-h:backward-char+delete-charEOF'"
       #   "--bind='F4:toggle-preview'"
       # ];
+    };
+
+    ssh = {
+      enable = true;
+      addKeysToAgent = "ask";
     };
 
     # multishell prompt engine
