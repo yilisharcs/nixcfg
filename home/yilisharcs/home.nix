@@ -725,6 +725,15 @@
     };
   };
 
+  xdg.autostart = {
+    enable = true;
+    entries = [
+      "${pkgs.neovide}/share/applications/neovide.desktop"
+      "${pkgs.brave}/share/applications/brave-browser.desktop"
+      "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
+    ];
+  };
+
   home.shell.enableBashIntegration = true;
   home.shell.enableNushellIntegration = true;
 
