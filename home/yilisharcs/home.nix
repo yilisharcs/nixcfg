@@ -86,6 +86,10 @@
       show-animated-images = true;
       show-to-do-bar = false;
     };
+    "org/gnome/evolution/plugin/external-editor" = {
+      command = "neovide";
+      launch-on-key-press = true;
+    };
     "org/gnome/evolution/shell" = {
       icon-only-buttons-in-header-bar = true;
       statusbar-visible = false;
