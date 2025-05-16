@@ -84,6 +84,13 @@
   services.xserver.xkb = {
     layout = "br";
     variant = "";
+    # extraLayouts = {
+    #   br = {
+    #     description = "Custom brazilian keyboard";
+    #     languages = [ "br" ];
+    #     symbolsFile = "/home/yilisharcs/.dotfiles/xkb/symbols/br";
+    #   };
+    # };
   };
 
   # Enable CUPS to print documents.
