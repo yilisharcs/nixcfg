@@ -177,6 +177,25 @@
     };
   };
 
+  systemd.user = {
+    enable = true;
+    services = {
+      "ra-mux" = {
+        Unit = {
+          Description = "Rust-analyzer Multiplex Server";
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
+        Service = {
+          Type = "simple";
+          ExecStart = "${pkgs.ra-multiplex}/bin/ra-multiplex server";
+          Restart = "on-failure";
+        };
+      };
+    };
+  };
+
   services = {
     # gnome = {
     #   gnome-keyring = {
@@ -678,6 +697,18 @@
     };
   };
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "x-scheme-handler/mailto" = "userapp-Evolution-I70E62.desktop";
+    };
+    associations = {
+      added = {
+        "application/x-zerosize" = "neovide.desktop";
+      };
+    };
+  };
+
   home.shell.enableBashIntegration = true;
   home.shell.enableNushellIntegration = true;
 
@@ -734,7 +765,7 @@
     # pipx                           # python package manager
     # python314
     ra-multiplex                   # rust-analyzer multiplex server
-    # rustup                         # rust toolchain manager
+    rustup                         # rust toolchain manager
     sccache                        # build cache tool
     sqlite
     tokei                          # loc counter
