@@ -695,6 +695,7 @@
     evolution                      # mail client
     ffmpeg
     ffmpegthumbnailer
+    file                           # isn't this a core-util?
     gimp                           # image editor
     gnome-tweaks
     # imagemagick
@@ -705,6 +706,7 @@
     pandoc                         # markup converter
     # picard                         # music metadata editor
     porsmo                         # cli pomodoro app
+    qbittorrent
     speedtest-rs
     stow                           # symlink manager
     trash-cli
