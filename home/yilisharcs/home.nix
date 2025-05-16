@@ -106,7 +106,16 @@
       sleep-inactive-ac-type = "nothing";
     };
     "org/gnome/shell" = {
-      favorite-apps = [ "neovide.desktop" "org.gnome.Evolution.desktop" "brave-browser.desktop" "org.inkscape.Inkscape.desktop" "gimp.desktop" "org.gnome.Calendar.desktop" "org.gnome.Music.desktop" "org.gnome.Nautilus.desktop" ];
+      favorite-apps = [
+        "neovide.desktop"
+        "org.gnome.Evolution.desktop"
+        "brave-browser.desktop"
+        "org.inkscape.Inkscape.desktop"
+        "gimp.desktop"
+        "org.gnome.Calendar.desktop"
+        "org.gnome.Music.desktop"
+        "org.gnome.Nautilus.desktop"
+      ];
       last-selected-power-profile = "performance";
     };
     "org/gnome/shell/extensions/clipboard-indicator" = {
@@ -132,7 +141,12 @@
     };
     "org/gnome/shell/extensions/vitals" = {
       hide-zeros = false;
-      hot-sensors = [ "_memory_usage_" "_system_load_1m_" "__network-rx_max__" "_storage_free_" ];
+      hot-sensors = [
+        "_memory_usage_"
+        "_system_load_1m_"
+        "__network-rx_max__"
+        "_storage_free_"
+      ];
       icon-style = 0;
       menu-centered = true;
       position-in-panel = 0;
@@ -162,7 +176,6 @@
 
     gpg-agent = {
       enable = true;
-      enableNushellIntegration = true;
       enableSshSupport = true;
     };
 
@@ -307,15 +320,11 @@
     # multishell completion engine
     carapace = {
       enable = true;
-      enableBashIntegration = true;
-      enableNushellIntegration = true;
     };
 
     # automatic invocation of shell.nix with .envrc
     direnv = {
       enable = true;
-      enableBashIntegration = true;
-      enableNushellIntegration = true;
       nix-direnv.enable = true;
       # config = { };
     };
@@ -456,6 +465,18 @@
         # skim  ### NOTE: these seem to be outdated
         # units ### NOTE: mismatched versions
       ];
+      configFile.text = ''
+        $env.config.plugin_gc = {
+          default: {
+            enabled: true
+            stop_after: 10sec
+          }
+          plugins: {
+            gstat: { stop_after: 1min }
+            inc: { stop_after: 0sec }
+          }
+        }
+      '';
       settings = {
         show_banner = false;
         buffer_editor = "nvim";
@@ -464,16 +485,6 @@
           max_size = 10000000;
           sync_on_enter = true;
           isolation = false;
-        };
-        plugin_gc = {
-          default = {
-            enabled = true;
-            # stop_after = "10sec";
-          };
-          # plugins = {
-          #   gstat.stop_after = 1min;
-          #   inc.stop_after = 0sec;
-          # };
         };
         keybindings = [
           {
@@ -549,7 +560,6 @@
     starship = {
       enable = true;
       enableBashIntegration = false;
-      enableNushellIntegration = true;
       settings = {
         add_newline = false;
         command_timeout = 300;
@@ -650,10 +660,11 @@
     # better cd
     zoxide = {
       enable = true;
-      enableBashIntegration = true;
-      enableNushellIntegration = true;
     };
   };
+
+  home.shell.enableBashIntegration = true;
+  home.shell.enableNushellIntegration = true;
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
