@@ -438,6 +438,16 @@
         SUDO_EDITOR = "nvim";
         STARSHIP_LOG = "error";
         SQLITE_HISTORY = "${config.home.homeDirectory}/.local/state/sqlite3/sqlite_history";
+        SKIM_DEFAULT_COMMAND = "fd --color=never --hidden --follow --type f --type l --exclude .git";
+        SKIM_DEFAULT_OPTIONS = lib.concatStrings [
+          "--preview 'bat {} --color=always --wrap=never --style=plain --line-range=:500' "
+          "--layout=reverse "
+          "--multi "
+          "--bind='ctrl-j:preview-page-down' "
+          "--bind='ctrl-k:preview-page-up' "
+          "--bind='ctrl-h:backward-char+delete-charEOF' "
+          "--bind='F4:toggle-preview'"
+        ];
       };
       plugins = with pkgs.nushellPlugins; [
         gstat
@@ -509,17 +519,17 @@
     # fuzzy finder
     skim = {
       enable = true;
-      # FIXME: none of these options are working
-      defaultCommand = "fd --color=never --hidden --follow --type f --type l --exclude .git";
-      defaultOptions = [
-        "--preview 'bat {} --color=always --wrap=never --style=plain --line-range=:500'"
-        "--layout=reverse"
-        "--multi"
-        "--bind='ctrl-j:preview-page-down'"
-        "--bind='ctrl-k:preview-page-up'"
-        "--bind='ctrl-h:backward-char+delete-charEOF'"
-        "--bind='F4:toggle-preview'"
-      ];
+      # # FIXME: none of these options are working
+      # defaultCommand = "fd --color=never --hidden --follow --type f --type l --exclude .git";
+      # defaultOptions = [
+      #   "--preview 'bat {} --color=always --wrap=never --style=plain --line-range=:500'"
+      #   "--layout=reverse"
+      #   "--multi"
+      #   "--bind='ctrl-j:preview-page-down'"
+      #   "--bind='ctrl-k:preview-page-up'"
+      #   "--bind='ctrl-h:backward-char+delete-charEOF'"
+      #   "--bind='F4:toggle-preview'"
+      # ];
     };
 
     # multishell prompt engine
