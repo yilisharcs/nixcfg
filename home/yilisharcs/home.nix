@@ -234,8 +234,7 @@
 
     bash = {
       enable = true;
-      # enableCompletion = true; # test with carapace first
-      bashrcExtra = ''
+      initExtra = ''
         PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
         PROMPT_COMMAND='history -a'
         HISTTIMEFORMAT="%F %T "
