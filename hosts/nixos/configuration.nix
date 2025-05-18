@@ -169,10 +169,21 @@
         "kkmlkkjojmombglmlpbpapmhcaljjkde" # Zhongwen: Zh-En Dictionary
       ];
       extraOpts = {
-        ## Extensions
-        # ExtensionSettings = {
-        #
-        # };
+        # Extensions
+        ExtensionSettings = {
+          # Dark reader
+          "eimadpbcbfnmbkopoojfekhnkhdbieeh" = {
+            toolbar_pin = "force_pinned";
+          };
+          # Proton Pass
+          "ghmbeldphafepmbegfdlkpapadhbakde" = {
+            toolbar_pin = "force_pinned";
+          };
+          # Vimium
+          "dbepggeogbaibhgnhhndojpepiihcmeb" = {
+            toolbar_pin = "force_pinned";
+          };
+        };
 
         # Generative AI
         GenAiDefaultSettings = 2;
