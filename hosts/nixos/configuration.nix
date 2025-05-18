@@ -308,10 +308,10 @@
     bibata-cursors
     brave                          # chromium fork with built-in adblocker
     curl
+    gdu                            # disk space analyzer
     gnome-terminal
     lf                             # tui file explorer
     man                            # man command
-    ncdu                           # disk space analyzer
     nushell
     pinentry-gnome3                # gnupg deps
     wget

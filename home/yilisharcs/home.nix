@@ -901,10 +901,10 @@
     speedtest = "speedtest-rs";
     # wiki = "wiki-tui";
 
-    # # nushell scripts
-    # gitcon = "gitcon.nu";
-    # gitlist = "gstat.nu";
-    # tokeicon = "tokeicon.nu";
+    # nushell scripts
+    gitcon = "gitcon.nu";
+    gitlist = "gstat.nu";
+    tokeicon = "tokeicon.nu";
   };
 
   # Let Home Manager install and manage itself.
