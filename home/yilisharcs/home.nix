@@ -476,9 +476,9 @@
       extraPackages = with pkgs; [
         gcc
       ];
-      # withNodeJs = true;
-      # withPython3 = true;
-      # withRuby = true;
+      withNodeJs = false;
+      withPython3 = false;
+      withRuby = false;
     };
 
     # graphical neovim client
