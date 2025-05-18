@@ -161,7 +161,6 @@
       extensions = [
         "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark reader
         "cofdbpoegempjloogbagkncekinflcnj" # DeepL
-        "gphhapmejobijbbhgpjhcjognlahblep" # GNOME Shell integration # TODO: is this really necessary?
         "ghmbeldphafepmbegfdlkpapadhbakde" # Proton Pass
         "eninkmbmgkpkcelmohdlgldafpkfpnaf" # Reddit Untranslate
         "fakeocdnmmmnokabaiflppclocckihoj" # Sprucemarks
@@ -174,13 +173,25 @@
           # Dark reader
           "eimadpbcbfnmbkopoojfekhnkhdbieeh" = {
             toolbar_pin = "force_pinned";
+            file_url_navigation_allowed = true;
           };
           # Proton Pass
           "ghmbeldphafepmbegfdlkpapadhbakde" = {
             toolbar_pin = "force_pinned";
           };
+          # # Sprucemarks
+          # "fakeocdnmmmnokabaiflppclocckihoj" = {
+          #   options_ui = {
+          #     page = "dark.html";
+          #   };
+          # };
           # Vimium
           "dbepggeogbaibhgnhhndojpepiihcmeb" = {
+            toolbar_pin = "force_pinned";
+            file_url_navigation_allowed = true;
+          };
+          # Zhongwen: Zh-En Dictionary
+          "kkmlkkjojmombglmlpbpapmhcaljjkde" = {
             toolbar_pin = "force_pinned";
           };
         };
@@ -209,8 +220,6 @@
         SafeBrowsingProtectionLevel = 1;
 
         # Startup, Home page and New Tab page
-        HomepageIsNewTabPage = true;
-        NewTabPageLocation = "https://duckduckgo.com";
         RestoreOnStartup = 1;
         ShowHomeButton = true;
       };
