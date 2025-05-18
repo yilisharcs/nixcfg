@@ -302,6 +302,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     atool                          # compression and extraction tools
+    unzip                          # dependency
+    zip                            # dependency
+
     bibata-cursors
     brave                          # chromium fork with built-in adblocker
     curl
@@ -311,7 +314,6 @@
     ncdu                           # disk space analyzer
     nushell
     pinentry-gnome3                # gnupg deps
-    unzip                          # required by atool
     wget
     wl-clipboard
     xclip
