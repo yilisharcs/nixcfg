@@ -598,7 +598,7 @@
         time = {
           disabled = false;
           format = " [$time]($style)";
-          style = "bold green";
+          style = "yellow";
           time_format = "%a %F %T";
           use_12hr = false;
         };
@@ -741,7 +741,6 @@
     # "Hello, world!" when run.
     # pkgs.hello
 
-    atool                          # compression and extraction tools
     chafa                          # terminal image visualizer
     ctpv                           # lf previewer
     dconf-editor

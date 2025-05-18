@@ -120,8 +120,6 @@
     noto-fonts-emoji
   ];
 
-  programs.geary.enable = false;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -154,6 +152,8 @@
   };
 
   programs = {
+    geary.enable = false; # mail client (doesn't have dark mode)
+
     chromium = {
       enable = true;
       defaultSearchProviderEnabled = true;
@@ -283,6 +283,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    atool                          # compression and extraction tools
     bibata-cursors
     brave                          # chromium fork with built-in adblocker
     curl
@@ -291,6 +292,7 @@
     ncdu                           # disk space analyzer
     nushell
     pinentry-gnome3                # gnupg deps
+    unzip                          # required by atool
     wget
     wl-clipboard
     xclip
