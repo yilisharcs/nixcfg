@@ -760,7 +760,7 @@
     enable = true;
     entries = [
       "${pkgs.neovide}/share/applications/neovide.desktop"
-      "${pkgs.brave}/share/applications/brave-browser.desktop"
+      # "${pkgs.brave}/share/applications/brave-browser.desktop" #autostarts with wrong font
       "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
     ];
   };
