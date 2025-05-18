@@ -842,7 +842,7 @@
     SQLITE_HISTORY = "${config.home.homeDirectory}/.local/state/sqlite3/sqlite_history";
     STARSHIP_LOG = "error";
     # TODO: remove this once the problem is fixed
-    SKIM_DEFAULT_COMMAND = "fd --color=never --hidden --follow --type f --type l --exclude .git";
+    SKIM_DEFAULT_COMMAND = "fd --color=never --hidden --follow --type f --type l --exclude={.git,Trash}";
     SKIM_DEFAULT_OPTIONS = lib.concatStrings [
       "--preview 'bat {} --color=always --wrap=never --style=plain --line-range=:500' "
       "--layout=reverse "
