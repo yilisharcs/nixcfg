@@ -325,10 +325,9 @@
     geary                          # mail client
   ];
 
-  # this doesn't add ~/.local/bin to PATH
-  # it ads ~/.local/state/nix/profile/bin instead
-  # environment.localBinInPath = true;
-
+  # NOTE: conjecture: setting a different user shell
+  # (e.g. nushell) might break the below options
+  environment.localBinInPath = true;
   environment.variables = {
     SUDO_EDITOR = "nvim";
   };
