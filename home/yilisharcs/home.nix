@@ -117,6 +117,14 @@
       ];
       last-selected-power-profile = "performance";
     };
+    "org/gnome/shell/extensions/appindicator" = {
+      icon-size = 20;
+    };
+    "org/gnome/shell/extensions/just-perfection" = {
+      accent-color-icon = true;
+      max-displayed-search-results = 0;
+      power-icon = false;
+    };
     "org/gnome/shell/extensions/clipboard-indicator" = {
       clear-on-boot = false;
       disable-down-arrow = true;
@@ -391,10 +399,12 @@
 
     gnome-shell = {
       enable = true;
-      extensions = with pkgs; [
-        { package = gnomeExtensions.dash-to-dock; }
-        { package = gnomeExtensions.clipboard-indicator; }
-        { package = gnomeExtensions.vitals; }
+      extensions = with pkgs.gnomeExtensions; [
+        { package = appindicator; }
+        { package = clipboard-indicator; }
+        { package = dash-to-dock; }
+        { package = just-perfection; }
+        { package = vitals; }
       ];
     };
 
