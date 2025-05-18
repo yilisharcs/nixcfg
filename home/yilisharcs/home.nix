@@ -156,6 +156,9 @@
     "org/gnome/shell/weather" = {
       automatic-location = true;
     };
+    "org/gnome/terminal/legacy" = {
+      menu-accelerator-enabled = false;
+    };
     "org/gtk/gtk4/settings/file-chooser" = {
       show-hidden = true;
     };
@@ -393,6 +396,16 @@
         { package = gnomeExtensions.clipboard-indicator; }
         { package = gnomeExtensions.vitals; }
       ];
+    };
+
+    gnome-terminal = {
+      enable = true;
+      profile."a80099e0-c188-48a8-9d0c-1f8f20f2a840" = {
+        default = true;
+        visibleName = "yilisharcs";
+        cursorShape = "block";
+        showScrollbar = false;
+      };
     };
 
     # git-compatible version control system
