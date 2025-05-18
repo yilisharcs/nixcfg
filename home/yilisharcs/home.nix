@@ -210,9 +210,6 @@
   };
 
   programs = {
-
-# I might be able to configure brave with chromium
-
     # background code checker
     bacon = {
       enable = true;

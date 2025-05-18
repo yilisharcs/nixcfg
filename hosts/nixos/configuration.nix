@@ -120,8 +120,6 @@
     noto-fonts-emoji
   ];
 
-  # Uninstall firefox.
-  programs.firefox.enable = false;
   programs.geary.enable = false;
 
   # Allow unfree packages
@@ -156,6 +154,58 @@
   };
 
   programs = {
+    chromium = {
+      enable = true;
+      defaultSearchProviderEnabled = true;
+      defaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}&t=brave";
+      extensions = [
+        "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark reader
+        "cofdbpoegempjloogbagkncekinflcnj" # DeepL
+        "gphhapmejobijbbhgpjhcjognlahblep" # GNOME Shell integration # TODO: is this really necessary?
+        "ghmbeldphafepmbegfdlkpapadhbakde" # Proton Pass
+        "eninkmbmgkpkcelmohdlgldafpkfpnaf" # Reddit Untranslate
+        "fakeocdnmmmnokabaiflppclocckihoj" # Sprucemarks
+        "dbepggeogbaibhgnhhndojpepiihcmeb" # Vimium
+        "kkmlkkjojmombglmlpbpapmhcaljjkde" # Zhongwen: Zh-En Dictionary
+      ];
+      extraOpts = {
+        ## Extensions
+        # ExtensionSettings = {
+        #
+        # };
+
+        # Generative AI
+        GenAiDefaultSettings = 2;
+
+        # Miscellaneous
+        AllowDinosaurEasterEgg = false;
+        AllowSystemNotifications = true;
+        BookmarkBarEnabled = false;
+        BrowserThemeColor = "#128470"; # get color from windows
+        DefaultBrowserSettingEnabled = true;
+        DeveloperToolsAvailability = 1;
+        SpellcheckEnabled = true;
+        SpellcheckLanguage = [
+          "en"
+          "pt-BR"
+        ];
+
+        # Password manager
+        PasswordManagerEnabled = false;
+
+        # Safe Browsing settings
+        DisableSafeBrowsingProceedAnyway = false;
+        SafeBrowsingProtectionLevel = 1;
+
+        # Startup, Home page and New Tab page
+        HomepageIsNewTabPage = true;
+        NewTabPageLocation = "https://duckduckgo.com";
+        RestoreOnStartup = 1;
+        ShowHomeButton = true;
+      };
+    };
+    firefox.enable = false; # default browser for all users
+
     # distributed version control system
     git = {
       enable = true;
@@ -234,7 +284,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     bibata-cursors
-    brave                          # chromium browser fork with built-in adblocker
+    brave                          # chromium fork with built-in adblocker
     curl
     lf                             # tui file explorer
     man                            # man command
