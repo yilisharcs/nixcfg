@@ -775,13 +775,13 @@
     gimp                           # image editor
     gnome-tweaks
     # imagemagick
-    inkscape                       # image editor
+    # inkscape                       # image editor
     # kitty
     man-pages                      # Linux man pages
     mesa                           # graphics lib
     obs-studio
     pandoc                         # markup converter
-    # picard                         # music metadata editor
+    picard                         # music metadata editor
     porsmo                         # cli pomodoro app
     qbittorrent
     speedtest-rs
