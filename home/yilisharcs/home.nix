@@ -112,10 +112,7 @@
         "neovide.desktop"
         "org.gnome.Evolution.desktop"
         "brave-browser.desktop"
-        "org.inkscape.Inkscape.desktop"
         "gimp.desktop"
-        "org.gnome.Calendar.desktop"
-        "org.gnome.Music.desktop"
         "org.gnome.Nautilus.desktop"
       ];
       last-selected-power-profile = "performance";
