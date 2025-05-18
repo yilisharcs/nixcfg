@@ -152,8 +152,6 @@
   };
 
   programs = {
-    geary.enable = false; # mail client (doesn't have dark mode)
-
     chromium = {
       enable = true;
       defaultSearchProviderEnabled = true;
@@ -307,6 +305,7 @@
     bibata-cursors
     brave                          # chromium fork with built-in adblocker
     curl
+    gnome-terminal
     lf                             # tui file explorer
     man                            # man command
     ncdu                           # disk space analyzer
@@ -319,7 +318,9 @@
   ];
 
   environment.gnome.excludePackages = with pkgs; [
+    gnome-console                  # terminal emulator (https://gitlab.gnome.org/GNOME/console/-/issues/135)
     epiphany                       # web browser
+    geary                          # mail client
   ];
 
   # this doesn't add ~/.local/bin to PATH

@@ -146,7 +146,7 @@
         "__network-rx_max__"
         "_storage_free_"
       ];
-      icon-style = 0;
+      icon-style = 1;
       menu-centered = true;
       position-in-panel = 0;
       show-battery = false;
@@ -340,12 +340,23 @@
       enable = true;
     };
 
-    # automatic invocation of shell.nix with .envrc
-    direnv = {
+    # tui music player
+    cmus = {
       enable = true;
-      nix-direnv.enable = true;
-      # config = { };
+      extraConfig = ''
+        clear
+        add ~/Music/
+        update-cache -f
+      '';
+      theme = "spotify";
     };
+
+    # # automatic invocation of shell.nix with .envrc
+    # direnv = {
+    #   enable = true;
+    #   nix-direnv.enable = true;
+    #   # config = { };
+    # };
 
     # github cli tool
     gh = {
@@ -752,6 +763,7 @@
     gnome-tweaks
     # imagemagick
     inkscape                       # image editor
+    # kitty
     man-pages                      # Linux man pages
     mesa                           # graphics lib
     obs-studio
@@ -779,12 +791,9 @@
     cargo-sweep
     cargo-update
     dioxus-cli
-    # fnm                            # fast node version manager
-    # go
     jq                             # cli json processor
     mold                           # better linker
-    # pipx                           # python package manager
-    # python314
+    python3
     ra-multiplex                   # rust-analyzer multiplex server
     rustup                         # rust toolchain manager
     sccache                        # build cache tool
