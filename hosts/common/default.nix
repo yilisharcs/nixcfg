@@ -1,12 +1,6 @@
 # Common configuration for all hosts
 
-{
-  lib,
-  inputs,
-  outputs,
-  pkgs,
-  ...
-}:
+{ lib, inputs, outputs, ... }:
 
 {
   imports = [
