@@ -94,6 +94,9 @@
       statusbar-visible = false;
       webkit-minimum-font-size = 16;
     };
+    "org/gnome/Loupe" = {
+      show-properties = true;
+    };
     "org/gnome/mutter" = {
       center-new-windows = true;
     };
@@ -746,6 +749,7 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
+      "image/png" = "org.gnome.Loupe.desktop";
       "x-scheme-handler/mailto" = "userapp-Evolution-I70E62.desktop";
     };
     associations = {
