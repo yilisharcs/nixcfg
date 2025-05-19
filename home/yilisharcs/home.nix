@@ -123,11 +123,6 @@
     "org/gnome/shell/extensions/appindicator" = {
       icon-size = 20;
     };
-    "org/gnome/shell/extensions/just-perfection" = {
-      accent-color-icon = true;
-      max-displayed-search-results = 0;
-      power-icon = false;
-    };
     "org/gnome/shell/extensions/clipboard-indicator" = {
       clear-on-boot = false;
       disable-down-arrow = true;
@@ -148,6 +143,11 @@
       multi-monitor = true;
       preferred-monitor = -2;
       preferred-monitor-by-connector = "LVDS-1";
+    };
+    "org/gnome/shell/extensions/just-perfection" = {
+      accent-color-icon = true;
+      max-displayed-search-results = 0;
+      power-icon = false;
     };
     "org/gnome/shell/extensions/vitals" = {
       hide-zeros = false;
