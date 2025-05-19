@@ -213,12 +213,6 @@
   };
 
   services = {
-    # gnome = {
-    #   gnome-keyring = {
-    #     enable = true;
-    #   };
-    # };
-
     gpg-agent = {
       enable = true;
       enableSshSupport = true;
@@ -809,6 +803,7 @@
     stow                           # symlink manager
     trash-cli
     tree                           # dir viewer
+    wiki-tui
 
     # LSP
     lua-language-server
@@ -910,7 +905,7 @@
     nsp = "nix search nixpkgs";
     pomo = "porsmo";
     speedtest = "speedtest-rs";
-    # wiki = "wiki-tui";
+    wiki = "wiki-tui";
 
     # nushell scripts
     gitcon = "gitcon.nu";
