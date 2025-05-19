@@ -207,7 +207,6 @@
         Service = {
           Type = "simple";
           ExecStart = "${pkgs.ra-multiplex}/bin/ra-multiplex server";
-          Restart = "on-failure";
         };
       };
     };
