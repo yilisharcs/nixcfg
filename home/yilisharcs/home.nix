@@ -790,9 +790,8 @@
     file                           # isn't this a core-util?
     gimp                           # image editor
     gnome-tweaks
-    # imagemagick
-    # inkscape                       # image editor
-    # kitty
+    imagemagick
+    inkscape                       # image editor
     man-pages                      # Linux man pages
     mesa                           # graphics lib
     obs-studio
