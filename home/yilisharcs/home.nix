@@ -204,6 +204,8 @@
         Service = {
           Type = "simple";
           ExecStart = "${pkgs.ra-multiplex}/bin/ra-multiplex server";
+          ExecReload = "${pkgs.ra-multiplex}/bin/ra-multiplex reload";
+          Restart = "always";
         };
       };
     };
