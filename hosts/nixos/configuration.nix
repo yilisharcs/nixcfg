@@ -203,9 +203,6 @@
           "pt-BR"
         ];
 
-        # Password manager
-        PasswordManagerEnabled = false;
-
         # Safe Browsing settings
         DisableSafeBrowsingProceedAnyway = false;
         SafeBrowsingProtectionLevel = 1;

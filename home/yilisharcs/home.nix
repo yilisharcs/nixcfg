@@ -749,6 +749,7 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
+      "application/pdf" = "org.gnome.Evince.desktop";
       "image/png" = "org.gnome.Loupe.desktop";
       "x-scheme-handler/mailto" = "userapp-Evolution-I70E62.desktop";
     };
