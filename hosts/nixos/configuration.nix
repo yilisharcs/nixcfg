@@ -249,13 +249,6 @@
       vimAlias = true;
     };
 
-    ## NOTE: home-manager doesn't inherit global presets
-    # # multishell prompt engine
-    # starship = {
-    #   enable = true;
-    #   presets = [ "nerd-font-symbols" ];
-    # };
-
     # terminal multiplexer
     tmux = {
       enable = true;
@@ -305,7 +298,6 @@
     man                            # man command
     nushell
     pinentry-gnome3                # gnupg deps
-    # starship                       # multishell prompt engine #NOTE: must be declared here for options to take effect
     wget
     wl-clipboard
     xclip

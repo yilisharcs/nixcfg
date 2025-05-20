@@ -202,6 +202,7 @@
           WantedBy = [ "default.target" ];
         };
         Service = {
+          # FIXME: it's still broken
           Type = "simple";
           ExecStart = "${pkgs.ra-multiplex}/bin/ra-multiplex server";
           ExecReload = "${pkgs.ra-multiplex}/bin/ra-multiplex reload";
@@ -789,9 +790,14 @@
     ffmpegthumbnailer
     file                           # isn't this a core-util?
     gimp                           # image editor
+    gnome-boxes                    # virtual machines
     gnome-tweaks
+    hunspell                       # spell checker
+    hunspellDicts.en_US
+    hunspellDicts.pt_BR
     imagemagick
     inkscape                       # image editor
+    libreoffice-qt                 # office suite
     man-pages                      # Linux man pages
     mesa                           # graphics lib
     obs-studio
