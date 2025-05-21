@@ -361,12 +361,12 @@
       theme = "spotify";
     };
 
-    # # automatic invocation of shell.nix with .envrc
-    # direnv = {
-    #   enable = true;
-    #   nix-direnv.enable = true;
-    #   # config = { };
-    # };
+    # automatic invocation of shell.nix with .envrc
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      # config = { };
+    };
 
     # github cli tool
     gh = {
