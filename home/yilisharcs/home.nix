@@ -611,6 +611,7 @@
         "${pkgs.starship}/share/starship/presets/${name}.toml")) ["\"$schema\""]);
     in {
       enable = true;
+      enableBashIntegration = false;
       settings =
         lib.recursiveUpdate
         (lib.mergeAttrsList [
