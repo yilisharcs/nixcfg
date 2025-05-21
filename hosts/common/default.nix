@@ -52,7 +52,11 @@
     optimise.automatic = true;
     registry = (lib.mapAttrs (_: flake: { inherit flake; }))
       ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-    nixPath = [ "/etc/nix/path" ];
+    nixPath = [
+      "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+      # "nixos-config=/etc/nixos/configuration.nix"
+      "/nix/var/nix/profiles/per-user/root/channels"
+    ];
   };
   ## NOTE: this interferes with home-manager's sessionVariables
   # users.defaultUserShell = pkgs.nushell;
