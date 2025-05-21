@@ -917,6 +917,7 @@
     gitcon = "gitcon.nu";
     gitlist = "gstat.nu";
     tokeicon = "tokeicon.nu";
+    wut = "helpless.nu";
   };
 
   # Let Home Manager install and manage itself.
