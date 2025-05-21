@@ -361,11 +361,13 @@
       theme = "spotify";
     };
 
-    # automatic invocation of shell.nix with .envrc
+    # automatic invocation of flake.nix with .envrc
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-      # config = { };
+      config = {
+        warn_timeout = "30m";
+      };
     };
 
     # github cli tool
@@ -471,7 +473,7 @@
 
     neovim = {
       enable = true;
-      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+      # package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
       extraPackages = with pkgs; [
         gcc
       ];
