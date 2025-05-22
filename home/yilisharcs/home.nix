@@ -366,7 +366,10 @@
       enable = true;
       nix-direnv.enable = true;
       config = {
-        warn_timeout = "30m";
+        global = {
+          hide_env_diff = true;
+          warn_timeout = "30m";
+        };
       };
     };
 
