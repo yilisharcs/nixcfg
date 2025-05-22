@@ -9,6 +9,8 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "kvm"
+      "libvirt"
     ];
   };
   home-manager.users.yilisharcs =

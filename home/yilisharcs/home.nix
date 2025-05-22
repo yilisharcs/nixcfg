@@ -833,13 +833,13 @@
     cargo-nextest
     cargo-sweep
     cargo-update
-    dioxus-cli
-    jq                             # cli json processor
-    mold                           # better linker
+    # dioxus-cli
+    # jq                             # cli json processor
+    # mold                           # better linker
     python3
     ra-multiplex                   # rust-analyzer multiplex server
-    rustup                         # rust toolchain manager
-    sccache                        # build cache tool
+    # rustup                         # rust toolchain manager
+    # sccache                        # build cache tool
     sqlite
     tokei                          # loc counter
 

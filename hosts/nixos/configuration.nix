@@ -280,7 +280,15 @@
         bind -T copy-mode-vi 'y' send -X copy-pipe-and-cancel 'xclip -sel clip'
       '';
     };
+
+    virt-manager = {
+      enable = true;
+    };
   };
+
+  users.groups.libvirtd.members = ["yilisharcs"];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -289,6 +297,8 @@
     unzip                          # dependency
     zip                            # dependency
 
+    gnome-disk-utility
+    gparted
     bibata-cursors
     brave                          # chromium fork with built-in adblocker
     curl
