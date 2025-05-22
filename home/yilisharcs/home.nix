@@ -197,12 +197,14 @@
       "ra-mux" = {
         Unit = {
           Description = "Rust-analyzer Multiplex Server";
+          After = [ "graphical-session.target" ];
+          PartOf = [ "graphical-session.target" ];
         };
         Install = {
-          WantedBy = [ "default.target" ];
+          # NOTE: doesn't work with default.target
+          WantedBy = [ "graphical-session.target" ];
         };
         Service = {
-          # FIXME: it's still broken
           Type = "simple";
           ExecStart = "${pkgs.ra-multiplex}/bin/ra-multiplex server";
           ExecReload = "${pkgs.ra-multiplex}/bin/ra-multiplex reload";
