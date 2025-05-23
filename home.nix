@@ -142,7 +142,7 @@
     chafa                          # terminal image visualizer
     ctpv                           # lf previewer
     dconf-editor
-    evolution                      # mail client
+    # evolution                      # mail client
     ffmpeg
     ffmpegthumbnailer
     # file                           # isn't this a core-util?
@@ -979,7 +979,8 @@
     entries = [
       "${pkgs.neovide}/share/applications/neovide.desktop"
       # "${pkgs.brave}/share/applications/brave-browser.desktop" #autostarts with wrong font
-      "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
+      # "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
+      "/usr/share/applications/org.gnome.Evolution.desktop"
     ];
   };
 
