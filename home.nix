@@ -58,11 +58,6 @@
   #  /etc/profiles/per-user/yilisharcs/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # NOTE: Sometimes nix-bin isn't added to PATH automatically;
-    # this is insurance for those annoyances I don't want to debug.
-    # MUST BE DECLARED HERE. sessionPath doesn't work for this.
-    PATH = "$HOME/.nix-profile/bin:$PATH";
-
     SUDO_EDITOR = "nvim";
     VISUAL = "nvim";
     EDITOR = "nvim";
@@ -245,7 +240,12 @@
 
     bash = {
       enable = true;
+      # NOTE: Sometimes nix-bin isn't added to PATH automatically;
+      # this is insurance for those annoyances I don't want to debug.
+      # MUST BE DECLARED HERE. sessionPath doesn't work for this.
       initExtra = ''
+        PATH="$HOME/.nix-profile/bin:$PATH"
+
         PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
         PROMPT_COMMAND='history -a'
         HISTTIMEFORMAT="%F %T "
