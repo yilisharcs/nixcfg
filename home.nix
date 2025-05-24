@@ -64,6 +64,7 @@
     LESS = "-FRX";
     SQLITE_HISTORY = "${config.home.homeDirectory}/.local/state/sqlite3/sqlite_history";
     STARSHIP_LOG = "error";
+    ZK_NOTEBOOK_DIR = "$HOME/notebook";
   };
 
   home.sessionPath = [
@@ -745,24 +746,26 @@
           extension = "md";
           template = "default.md";
           id-charset = "hex";
-          id-length = 7;
+          id-length = 9;
           id-case = "lower";
         };
         extra = {
           author = "以利沙";
         };
         group.journal = {
-          paths = ["journal/weekly" "journal/daily"];
+          paths = ["journal"];
           note.filename = "{{format-date now}}";
+          note.template = "daily.md";
         };
         format.markdown = {
-          hashtags = false;
+          link-format = "markdown";
+          hashtags = true;
           colon-tags = false;
-          multiword-tags = true;
+          multiword-tags = false;
         };
         tool = {
           editor = "nvim";
-          shell = "${pkgs.bash}/bin/bash";
+          # shell = "${pkgs.bash}/bin/bash";
           pager = "less -FRX";
           fzf-preview = "bat -p --color always {-1}";
         };
@@ -781,6 +784,7 @@
           path = "zk list --quiet --format {{path}} --delimiter , $@";
           lucky = "zk list --quiet --format full --sort random --limit 1";
           hist = "zk list --format path --delimiter0 --quiet $@ | xargs -t -0 git log --patch --";
+          daily = "zk new journal --no-input";
         };
       };
     };
