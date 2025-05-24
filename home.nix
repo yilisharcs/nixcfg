@@ -138,6 +138,7 @@
     chafa                          # terminal image visualizer
     ctpv                           # lf previewer
     dconf-editor
+    entr                           # file watcher
     # evolution                      # mail client
     ffmpeg
     ffmpegthumbnailer
@@ -1034,11 +1035,13 @@
         "notebook" = {
           enable = true;
           devices = [ "samsumg" ];
+          id = "notebook";
           path = "~/notebook";
         };
         "vault" = {
           enable = true;
           devices = [ "samsumg" ];
+          id = "q4u2j-pa9v7";
           path = "~/vault";
         };
       };
