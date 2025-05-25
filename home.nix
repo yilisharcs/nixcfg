@@ -1024,11 +1024,11 @@
   services.syncthing = {
     enable = true;
     overrideDevices = true;
+    overrideFolders = true;
     settings = {
       devices = {
         "samsumg" = {
           id = "MF6IH63-BX3WP45-ZH42ZJM-ZKA45EZ-JNDUF5L-ZDLO5KH-H5B6XRJ-O4CTEQW";
-          # autoAcceptFolders = true; #NOTE: This setting causes duplication
         };
       };
       folders = {
@@ -1041,7 +1041,7 @@
         "vault" = {
           enable = true;
           devices = [ "samsumg" ];
-          id = "q4u2j-pa9v7";
+          id = "vault";
           path = "~/vault";
         };
       };
