@@ -12,6 +12,9 @@
   nixGL.defaultWrapper = "mesa"; # or the driver you need
   nixGL.installScripts = [ "mesa" ];
 
+  # NOTE: I don't know what this does but I was told it's good
+  targets.genericLinux.enable = true;
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "yilisharcs";
@@ -242,11 +245,11 @@
 
     bash = {
       enable = true;
-      # NOTE: Sometimes nix-bin isn't added to PATH automatically;
-      # this is insurance for those annoyances I don't want to debug.
-      # MUST BE DECLARED HERE. sessionPath doesn't work for this.
+      # NOTE: Something is causing mime.desktop files and binaries to not be
+      # found on re-login. Adding the entries below to PATH ensures binaries
+      # can be found by the shell so the ensuing experience isn't awful.
       initExtra = ''
-        PATH="$HOME/.nix-profile/bin:$PATH"
+        PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
 
         PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
         PROMPT_COMMAND='history -a'
