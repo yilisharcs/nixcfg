@@ -379,6 +379,36 @@
     #   };
     # };
 
+    # fuzzy finder
+    fzf = {
+      enable = true;
+      defaultCommand = lib.concatStrings [
+        "fd"
+        " --color=never"
+        " --ignore-case"
+        " --strip-cwd-prefix"
+        " --hidden"
+        " --follow"
+        " --type f"
+        " --type l"
+        " --exclude={.git,.jj,.cache}"
+      ];
+      defaultOptions = [
+        "--preview 'bat {} --color=always --wrap=never --style=plain --line-range=:500'"
+        "--layout=reverse"
+        "--multi"
+        "--bind='ctrl-j:preview-page-down'"
+        "--bind='ctrl-k:preview-page-up'"
+        "--bind='backward-eof:abort'"
+        "--bind='F4:toggle-preview'"
+      ];
+      historyWidgetOptions = [
+        "--preview-window hidden"
+        "--bind='ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'"
+        "--header 'Press CTRL-Y to copy command into clipboard'"
+      ];
+    };
+
     # github cli tool
     gh = {
       enable = true;
@@ -579,11 +609,14 @@
                 | reverse
                 | uniq
                 | str join (char -i 0)
-                | ^sk
+                | fzf
                 --read0
                 --layout reverse
                 --query (commandline)
+                --scheme history
                 --preview-window hidden
+                --bind='ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'
+                --header 'Press CTRL-Y to copy command into clipboard'
                 | decode utf-8
                 | str trim
               )'';
@@ -606,21 +639,6 @@
         "--glob=!.npm/*"
         "--glob=!Trash/*"
         "--smart-case"
-      ];
-    };
-
-    # fuzzy finder
-    skim = {
-      enable = true;
-      defaultCommand = "fd --color=never --hidden --follow --type f --type l --exclude .git";
-      defaultOptions = [
-        "--preview 'bat {} --color=always --wrap=never --style=plain --line-range=:500'"
-        "--layout=reverse"
-        "--multi"
-        "--bind='ctrl-j:preview-page-down'"
-        "--bind='ctrl-k:preview-page-up'"
-        "--bind='ctrl-h:backward-char+delete-charEOF'"
-        "--bind='F4:toggle-preview'"
       ];
     };
 
