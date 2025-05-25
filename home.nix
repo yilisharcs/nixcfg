@@ -606,8 +606,12 @@
               cmd = ''commandline edit --replace (
                 history
                 | get command
+                | enumerate
                 | reverse
-                | uniq
+                | group-by item
+                | values
+                | each {|e| $e.0}
+                | each { |it| $"($it.index + 1)     ($it.item)" }
                 | str join (char -i 0)
                 | fzf
                 --read0
