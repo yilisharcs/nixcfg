@@ -10,7 +10,7 @@
   # These wrapper options must be set before declaring packages
   nixGL.packages = import nixgl { inherit pkgs; };
   nixGL.defaultWrapper = "mesa"; # or the driver you need
-  nixGL.installScripts = [ "mesa" ];
+  nixGL.installScripts = ["mesa"];
 
   # NOTE: I don't know what this does but I was told it's good
   targets.genericLinux.enable = true;
@@ -133,7 +133,7 @@
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    # (pkgs.nerdfonts.override { fonts = ["FantasqueSansMono"]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -261,7 +261,7 @@
         bind -x '"\C-g":"tmux-sessionizer"'
         bind    '"\C-o": edit-and-execute-command'
       '';
-      historyControl = [ "ignoreboth" ];
+      historyControl = ["ignoreboth"];
       historyIgnore = [
         "vi"
         "vim"
@@ -483,10 +483,10 @@
   #         email = "yilisharcs@gmail.com";
   #       };
   #       ui = {
-  #         default-command = [ "log" "--reversed" ];
+  #         default-command = ["log" "--reversed"];
   #       };
   #       aliases = {
-  #         init = [ "git" "init" ];
+  #         init = ["git" "init"];
   #       };
   #     };
   #   };
@@ -604,7 +604,7 @@
             name = "job_to_foreground";
             modifier = "control";
             keycode = "char_z";
-            mode = [ "emacs" "vi_insert" "vi_normal" ];
+            mode = ["emacs" "vi_insert" "vi_normal"];
             event = {
               send = "executehostcommand";
               cmd = "job unfreeze";
@@ -614,7 +614,7 @@
             name = "fuzzy_history";
             modifier = "control";
             keycode = "char_r";
-            mode = [ "emacs" "vi_normal" "vi_insert" ];
+            mode = ["emacs" "vi_normal" "vi_insert"];
             event = {
               send = "executehostcommand";
               cmd = ''commandline edit --replace (
@@ -625,7 +625,7 @@
                 | group-by item
                 | values
                 | each {|e| $e.0}
-                | each { |it| $"($it.index + 1)     ($it.item)" }
+                | each {|it| $"($it.index + 1)     ($it.item)" }
                 | str join (char -i 0)
                 | fzf
                 --read0
@@ -853,7 +853,7 @@
       cursor-theme = "Bibata-Modern-Ice";
     };
     "org/gnome/desktop/input-sources" = {
-      sources = [ (mkTuple [ "xkb" "br" ]) ];
+      sources = [(mkTuple ["xkb" "br"])];
     };
     "org/gnome/desktop/peripherals/keyboard" = {
       delay = lib.hm.gvariant.mkUint32 375;
@@ -869,10 +869,10 @@
       allow-volume-above-100-percent = true;
     };
     "org/gnome/desktop/wm/preferences" = {
-      move-to-workspace-left = [ "<Shift><Super>minus" ];
-      move-to-workspace-right = [ "<Shift><Super>equal" ];
-      switch-to-workspace-left = [ "<Super>minus" ];
-      switch-to-workspace-right = [ "<Super>equal" ];
+      move-to-workspace-left = ["<Shift><Super>minus"];
+      move-to-workspace-right = ["<Shift><Super>equal"];
+      switch-to-workspace-left = ["<Super>minus"];
+      switch-to-workspace-right = ["<Super>equal"];
     };
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,close";
@@ -941,7 +941,7 @@
       move-item-first = true;
       notify-on-copy = false;
       notify-on-cycle = false;
-      private-mode-binding = [ "<Control>F8" ];
+      private-mode-binding = ["<Control>F8"];
       topbar-preview-size = 11;
     };
     "org/gnome/shell/extensions/dash-to-dock" = {
@@ -1109,12 +1109,12 @@
       "ra-mux" = {
         Unit = {
           Description = "Rust-analyzer Multiplex Server";
-          After = [ "graphical-session.target" ];
-          PartOf = [ "graphical-session.target" ];
+          After = ["graphical-session.target"];
+          PartOf = ["graphical-session.target"];
         };
         Install = {
           # NOTE: doesn't work with default.target
-          WantedBy = [ "graphical-session.target" ];
+          WantedBy = ["graphical-session.target"];
         };
         Service = {
           Type = "simple";
@@ -1140,13 +1140,13 @@
       folders = {
         "notebook" = {
           enable = true;
-          devices = [ "samsumg" ];
+          devices = ["samsumg"];
           id = "notebook";
           path = "~/notebook";
         };
         "vault" = {
           enable = true;
-          devices = [ "samsumg" ];
+          devices = ["samsumg"];
           id = "vault";
           path = "~/vault";
         };
