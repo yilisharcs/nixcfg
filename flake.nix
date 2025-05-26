@@ -18,7 +18,7 @@
       nixpkgs,
       home-manager,
       ...
-    }:
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -34,16 +34,15 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
         extraSpecialArgs = {
+          inherit inputs;
           nixgl = nixgl;
         };
 
         # TODO: make sure this works
         # backupFileExtension = "backup";
-        # backupFileExtension = "backup";
 
         # # Shush nix complaints about uncommitted changes
         # nix.settings.warn-dirty = false;
-
       };
     };
 }
