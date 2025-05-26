@@ -82,7 +82,7 @@
     ":q" = "exit";
 
     # proof of defeat
-    apkg = "apt-cache";
+    apkg = "apt-cache search";
     yeet = "sudo apt-get purge --auto-remove";
 
     # convenience
@@ -668,7 +668,7 @@
     # multishell prompt engine
     starship = let
       getPreset = name: (with builtins; removeAttrs (fromTOML (readFile
-        "${pkgs.starship}/share/starship/presets/${name}.toml")) ["\"$schema\""]);
+        "${pkgs.starship}/share/starship/presets/${name}.toml")) [''"$schema"'']);
     in {
       enable = true;
       enableBashIntegration = false;
@@ -1002,6 +1002,20 @@
   };
 
   xdg.desktopEntries = {
+    cmus = {
+      type = "Application";
+      name = "Cmus";
+      comment = "Play and organize your music collection";
+      icon = "cmus";
+      exec = "cmus";
+      terminal = true;
+      categories = ["Player" "Audio"];
+      settings = {
+        TryExec = "cmus";
+        Keywords = "Music;Player;";
+      };
+    };
+
     kitty = {
       type = "Application";
       name = "Kitty";
