@@ -198,6 +198,7 @@
     curl
     # dioxus-cli
     jq                             # cli json processor
+    mask
     # mold                           # better linker
     # python3
     ra-multiplex                   # rust-analyzer multiplex server
@@ -535,7 +536,6 @@
       };
       settings = {
         clear_all_shortcuts = "yes";
-        cursor_blink_interval = 0;
         cursor_shape = "block";
       };
       extraConfig = ''
@@ -1021,6 +1021,10 @@
     };
     "org/gnome/nautilus/preferences" = {
       click-policy = "single";
+      show-hidden-files = true;
+    };
+    "org/gnome/nautilus/compression" = {
+      default-compression-format = "tar.xz";
     };
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = false; # TODO: set to true later
