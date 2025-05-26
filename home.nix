@@ -118,6 +118,10 @@
   # Disable if you don't want unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # This allows fontconfig to discover fonts and configurations
+  # installed through home.packages and nix-env.
+  fonts.fontconfig.enable = true;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -138,7 +142,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    chafa                          # terminal image visualizer
     ctpv                           # lf previewer
     dconf-editor
     entr                           # file watcher
@@ -467,6 +470,7 @@
         visibleName = "yilisharcs";
         cursorShape = "block";
         showScrollbar = false;
+        font = "JetBrainsMono Nerd Font 12";
       };
     };
 
@@ -523,6 +527,31 @@
     #   # previewer = "${pkgs.ctpv}/bin/bash";
     # };
 
+    kitty = {
+      enable = true;
+      package = (config.lib.nixGL.wrap pkgs.kitty);
+      shellIntegration.mode = "no-rc no-cursor no-title";
+      font = {
+        name = "JetBrainsMono Nerd Font";
+        size = 13.0;
+      };
+      keybindings = {
+        "f11" = "toggle_fullscreen";
+        "ctrl+equal" = "change_font_size all +2.0";
+        "ctrl+minus" = "change_font_size all -2.0";
+        "ctrl+0" = "change_font_size all 0";
+      };
+      settings = {
+        clear_all_shortcuts = "yes";
+        cursor_blink_interval = 0;
+        cursor_shape = "block";
+      };
+      extraConfig = ''
+        modify_font cell_height 105%
+        modify_font cell_width 104%
+      '';
+    };
+
     neovim = {
       enable = true;
       defaultEditor = true;
@@ -535,24 +564,6 @@
       withNodeJs = false;
       withPython3 = false;
       withRuby = false;
-    };
-
-    # graphical neovim client
-    neovide = {
-      enable = true;
-      package = (config.lib.nixGL.wrap pkgs.neovide);
-      settings = {
-        font = {
-          normal = [
-            "JetBrainsMono Nerd Font"
-            "Noto Color Emoji"
-          ];
-          size = 13;
-        };
-        maximized = true;
-        no-multigrid = false;
-        wsl = false;
-      };
     };
 
     nushell = {
@@ -885,7 +896,7 @@
       show-to-do-bar = false;
     };
     "org/gnome/evolution/plugin/external-editor" = {
-      command = "neovide -- -c 'set spell'";
+      command = "kitty nvim -c 'set spell' -c 'startinsert'";
       launch-on-key-press = true;
     };
     "org/gnome/evolution/shell" = {
@@ -911,7 +922,7 @@
     };
     "org/gnome/shell" = {
       favorite-apps = [
-        "neovide.desktop"
+        "neovim-kitty.desktop" # "neovide.desktop"
         "org.gnome.Evolution.desktop"
         "brave-browser.desktop"
         "gimp.desktop"
@@ -990,6 +1001,61 @@
     };
   };
 
+  xdg.desktopEntries = {
+    kitty = {
+      type = "Application";
+      name = "Kitty";
+      genericName = "Terminal emulator";
+      comment = "Fast, feature-rich, GPU based terminal";
+      icon = "kitty";
+      exec = "kitty --start-as fullscreen";
+      startupNotify = true;
+      categories = ["System" "TerminalEmulator"];
+      settings = {
+        Version = "1.0";
+        TryExec = "kitty";
+        X-TerminalArgExec = "--";
+        X-TerminalArgTitle = "--title";
+        X-TerminalArgAppId = "--class";
+        X-TerminalArgDir = "--working-directory";
+        X-TerminalArgHold = "--hold";
+      };
+    };
+
+    neovim-kitty = {
+      type = "Application";
+      name = "Neovim";
+      genericName = "Text Editor";
+      comment = "Edit text files";
+      icon = "nvim";
+      exec = ''kitty --start-as fullscreen nvim "%F"'';
+      terminal = false;
+      startupNotify = false;
+      mimeType = [
+        "text/english"
+        "text/plain"
+        "text/x-makefile"
+        "text/x-c++hdr"
+        "text/x-c++src"
+        "text/x-chdr"
+        "text/x-csrc"
+        "text/x-java"
+        "text/x-moc"
+        "text/x-pascal"
+        "text/x-tcl"
+        "text/x-tex"
+        "application/x-shellscript"
+        "text/x-c"
+        "text/x-c++"
+      ];
+      categories = ["Utility" "TextEditor"];
+      settings = {
+        TryExec = "nvim";
+        Keywords = "Text;editor;";
+      };
+    };
+  };
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
@@ -999,7 +1065,7 @@
     };
     associations = {
       added = {
-        "application/x-zerosize" = "neovide.desktop";
+        "application/x-zerosize" = "neovim-kitty.desktop";
       };
     };
   };
@@ -1007,7 +1073,8 @@
   xdg.autostart = {
     enable = true;
     entries = [
-      "${pkgs.neovide}/share/applications/neovide.desktop"
+      # "${pkgs.neovide}/share/applications/neovide.desktop"
+      "${config.home.homeDirectory}/.nix-profile/share/applications/neovim-kitty.desktop"
       # "${pkgs.brave}/share/applications/brave-browser.desktop" #autostarts with wrong font
       # "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
       "/usr/share/applications/org.gnome.Evolution.desktop"
