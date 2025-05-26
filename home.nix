@@ -637,6 +637,7 @@
                 --header 'Press CTRL-Y to copy command into clipboard'
                 | decode utf-8
                 | str trim
+                | str replace -r "^\\d+\\s{5}" ""
               )'';
             };
           }
