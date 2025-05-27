@@ -130,6 +130,16 @@
   # installed through home.packages and nix-env.
   fonts.fontconfig.enable = true;
 
+  # NOTE: I had something like this for NixOS system-wide
+  # configuration. I think this is what I'm supposed to do?
+  home.extraOutputsToInstall = [
+    "debug"
+    "devdoc"
+    "doc"
+    "info"
+    "man"
+  ];
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -180,6 +190,7 @@
     stow                           # symlink manager
     trash-cli
     tree                           # dir viewer
+    uutils-coreutils-noprefix      # gnu coreutils rust rewrite
     # wiki-tui
     wl-clipboard
     xclip
@@ -205,14 +216,18 @@
     # cargo-update
     curl
     # dioxus-cli
+    hyperfine                      # cmdline benchmarking tool
     jq                             # cli json processor
     mask
-    # mold                           # better linker
+    mold                           # better linker
+    mprocs                         # parallel command runner
     # python3
     ra-multiplex                   # rust-analyzer multiplex server
     # rustup                         # rust toolchain manager
+    rusty-man                      # man pages for rustdoc
     sccache                        # build cache tool
     # sqlite
+    time
     tokei                          # loc counter
     wget
   ];
