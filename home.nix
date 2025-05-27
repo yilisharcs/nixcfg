@@ -106,6 +106,9 @@
     gitlist = "gstat.nu";
     tokeicon = "tokeicon.nu";
     wut = "helpless.nu";
+
+    # kitty
+    icat = "kitty icat";
   };
 
   home.shell.enableBashIntegration = true;
@@ -556,10 +559,12 @@
         "ctrl+equal" = "change_font_size all +2.0";
         "ctrl+minus" = "change_font_size all -2.0";
         "ctrl+0" = "change_font_size all 0";
+        "ctrl+shift+v" = "paste_from_clipboard";
       };
       settings = {
         clear_all_shortcuts = "yes";
         cursor_shape = "block";
+        copy_on_select = "no";
       };
       extraConfig = ''
         modify_font cell_height 105%
