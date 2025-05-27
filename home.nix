@@ -814,11 +814,15 @@
         };
       };
       keymap = {
+        tasks.prepend_keymap = [
+          { on = "W"; run = "close"; desc = "Close task manager"; }
+        ];
         manager.prepend_keymap = [
           # <C-m> is <Enter>, <C-i> is <Tab>
           { on = "<C-m>"; run = "open"; }
           { on = "<C-i>"; run = "spot"; desc = "Spot hovered file"; }
-          { on = "<C-g>"; run = "shell 'nu' --block"; }
+          { on = "w"; run = "shell 'nu' --block"; desc = "Launch a shell"; }
+          { on = "W"; run = "tasks:show"; desc = "Show task manager"; }
 
           # Compress and extract
           { on = ["e" "e"]; run = "shell 'ouch d \"$@\"'"; desc = "Extract archive"; }
