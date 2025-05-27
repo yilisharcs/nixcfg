@@ -45,6 +45,13 @@
     # '';
   };
 
+  # NOTE: Cannot be done with home.file because nix complains about impurity
+  home.activation = {
+    trashLink = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      run ln -sf "${config.home.homeDirectory}/.local/share/Trash/files" "${config.home.homeDirectory}/Trash"
+    '';
+  };
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
