@@ -816,6 +816,11 @@
           unset_main  = { bg = "red";  fg = "black"; bold = true; };
           unset_alt   = { fg = "red";  bg = "black"; };
         };
+        icon = {
+          dirs = [
+            { name = "Projects"; text = ""; }
+          ];
+        };
       };
       settings = {
         plugin = {
@@ -912,7 +917,7 @@
           { on = ["g" "l"]; run = "cd ~/.dotfiles";                    desc = "Go ~/.dotfiles"; }
           { on = ["g" "m"]; run = "cd ~/Music";                        desc = "Go ~/Music"; }
           { on = ["g" "n"]; run = "cd ~/.dotfiles/nvim/.config/nvim";  desc = "Go to nvim/init.lua"; }
-          { on = ["g" "p"]; run = "cd ~/projects";                     desc = "Go ~/projects"; }
+          { on = ["g" "p"]; run = "cd ~/Projects";                     desc = "Go ~/Projects"; }
           { on = ["g" "r"]; run = "cd ~/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f"; desc = "Go to cargo registry"; }
           { on = ["g" "s"]; run = "cd ~/.dotfiles/bin/.local/bin";     desc = "Go to private /bin"; }
           { on = ["g" "v"]; run = "cd ~/Videos";                       desc = "Go ~/Videos"; }

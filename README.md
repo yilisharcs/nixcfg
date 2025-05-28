@@ -25,7 +25,7 @@ It's a good idea to follow the rest of the guide at [determinate.systems](https:
 # Things that must be done but I'm not in a hurry to do
 
 - git clone ~/.dotfiles and stow contents
-- git clone projects in ~/projects/*
+- git clone Projects in ~/Projects/*
 - restore neovide once multigrid is stabilized, round chars render correctly, and has native image support
 
 # Thank you
