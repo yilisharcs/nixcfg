@@ -80,6 +80,7 @@
   };
 
   home.sessionPath = [
+    "$HOME/.cargo/bin"  # Include cargo bin
     "$HOME/.local/bin"  # Include user's private bin
     "/usr/sbin"         # Include root binaries
   ];
@@ -587,6 +588,28 @@
       withRuby = false;
     };
 
+    ## NOTE: turns out the the box icon error is because nixGL is a bad wrapper.
+    ## I'll keep this around until a) Neovide devs add support for nix upstream,
+    ## b) nixGL stops breaking my fonts, c) system-manager is confirmed stable on
+    ## Determinate Nix so I can use nix-graphics-manager, or d) I return to NixOS.
+    # graphical neovim client
+    neovide = {
+      enable = false;
+      # package = (config.lib.nixGL.wrap pkgs.neovide);
+      settings = {
+        font = {
+          size = 13;
+          normal = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
+          bold = { family = "JetBrainsMono Nerd Font"; style = "Bold"; };
+          bold_italic = { family = "JetBrainsMono Nerd Font"; style = "BoldItalic"; };
+          edging = "subpixelantialias";
+        };
+        maximized = true;
+        no-multigrid = false;
+        wsl = false;
+      };
+    };
+
     nushell = {
       enable = true;
       envFile.text = ''
@@ -1044,7 +1067,7 @@
       show-to-do-bar = false;
     };
     "org/gnome/evolution/plugin/external-editor" = {
-      command = "kitty nvim -c 'set spell' -c 'startinsert'";
+      command = "neovide -- -c 'set spell' -c 'startinsert'";
       launch-on-key-press = true;
     };
     "org/gnome/evolution/shell" = {
@@ -1074,7 +1097,7 @@
     };
     "org/gnome/shell" = {
       favorite-apps = [
-        "neovim-kitty.desktop" # "neovide.desktop"
+        "neovide.desktop"
         "org.gnome.Evolution.desktop"
         "brave-browser.desktop"
         "gimp.desktop"
@@ -1187,39 +1210,6 @@
         X-TerminalArgHold = "--hold";
       };
     };
-
-    neovim-kitty = {
-      type = "Application";
-      name = "Neovim";
-      genericName = "Text Editor";
-      comment = "Edit text files";
-      icon = "nvim";
-      exec = ''kitty --start-as fullscreen nvim'';
-      terminal = false;
-      startupNotify = false;
-      mimeType = [
-        "text/english"
-        "text/plain"
-        "text/x-makefile"
-        "text/x-c++hdr"
-        "text/x-c++src"
-        "text/x-chdr"
-        "text/x-csrc"
-        "text/x-java"
-        "text/x-moc"
-        "text/x-pascal"
-        "text/x-tcl"
-        "text/x-tex"
-        "application/x-shellscript"
-        "text/x-c"
-        "text/x-c++"
-      ];
-      categories = ["Utility" "TextEditor"];
-      settings = {
-        TryExec = "nvim";
-        Keywords = "Text;editor;";
-      };
-    };
   };
 
   xdg.mimeApps = {
@@ -1231,7 +1221,7 @@
     };
     associations = {
       added = {
-        "application/x-zerosize" = "neovim-kitty.desktop";
+        "application/x-zerosize" = "neovide.desktop";
       };
     };
   };
@@ -1240,7 +1230,7 @@
     enable = true;
     entries = [
       # "${pkgs.neovide}/share/applications/neovide.desktop"
-      "${config.home.homeDirectory}/.nix-profile/share/applications/neovim-kitty.desktop"
+      "${config.home.homeDirectory}/.local/share/applications/neovide.desktop"
       # "${pkgs.brave}/share/applications/brave-browser.desktop" #autostarts with wrong font
       # "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
       "/usr/share/applications/org.gnome.Evolution.desktop"
