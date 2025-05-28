@@ -49,6 +49,7 @@
   home.activation = {
     trashLink = lib.hm.dag.entryAfter ["writeBoundary"] ''
       run ln -sf "${config.home.homeDirectory}/.local/share/Trash/files" "${config.home.homeDirectory}/Trash"
+      run ln -sf "${config.home.homeDirectory}/.config/nushell/history.txt" "${config.home.homeDirectory}/.nu_history"
     '';
   };
 
@@ -104,6 +105,7 @@
     # nushell scripts
     gitcon = "gitcon.nu";
     gitlist = "gstat.nu";
+    mask = "maskfile.nu";
     tokeicon = "tokeicon.nu";
     wut = "helpless.nu";
 
