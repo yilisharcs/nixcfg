@@ -550,10 +550,6 @@
       enable = true;
       package = (config.lib.nixGL.wrap pkgs.kitty);
       shellIntegration.mode = "no-rc no-cursor no-title";
-      font = {
-        name = "JetBrainsMono Nerd Font";
-        size = 13.0;
-      };
       keybindings = {
         "f11" = "toggle_fullscreen";
         "ctrl+equal" = "change_font_size all +2.0";
@@ -567,8 +563,10 @@
         copy_on_select = "no";
       };
       extraConfig = ''
+        font_size 13.0
+        font_family      family='JetBrainsMono Nerd Font' postscript_name=JetBrainsMonoNF-Thin
+        italic_font      family='JetBrainsMono Nerd Font' style='Thin Italic'
         modify_font cell_height 105%
-        modify_font cell_width 104%
       '';
     };
 
