@@ -208,15 +208,15 @@
     nil
     vim-language-server
 
-    # # dev libs and tools
-    # cargo-audit
-    # cargo-auditable
-    # cargo-binstall
-    # cargo-generate
-    # cargo-modules
-    # cargo-nextest
-    # cargo-sweep
-    # cargo-update
+    # dev libs and tools
+    cargo-audit
+    cargo-auditable
+    cargo-binstall
+    cargo-generate
+    cargo-modules
+    cargo-nextest
+    cargo-sweep
+    cargo-update
     curl
     # dioxus-cli
     hyperfine                      # cmdline benchmarking tool
@@ -874,10 +874,12 @@
           }
 
           # Goto
+          { on = ["g" "/"]; run = "cd /";                              desc = "Go to root"; }
           { on = ["g" "b"]; run = "cd ~/notebook";                     desc = "Go ~/notebook"; }
           { on = ["g" "B"]; run = "cd ~/vault";                        desc = "Go ~/vault"; }
           { on = ["g" "c"]; run = "cd ~/.config";                      desc = "Go ~/.config"; }
           { on = ["g" "d"]; run = "cd ~/Downloads";                    desc = "Go ~/Downloads"; }
+          { on = ["g" "e"]; run = "cd ~/Documents";                    desc = "Go ~/Documents"; }
           { on = ["g" "f"]; run = "follow";                            desc = "Follow hovered symlink"; }
           { on = ["g" "i"]; run = "cd ~/Pictures";                     desc = "Go ~/Pictures"; }
           { on = ["g" "l"]; run = "cd ~/.dotfiles";                    desc = "Go ~/.dotfiles"; }
