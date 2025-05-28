@@ -782,6 +782,7 @@
       shellWrapperName = "yf";
       plugins  = {
         ouch = pkgs.yaziPlugins.ouch;
+        smart-enter = pkgs.yaziPlugins.smart-enter;
       };
       theme = {
         mode = {
@@ -850,6 +851,9 @@
           { on = "<C-i>"; run = "spot"; desc = "Spot hovered file"; }
           { on = "w"; run = "shell 'nu' --block"; desc = "Launch a shell"; }
           { on = "W"; run = "tasks:show"; desc = "Show task manager"; }
+
+          # Smart enter
+          { on = "l"; run  = "plugin smart-enter"; desc = "Enter the child directory, or open the file"; }
 
           # Compress and extract
           { on = ["e" "e"]; run = "shell 'ouch d \"$@\"'"; desc = "Extract archive"; }
