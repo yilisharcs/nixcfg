@@ -80,9 +80,9 @@
   };
 
   home.sessionPath = [
-    "$HOME/.cargo/bin"  # Include cargo bin
     "$HOME/.local/bin"  # Include user's private bin
     "/usr/sbin"         # Include root binaries
+    "$HOME/.cargo/bin"  # Include cargo bin
   ];
 
   home.shellAliases = {
