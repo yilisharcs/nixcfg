@@ -1039,7 +1039,8 @@
     "org/gnome/desktop/sound" = {
       allow-volume-above-100-percent = true;
     };
-    "org/gnome/desktop/wm/preferences" = {
+    # NOTE: dconf key diff between NixOS and Debian
+    "org/gnome/desktop/wm/keybindings" = {
       move-to-workspace-left = ["<Shift><Super>minus"];
       move-to-workspace-right = ["<Shift><Super>equal"];
       switch-to-workspace-left = ["<Super>minus"];
