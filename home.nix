@@ -1076,7 +1076,7 @@
       webkit-minimum-font-size = 16;
     };
     "org/gnome/Loupe" = {
-      show-properties = true;
+      show-properties = false;
     };
     "org/gnome/mutter" = {
       center-new-windows = true;
@@ -1089,7 +1089,7 @@
       default-compression-format = "tar.xz";
     };
     "org/gnome/settings-daemon/plugins/color" = {
-      night-light-enabled = false; # TODO: set to true later
+      night-light-enabled = true;
       night-light-schedule-automatic = false;
     };
     "org/gnome/settings-daemon/plugins/power" = {
