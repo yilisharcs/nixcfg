@@ -664,13 +664,11 @@
               send = "executehostcommand";
               cmd = ''commandline edit --replace (
                 history
-                | get command
-                | enumerate
                 | reverse
-                | group-by item
+                | group-by command
                 | values
-                | each {|e| $e.0}
-                | each {|it| $"($it.index + 1)     ($it.item)" }
+                | each { $in.0 }
+                | each { $"($in.index + 1)     ($in.command)" }
                 | str join (char -i 0)
                 | fzf
                 --read0
