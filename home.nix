@@ -197,6 +197,7 @@
     stow                           # symlink manager
     trash-cli
     tree                           # dir viewer
+    typst                          # markup-based typesetting system
     uutils-coreutils-noprefix      # gnu coreutils rust rewrite
     # wiki-tui
     wl-clipboard
@@ -209,7 +210,9 @@
 
     # LSP
     lua-language-server
-    nil
+    nil                            # nix
+    tinymist                       # typst
+    websocat                       # typst-preview.nvim dep
     vim-language-server
 
     # dev libs and tools
