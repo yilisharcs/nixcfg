@@ -850,16 +850,21 @@
               for = "unix";
             }
           ];
+          gimp = [
+            {
+              desc = "Open with GIMP";
+              run = ''gimp "$@"'';
+              orphan = true;
+            }
+          ];
         };
         open = {
           prepend_rules = [
-            { mime = "text/*";            use = "edit"; }
-            { mime = "inode/x-empty";     use = "edit"; }
-            { name = "*.html";            use = ["open" "edit"]; }
-            { mime = "application/gzip";  use = "edit"; }
-            { mime = "application/x-xz";  use = "edit"; }
-            { mime = "application/zip";   use = "edit"; }
-            { mime = "application/zstd";  use = "edit"; }
+            { mime = "text/*";                            use = ["edit" "reveal"]; }
+            { mime = "inode/x-empty";                     use = "edit"; }
+            { name = "*.html";                            use = ["open" "edit"]; }
+            { mime = "image/*";                           use = ["open" "gimp" "reveal"]; }
+            { mime = "application/{gzip,x-xz,zip,zstd}";  use = ["edit" "reveal"]; }
           ];
         };
         confirm = {
