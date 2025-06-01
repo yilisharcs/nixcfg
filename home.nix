@@ -263,8 +263,8 @@
     bacon = {
       enable = true;
       settings = {
-        summary = true;
-        wrap = false;
+        summary = false;
+        wrap = true;
         reverse = false;
         help_line = false;
         on_change_strategy = "kill_then_restart";
@@ -275,6 +275,15 @@
           line_format = "{kind} {path}:{line}:{column} {message}";
         };
         sound.enabled = false;
+        keybindings = {
+          esc = "back";
+          g = "scroll-to-top";
+          shift-g = "scroll-to-bottom";
+          j = "scroll-lines(1)";
+          k = "scroll-lines(-1)";
+          ctrl-d = "scroll-page(1)";
+          ctrl-u = "scroll-page(-1)";
+        };
       };
     };
 
