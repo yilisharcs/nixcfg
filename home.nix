@@ -820,6 +820,11 @@
         smart-enter = pkgs.yaziPlugins.smart-enter;
       };
       theme = {
+        mgr = {
+          count_copied   = { fg = "black"; bg = "green"; };
+          count_cut      = { fg = "black"; bg = "red"; };
+          count_selected = { fg = "black"; bg = "yellow"; };
+        };
         mode = {
           normal_main = { bg = "blue"; fg = "black"; bold = true; };
           normal_alt  = { fg = "blue"; bg = "black"; };
@@ -837,13 +842,10 @@
       settings = {
         plugin = {
           prepend_previewers = [
-            { mime = "application/gzip";  run = "ouch"; }
-            { mime = "application/x-xz";  run = "ouch"; }
-            { mime = "application/zip";   run = "ouch"; }
-            { mime = "application/zstd";  run = "ouch"; }
+            { mime = "application/{gzip,x-xz,zip,zstd}";  run = "ouch"; }
           ];
         };
-        manager = {
+        mgr = {
           sort_by = "natural";
           sort_sensitive = false;
           sort_dir_first = true;
@@ -887,7 +889,7 @@
         };
       };
       keymap = {
-        manager.prepend_keymap = [
+        mgr.prepend_keymap = [
           # <C-m> is <Enter>, <C-i> is <Tab>
           { on = "<C-m>"; run = "open"; }
           { on = "<C-i>"; run = "spot"; desc = "Spot hovered file"; }
