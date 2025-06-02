@@ -182,6 +182,7 @@
     hunspellDicts.pt_BR
     imagemagick
     inkscape                       # image editor
+    ldtk                           # lightweight level editor
     # libreoffice-qt                 # office suite
     # man-pages                      # Linux man pages
     # man                            # man command
@@ -1236,6 +1237,8 @@
       "application/pdf" = "org.gnome.Evince.desktop";
       "image/png" = "org.gnome.Loupe.desktop";
       "x-scheme-handler/mailto" = "userapp-Evolution-I70E62.desktop";
+      "x-scheme-handler/http" = "brave-browser.desktop";
+      "x-scheme-handler/https" = "brave-browser.desktop";
     };
     associations = {
       added = {
