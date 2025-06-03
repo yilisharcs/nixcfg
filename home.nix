@@ -978,7 +978,7 @@
           id-case = "lower";
         };
         extra = {
-          author = "以利沙";
+          author = "Yilisha";
         };
         group.journal = {
           note.filename = "{{format-date now}}";
