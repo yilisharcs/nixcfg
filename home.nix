@@ -981,9 +981,12 @@
           author = "以利沙";
         };
         group.journal = {
-          paths = ["journal"];
           note.filename = "{{format-date now}}";
           note.template = "daily.md";
+        };
+        group.chess = {
+          note.filename = "{{id}}-v-{{slug title}}";
+          note.template = "chess.md";
         };
         format.markdown = {
           link-format = "markdown";
@@ -993,7 +996,7 @@
         };
         tool = {
           editor = "nvim";
-          # shell = "${pkgs.bash}/bin/bash";
+          shell = "${pkgs.bash}/bin/bash";
           pager = "less -FRX";
           fzf-preview = "bat -p --color always {-1}";
         };
@@ -1013,6 +1016,7 @@
           lucky = "zk list --quiet --format full --sort random --limit 1";
           hist = "zk list --format path --delimiter0 --quiet $@ | xargs -t -0 git log --patch --";
           daily = "zk new journal --no-input";
+          che = "zk new \"$ZK_NOTEBOOK_DIR/\" --group chess --no-input";
         };
       };
     };
