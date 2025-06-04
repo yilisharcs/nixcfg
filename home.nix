@@ -969,24 +969,24 @@
         };
         note = {
           language = "en";
-          default-title = "Untitled";
-          filename = "{{id}}-{{slug title}}";
+          default-title = "{{id}}-untitled";
+          filename = "{{slug title}}";
           extension = "md";
           template = "default.md";
           id-charset = "hex";
           id-length = 9;
           id-case = "lower";
         };
-        extra = {
-          author = "Yilisha";
+        group.chess = {
+          note.filename = "{{format-date now}}-v-{{slug title}}";
+          note.template = "chess.md";
         };
         group.journal = {
           note.filename = "{{format-date now}}";
           note.template = "daily.md";
         };
-        group.chess = {
-          note.filename = "{{id}}-v-{{slug title}}";
-          note.template = "chess.md";
+        group.source = {
+          note.template = "source.md";
         };
         format.markdown = {
           link-format = "markdown";
@@ -1016,7 +1016,8 @@
           lucky = "zk list --quiet --format full --sort random --limit 1";
           hist = "zk list --format path --delimiter0 --quiet $@ | xargs -t -0 git log --patch --";
           daily = "zk new journal --no-input";
-          che = "zk new \"$ZK_NOTEBOOK_DIR/\" --group chess --no-input";
+          che = "zk new \"$ZK_NOTEBOOK_DIR/\" --no-input --title \"$@\"";
+          so = "zk new \"$ZK_NOTEBOOK_DIR/\" --no-input --title \"$@\"";
         };
       };
     };
