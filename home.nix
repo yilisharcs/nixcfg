@@ -777,6 +777,21 @@
         };
     };
 
+    taskwarrior = {
+      enable = true;
+      package = pkgs.taskwarrior3;
+      colorTheme = "solarized-dark-256";
+      dataLocation = "$HOME/notebook/.task";
+      config = {
+        allow.empty.filter = 0;
+        column.padding = 2;
+        confirmation = 1;
+        defaultwidth = 120;
+        detection = 1;
+        search.case.sensitive = 0;
+      };
+    };
+
     # terminal multiplexer
     tmux = {
       enable = true;
