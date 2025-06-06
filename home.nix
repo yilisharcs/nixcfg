@@ -404,7 +404,8 @@
       nix-direnv.enable = true;
       config = {
         global = {
-          hide_env_diff = true;
+          log_filter = "loading";
+          strict_env = true;
           warn_timeout = "30m";
         };
       };
@@ -768,6 +769,8 @@
       colorTheme = "solarized-dark-256";
       dataLocation = "$HOME/notebook/.task";
       config = {
+        alias.ro = "project:Routine list";
+        default.command = "project.not:Routine next";
         allow.empty.filter = 0;
         column.padding = 2;
         confirmation = 1;
