@@ -168,7 +168,6 @@
     # '')
 
     dconf-editor
-    entr                           # file watcher
     exiftool                           # image metadata tool
     # evolution                      # mail client
     ffmpeg
@@ -191,7 +190,6 @@
     nerd-fonts.jetbrains-mono
     noto-fonts-emoji
     obs-studio
-    pandoc                         # markup converter
     picard                         # music metadata editor
     porsmo                         # cli pomodoro app
     qbittorrent
@@ -213,31 +211,15 @@
     # LSP
     lua-language-server
     nil                            # nix
+    ra-multiplex                   # rust-analyzer multiplex server
     tinymist                       # typst
     websocat                       # typst-preview.nvim dep
     vim-language-server
 
     # dev libs and tools
-    cargo-audit
-    cargo-auditable
-    cargo-binstall
-    cargo-generate
-    cargo-modules
-    cargo-nextest
-    cargo-sweep
-    cargo-update
     curl
-    # dioxus-cli
-    hyperfine                      # cmdline benchmarking tool
-    jq                             # cli json processor
-    mask
-    mold                           # better linker
-    mprocs                         # parallel command runner
-    # python3
-    ra-multiplex                   # rust-analyzer multiplex server
-    # rustup                         # rust toolchain manager
-    rusty-man                      # man pages for rustdoc
-    sccache                        # build cache tool
+    # hyperfine                      # cmdline benchmarking tool
+    # mprocs                         # parallel command runner
     # sqlite
     time
     tokei                          # loc counter
@@ -597,6 +579,8 @@
       vimdiffAlias = true;
       extraPackages = with pkgs; [
         gcc
+        jq                         # cli json processor
+        pandoc                     # markup converter #NOTE: for my plugin "wikibrowser.nvim"
       ];
       withNodeJs = false;
       withPython3 = false;
