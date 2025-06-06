@@ -102,6 +102,7 @@
     pomo = "porsmo";
     speedtest = "speedtest-rs";
     wiki = "wiki-tui";
+    yt = "yt-dlp";
 
     # nushell scripts
     gitcon = "gitcon.nu";
@@ -183,7 +184,7 @@
     imagemagick
     inkscape                       # image editor
     ldtk                           # lightweight level editor
-    # libreoffice-qt                 # office suite
+    libreoffice                    # office suite
     # man-pages                      # Linux man pages
     # man                            # man command
     mesa                           # graphics lib
@@ -415,17 +416,17 @@
       theme = "spotify";
     };
 
-    # # automatic invocation of flake.nix with .envrc
-    # direnv = {
-    #   enable = true;
-    #   nix-direnv.enable = true;
-    #   config = {
-    #     global = {
-    #       hide_env_diff = true;
-    #       warn_timeout = "30m";
-    #     };
-    #   };
-    # };
+    # environment switcher with .envrc
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      config = {
+        global = {
+          hide_env_diff = true;
+          warn_timeout = "30m";
+        };
+      };
+    };
 
     # fuzzy finder
     fzf = {
@@ -516,22 +517,22 @@
       };
     };
 
-  #   # git-compatible version control system
-  #   jujutsu = {
-  #     enable = true;
-  #     settings = {
-  #       user = {
-  #         name = "yilisharcs";
-  #         email = "yilisharcs@gmail.com";
-  #       };
-  #       ui = {
-  #         default-command = ["log" "--reversed"];
-  #       };
-  #       aliases = {
-  #         init = ["git" "init"];
-  #       };
-  #     };
-  #   };
+    # git-compatible version control system
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          name = "yilisharcs";
+          email = "yilisharcs@gmail.com";
+        };
+        ui = {
+          default-command = ["log" "--reversed"];
+        };
+        aliases = {
+          init = ["git" "init"];
+        };
+      };
+    };
 
     fastfetch = {
       enable = true;
@@ -965,14 +966,10 @@
     yt-dlp = {
       enable = true;
       settings = {
-        extract-audio = true;
         no-mtime = true;
         no-playlist = true;
+        output = "~/Videos/YouTube/%(title)s.%(ext)s";
       };
-      extraConfig = ''
-        -o ~/YouTube/%(title)s.%(ext)s
-        -f bv*[height<=?1080]+ba/best
-      '';
     };
 
     # zettelkasten helper
