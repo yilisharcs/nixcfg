@@ -790,6 +790,9 @@
         defaultwidth = 120;
         detection = 1;
         search.case.sensitive = 0;
+        report = {
+          list.dateformat = "Y-M-D H:N";
+        };
       };
     };
 
@@ -1256,8 +1259,14 @@
       "application/pdf" = "org.gnome.Evince.desktop";
       "image/png" = "org.gnome.Loupe.desktop";
       "x-scheme-handler/mailto" = "userapp-Evolution-I70E62.desktop";
+      # NOTE: Can't set Brave as default browser.
+      # Why? IDK! Set it here instead, manually.
+      "text/html" = "brave-browser.desktop";
+      "application/xhtml+xml" = "brave-browser.desktop";
       "x-scheme-handler/http" = "brave-browser.desktop";
       "x-scheme-handler/https" = "brave-browser.desktop";
+      "x-scheme-handler/about" = "brave-browser.desktop";
+      "x-scheme-handler/unknown" = "brave-browser.desktop";
     };
     associations = {
       added = {
