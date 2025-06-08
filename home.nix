@@ -670,6 +670,7 @@
         icon = {
           dirs = [
             { name = "Projects"; text = ""; }
+            { name = "Nixcfg"; text = ""; }
           ];
         };
       };
@@ -1129,7 +1130,7 @@
       # "${pkgs.neovide}/share/applications/neovide.desktop"
       # "${config.home.homeDirectory}/.local/share/applications/neovide.desktop"
       "${config.home.homeDirectory}/.nix-profile/share/applications/neovim-kitty.desktop"
-      "${pkgs.brave}/share/applications/brave-browser.desktop" #autostarts with wrong font
+      "${pkgs.brave}/share/applications/brave-browser.desktop"
       "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
     ];
   };
