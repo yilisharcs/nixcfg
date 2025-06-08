@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -404,7 +404,7 @@
 
     neovim = {
       enable = true;
-      # package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
@@ -1072,7 +1072,7 @@
       genericName = "Text Editor";
       comment = "Edit text files";
       icon = "nvim";
-      exec = ''kitty --start-as fullscreen nvim "%F"'';
+      exec = ''kitty --start-as fullscreen nvim'';
       terminal = false;
       startupNotify = false;
       mimeType = [

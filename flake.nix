@@ -7,8 +7,16 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
-  outputs = inputs@{ self, nixpkgs, determinate, home-manager, ... }: {
+  outputs = inputs@{
+    self,
+    nixpkgs,
+    determinate,
+    home-manager,
+    neovim-nightly-overlay,
+    ...
+  }: {
     # NOTE: 'nixos' is the default hostname
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       modules = [
@@ -22,6 +30,7 @@
             useUserPackages = true;
             users.yilisharcs = ./home.nix;
             backupFileExtension = "backup";
+            extraSpecialArgs = { inherit inputs; };
           };
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
