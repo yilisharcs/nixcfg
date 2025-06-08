@@ -45,7 +45,7 @@
   };
 
   # Enable the GNOME Desktop Environment.
-  services = { 
+  services = {
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
   };
@@ -58,7 +58,7 @@
   programs.dconf.profiles.user.databases = [
     {
       settings = with lib.gvariant; {
-        "org/gnome/Console" = { 
+        "org/gnome/Console" = {
           custom-font = "JetBrainsMono Nerd Font 10";
         };
         "org/gnome/GWeather4" = {
@@ -195,8 +195,8 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      intel-media-driver 
-      intel-ocl 
+      intel-media-driver
+      intel-ocl
       intel-vaapi-driver
       vpl-gpu-rt            # https://nixos.wiki/wiki/Intel_Graphics
     ];
