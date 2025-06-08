@@ -396,7 +396,8 @@
       extraConfig = ''
         font_size 13.0
         font_family      family='JetBrainsMono Nerd Font'
-        italic_font      family='JetBrainsMono Nerd Font'
+        bold_font        family='JetBrainsMono Nerd Font' style=Bold
+        bold_italic_font family='JetBrainsMono Nerd Font' style='Bold Italic'
         modify_font cell_height 105%
       '';
     };
@@ -418,11 +419,8 @@
       withRuby = false;
     };
 
-    # ## NOTE: turns out the the box icon error is because nixGL is a bad wrapper.
-    # ## I'll keep this around until a) Neovide devs add support for nix upstream,
-    # ## b) nixGL stops breaking my fonts, c) system-manager is confirmed stable on
-    # ## Determinate Nix so I can use nix-graphics-manager, or d) I return to NixOS.
-    # # graphical neovim client
+    # # NOTE: Box characters are drawn incorrectly if provided
+    # # by nix, regardless of the system. I don't know why.
     # neovide = {
     #   enable = true;
     #   # package = (config.lib.nixGL.wrap pkgs.neovide);
@@ -938,7 +936,8 @@
       show-to-do-bar = false;
     };
     "org/gnome/evolution/plugin/external-editor" = {
-      command = "neovide -- -c 'set spell' -c 'startinsert'";
+      # command = "neovide -- -c 'set spell' -c 'startinsert'";
+      command = "kitty nvim -c 'set spell' -c 'startinsert'";
       launch-on-key-press = true;
     };
     "org/gnome/evolution/shell" = {
@@ -949,6 +948,18 @@
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = true;
       night-light-schedule-automatic = false;
+    };
+    "org/gnome/shell" = {
+      favorite-apps = [
+        # "neovide.desktop"
+        "neovim-kitty.desktop"
+        "org.gnome.Evolution.desktop"
+        "brave-browser.desktop"
+        "org.inkscape.Inkscape.desktop"
+        "org.gnome.Calendar.desktop"
+        "org.gnome.Music.desktop"
+        "org.gnome.Nautilus.desktop"
+      ];
     };
     "org/gnome/shell/extensions/appindicator" = {
       icon-size = 20;
@@ -1053,6 +1064,39 @@
         X-TerminalArgHold = "--hold";
       };
     };
+
+    neovim-kitty = {
+      type = "Application";
+      name = "Neovim";
+      genericName = "Text Editor";
+      comment = "Edit text files";
+      icon = "nvim";
+      exec = ''kitty --start-as fullscreen nvim "%F"'';
+      terminal = false;
+      startupNotify = false;
+      mimeType = [
+        "text/english"
+        "text/plain"
+        "text/x-makefile"
+        "text/x-c++hdr"
+        "text/x-c++src"
+        "text/x-chdr"
+        "text/x-csrc"
+        "text/x-java"
+        "text/x-moc"
+        "text/x-pascal"
+        "text/x-tcl"
+        "text/x-tex"
+        "application/x-shellscript"
+        "text/x-c"
+        "text/x-c++"
+      ];
+      categories = ["Utility" "TextEditor"];
+      settings = {
+        TryExec = "nvim";
+        Keywords = "Text;editor;";
+      };
+    };
   };
 
   xdg.mimeApps = {
@@ -1073,7 +1117,8 @@
     };
     associations = {
       added = {
-        "application/x-zerosize" = "neovide.desktop";
+        # "application/x-zerosize" = "neovide.desktop";
+        "application/x-zerosize" = "neovim-kitty.desktop";
       };
     };
   };
@@ -1083,6 +1128,7 @@
     entries = [
       # "${pkgs.neovide}/share/applications/neovide.desktop"
       # "${config.home.homeDirectory}/.local/share/applications/neovide.desktop"
+      "${config.home.homeDirectory}/.nix-profile/share/applications/neovim-kitty.desktop"
       "${pkgs.brave}/share/applications/brave-browser.desktop" #autostarts with wrong font
       "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
     ];
