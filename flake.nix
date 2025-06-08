@@ -1,49 +1,33 @@
 {
-  description = "Home Manager configuration of yilisharcs";
-
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1"; # NixOS, rolling release
+    # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0"; # NixOS, current stable
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Extra source for graphics compatibility.
-    nixgl.url = "github:nix-community/nixGL";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
+  outputs = inputs@{ self, nixpkgs, determinate, home-manager, ... }: {
+    # NOTE: 'nixos' is the default hostname
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      modules = [
+        determinate.nixosModules.default
+        ./configuration.nix
 
-  outputs =
-    {
-      nixgl,
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      homeConfigurations."yilisharcs" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-        extraSpecialArgs = {
-          inherit inputs;
-          nixgl = nixgl;
-        };
-
-        # TODO: make sure this works
-        # backupFileExtension = "backup";
-
-        # # Shush nix complaints about uncommitted changes
-        # nix.settings.warn-dirty = false;
-      };
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.yilisharcs = ./home.nix;
+            backupFileExtension = "backup";
+          };
+          # Optionally, use home-manager.extraSpecialArgs to pass
+          # arguments to home.nix
+        }
+      ];
     };
+  };
 }
+

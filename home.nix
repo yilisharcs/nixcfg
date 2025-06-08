@@ -1,21 +1,6 @@
-{
-  config,
-  inputs,
-  lib,
-  nixgl,
-  pkgs,
-  ...
-}:
+{ config, lib, pkgs, ... }:
 
 {
-  # These wrapper options must be set before declaring packages
-  nixGL.packages = import nixgl { inherit pkgs; };
-  nixGL.defaultWrapper = "mesa"; # or the driver you need
-  nixGL.installScripts = ["mesa"];
-
-  # NOTE: I don't know what this does but I was told it's good
-  targets.genericLinux.enable = true;
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "yilisharcs";
@@ -30,123 +15,6 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
-  # NOTE: Cannot be done with home.file because nix complains about impurity
-  home.activation = {
-    trashLink = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      run ln -sf "${config.home.homeDirectory}/.local/share/Trash/files" "${config.home.homeDirectory}/Trash"
-      run ln -sf "${config.home.homeDirectory}/.config/nushell/history.txt" "${config.home.homeDirectory}/.nu_history"
-    '';
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/yilisharcs/etc/profile.d/hm-session-vars.sh
-  #
-  home.sessionVariables = {
-    SUDO_EDITOR = "nvim";
-    VISUAL = "nvim";
-    EDITOR = "nvim";
-    LESS = "-FRX";
-    SQLITE_HISTORY = "${config.home.homeDirectory}/.local/state/sqlite3/sqlite_history";
-    STARSHIP_LOG = "error";
-    ZK_NOTEBOOK_DIR = "$HOME/notebook";
-  };
-
-  home.sessionPath = [
-    "$HOME/.local/bin"  # Include user's private bin
-    "/usr/sbin"         # Include root binaries
-    "$HOME/.cargo/bin"  # Include cargo bin
-  ];
-
-  home.shellAliases = {
-    # muscle memory
-    vi = "nvim";
-    vim = "nvim";
-    ":q" = "exit";
-
-    # proof of defeat
-    apkg = "apt-cache search";
-    yeet = "sudo apt-get purge --auto-remove";
-
-    # convenience
-    grep = "grep --color=auto";
-    fetch = "fastfetch";
-    nsp = "nix search nixpkgs";
-    pomo = "porsmo";
-    speedtest = "speedtest-rs";
-    wiki = "wiki-tui";
-    yt = "yt-dlp";
-
-    # nushell scripts
-    gitcon = "gitcon.nu";
-    gitlist = "gstat.nu";
-    mask = "maskfile.nu";
-    tokeicon = "tokeicon.nu";
-    wut = "helpless.nu";
-
-    # kitty
-    icat = "kitty icat";
-  };
-
-  home.shell.enableBashIntegration = true;
-  home.shell.enableNushellIntegration = true;
-
-  home.pointerCursor = {
-    enable = true;
-    name = "Bibata-Modern-Ice";
-    size = 24;
-    package = pkgs.bibata-cursors;
-    gtk.enable = true;
-  };
-  gtk.enable = true; # Must be set to activate above config
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  # Disable if you don't want unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # This allows fontconfig to discover fonts and configurations
-  # installed through home.packages and nix-env.
-  fonts.fontconfig.enable = true;
-
-  # NOTE: I had something like this for NixOS system-wide
-  # configuration. I think this is what I'm supposed to do?
-  home.extraOutputsToInstall = [
-    "debug"
-    "devdoc"
-    "doc"
-    "info"
-    "man"
-  ];
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -158,7 +26,7 @@
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    # (pkgs.nerdfonts.override { fonts = ["FantasqueSansMono"]; })
+    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -167,81 +35,63 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    dconf-editor
     exiftool                           # image metadata tool
-    # evolution                      # mail client
     ffmpeg
     ffmpegthumbnailer
-    # file                           # isn't this a core-util?
-    gdu                            # disk space analyzer
     gimp                           # image editor
-    # gnome-boxes                    # virtual machines
-    gnome-tweaks
-    hunspell                       # spell checker
-    hunspellDicts.en_US
-    hunspellDicts.pt_BR
+    gnome-boxes                    # virtual machines
+    # hunspell                       # spell checker
+    # hunspellDicts.en_US
+    # hunspellDicts.pt_BR
     imagemagick
-    inkscape                       # image editor
-    ldtk                           # lightweight level editor
-    libreoffice                    # office suite
-    # man-pages                      # Linux man pages
-    # man                            # man command
-    mesa                           # graphics lib
-    nerd-fonts.jetbrains-mono
-    noto-fonts-emoji
+    # ldtk                           # lightweight level editor
+    onlyoffice-desktopeditors        # Office suite
+    man-pages                      # Linux man pages
     obs-studio
     picard                         # music metadata editor
     porsmo                         # cli pomodoro app
     qbittorrent
     speedtest-rs
-    stow                           # symlink manager
     trash-cli
-    tree                           # dir viewer
     typst                          # markup-based typesetting system
-    uutils-coreutils-noprefix      # gnu coreutils rust rewrite
-    # wiki-tui
-    wl-clipboard
-    xclip
-
-    # compression and extraction tools
-    ouch
-    unrar
-    zstd
+    # uutils-coreutils-noprefix      # gnu coreutils rust rewrite
+    # # wiki-tui
 
     # LSP
     lua-language-server
     nil                            # nix
     ra-multiplex                   # rust-analyzer multiplex server
+    rust-analyzer
     tinymist                       # typst
     websocat                       # typst-preview.nvim dep
     vim-language-server
 
     # dev libs and tools
-    curl
     # hyperfine                      # cmdline benchmarking tool
     # mprocs                         # parallel command runner
     # sqlite
-    time
     tokei                          # loc counter
-    wget
   ];
 
+  # home.shell.enableBashIntegration = true;
+  home.shell.enableNushellIntegration = true;
+
   programs = {
-    # chromium fork with built-in adblocker
-    chromium = {
-      enable = true;
-      package = pkgs.brave;
-      extensions = [
-        { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # Dark reader
-        { id = "cofdbpoegempjloogbagkncekinflcnj"; } # DeepL
-        { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # Proton Pass
-        { id = "eninkmbmgkpkcelmohdlgldafpkfpnaf"; } # Reddit Untranslate
-        { id = "fakeocdnmmmnokabaiflppclocckihoj"; } # Sprucemarks
-        { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium
-        { id = "kkmlkkjojmombglmlpbpapmhcaljjkde"; } # Zhongwen: Zh-En Dictionary
-      ];
-    };
-    firefox.enable = false;
+    # # chromium fork with built-in adblocker
+    # chromium = {
+    #   enable = true;
+    #   package = pkgs.brave;
+    #   extensions = [
+    #     { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # Dark reader
+    #     { id = "cofdbpoegempjloogbagkncekinflcnj"; } # DeepL
+    #     { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # Proton Pass
+    #     { id = "eninkmbmgkpkcelmohdlgldafpkfpnaf"; } # Reddit Untranslate
+    #     { id = "fakeocdnmmmnokabaiflppclocckihoj"; } # Sprucemarks
+    #     { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium
+    #     { id = "kkmlkkjojmombglmlpbpapmhcaljjkde"; } # Zhongwen: Zh-En Dictionary
+    #   ];
+    # };
+    # firefox.enable = false;
 
     # background code checker
     bacon = {
@@ -273,12 +123,7 @@
 
     bash = {
       enable = true;
-      # NOTE: Something is causing mime.desktop files and binaries to not be
-      # found on re-login. Adding the entries below to PATH ensures binaries
-      # can be found by the shell so the ensuing experience isn't awful.
       initExtra = ''
-        PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
-
         PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
         PROMPT_COMMAND='history -a'
         HISTTIMEFORMAT="%F %T "
@@ -308,7 +153,6 @@
       ];
     };
 
-    # better cat
     bat = {
       enable = true;
       config = {
@@ -411,7 +255,6 @@
       };
     };
 
-    # fuzzy finder
     fzf = {
       enable = true;
       defaultCommand = lib.concatStrings [
@@ -449,7 +292,6 @@
       };
     };
 
-    # distributed version control system
     git = {
       enable = true;
       userName = "yilisharcs";
@@ -487,17 +329,6 @@
         { package = just-perfection; }
         { package = vitals; }
       ];
-    };
-
-    gnome-terminal = {
-      enable = true;
-      profile."a80099e0-c188-48a8-9d0c-1f8f20f2a840" = {
-        default = true;
-        visibleName = "yilisharcs";
-        cursorShape = "block";
-        showScrollbar = false;
-        font = "JetBrainsMono Nerd Font 12";
-      };
     };
 
     # git-compatible version control system
@@ -541,7 +372,6 @@
       };
     };
 
-    # better find
     fd = {
       enable = true;
       hidden = true;
@@ -565,8 +395,8 @@
       };
       extraConfig = ''
         font_size 13.0
-        font_family      family='JetBrainsMono Nerd Font' postscript_name=JetBrainsMonoNF-Thin
-        italic_font      family='JetBrainsMono Nerd Font' style='Thin Italic'
+        font_family      family='JetBrainsMono Nerd Font'
+        italic_font      family='JetBrainsMono Nerd Font'
         modify_font cell_height 105%
       '';
     };
@@ -580,35 +410,35 @@
       vimdiffAlias = true;
       extraPackages = with pkgs; [
         gcc
-        jq                         # cli json processor
-        pandoc                     # markup converter #NOTE: for my plugin "wikibrowser.nvim"
+        jq            # cli json processor
+        pandoc        # markup converter #NOTE: for my plugin "wikibrowser.nvim"
       ];
       withNodeJs = false;
       withPython3 = false;
       withRuby = false;
     };
 
-    ## NOTE: turns out the the box icon error is because nixGL is a bad wrapper.
-    ## I'll keep this around until a) Neovide devs add support for nix upstream,
-    ## b) nixGL stops breaking my fonts, c) system-manager is confirmed stable on
-    ## Determinate Nix so I can use nix-graphics-manager, or d) I return to NixOS.
-    # graphical neovim client
-    neovide = {
-      enable = false;
-      # package = (config.lib.nixGL.wrap pkgs.neovide);
-      settings = {
-        font = {
-          size = 13;
-          normal = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
-          bold = { family = "JetBrainsMono Nerd Font"; style = "Bold"; };
-          bold_italic = { family = "JetBrainsMono Nerd Font"; style = "BoldItalic"; };
-          edging = "subpixelantialias";
-        };
-        maximized = true;
-        no-multigrid = false;
-        wsl = false;
-      };
-    };
+    # ## NOTE: turns out the the box icon error is because nixGL is a bad wrapper.
+    # ## I'll keep this around until a) Neovide devs add support for nix upstream,
+    # ## b) nixGL stops breaking my fonts, c) system-manager is confirmed stable on
+    # ## Determinate Nix so I can use nix-graphics-manager, or d) I return to NixOS.
+    # # graphical neovim client
+    # neovide = {
+    #   enable = true;
+    #   # package = (config.lib.nixGL.wrap pkgs.neovide);
+    #   settings = {
+    #     font = {
+    #       size = 13;
+    #       normal = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
+    #       bold = { family = "JetBrainsMono Nerd Font"; style = "Bold"; };
+    #       bold_italic = { family = "JetBrainsMono Nerd Font"; style = "BoldItalic"; };
+    #       edging = "subpixelantialias";
+    #     };
+    #     maximized = true;
+    #     no-multigrid = false;
+    #     wsl = false;
+    #   };
+    # };
 
     nushell = {
       enable = true;
@@ -617,7 +447,7 @@
       '';
       plugins = with pkgs.nushellPlugins; [
         gstat
-        highlight #regex
+        # highlight #regex
         query
         # skim  ### NOTE: these seem to be outdated
         # units ### NOTE: mismatched versions
@@ -688,7 +518,6 @@
       # shellAliases = { };
     };
 
-    # better grep
     ripgrep-all.enable = true;
     ripgrep = {
       enable = true;
@@ -703,10 +532,10 @@
       ];
     };
 
-    ssh = {
-      enable = true;
-      addKeysToAgent = "ask";
-    };
+    # ssh = {
+    #   enable = true;
+    #   addKeysToAgent = "ask";
+    # };
 
     # multishell prompt engine
     starship = let
@@ -719,48 +548,49 @@
         lib.recursiveUpdate
         (lib.mergeAttrsList [
           (getPreset "nerd-font-symbols")
-        ]) {
-          add_newline = false;
-          command_timeout = 300;
-          character = {
-            success_symbol = "[➜](bold green)";
-            error_symbol = "[➜](bold red)";
-          };
-          git_status = {
-            format = lib.concatStrings [
-              "([\\["
-              "$all_status"
-              "$ahead_behind"
-              "\\]]("
-              "$style"
-              ") )"
-            ];
-            deleted = "[✕](italic red)";
-          };
-          package.format = "(is [󰏗 $version]($style) )";
-          time = {
-            disabled = false;
-            format = " [$time]($style)";
-            style = "yellow";
-            time_format = "%a %F %T";
-            use_12hr = false;
-          };
-          fill.symbol = " ";
-          format = lib.concatStrings [
-            "$all"
-            "$fill"
-            "$time"
-            "$line_break"
-            "$jobs"
-            "$battery"
-            "$status"
-            "$os"
-            "$container"
-            "$netns"
-            "$shell"
-            "$character"
-          ];
+        ])
+      {
+        add_newline = false;
+        command_timeout = 300;
+        character = {
+          success_symbol = "[➜](bold green)";
+          error_symbol = "[➜](bold red)";
         };
+        git_status = {
+          format = lib.concatStrings [
+            "([\\["
+            "$all_status"
+            "$ahead_behind"
+            "\\]]("
+            "$style"
+            ") )"
+          ];
+          deleted = "[✕](italic red)";
+        };
+        package.format = "(is [󰏗 $version]($style) )";
+        time = {
+          disabled = false;
+          format = " [$time]($style)";
+          style = "yellow";
+          time_format = "%a %F %T";
+          use_12hr = false;
+        };
+        fill.symbol = " ";
+        format = lib.concatStrings [
+          "$all"
+          "$fill"
+          "$time"
+          "$line_break"
+          "$jobs"
+          "$battery"
+          "$status"
+          "$os"
+          "$container"
+          "$netns"
+          "$shell"
+          "$character"
+        ];
+      };
     };
 
     taskwarrior = {
@@ -1030,257 +860,6 @@
     };
   };
 
-  dconf.settings = with lib.hm.gvariant; {
-    "org/gnome/GWeather4" = {
-      temperature-unit = "centigrade";
-    };
-    "org/gnome/desktop/a11y" = {
-      always-show-universal-access-status = true;
-    };
-    "org/gnome/desktop/a11y/interface" = {
-      high-contrast = true;
-      show-status-shapes = true;
-    };
-    "org/gnome/desktop/datetime" = {
-      automatic-timezone = true;
-    };
-    "org/gnome/desktop/interface" = {
-      accent-color = "green";
-      color-scheme = "prefer-dark";
-      cursor-size = 24;
-      cursor-theme = "Bibata-Modern-Ice";
-    };
-    "org/gnome/desktop/input-sources" = {
-      sources = [(mkTuple ["xkb" "br"])];
-    };
-    "org/gnome/desktop/peripherals/keyboard" = {
-      delay = lib.hm.gvariant.mkUint32 375;
-      repeat = true;
-      repeat-interval = lib.hm.gvariant.mkUint32 18;
-    };
-    "org/gnome/desktop/peripherals/keyboard" = {
-      edge-scrolling-enabled = true;
-      natural-scroll = false;
-      two-finger-scrolling-enabled = false;
-    };
-    "org/gnome/desktop/sound" = {
-      allow-volume-above-100-percent = true;
-    };
-    # NOTE: dconf key diff between NixOS and Debian
-    "org/gnome/desktop/wm/keybindings" = {
-      move-to-workspace-left = ["<Shift><Super>minus"];
-      move-to-workspace-right = ["<Shift><Super>equal"];
-      switch-to-workspace-left = ["<Super>minus"];
-      switch-to-workspace-right = ["<Super>equal"];
-    };
-    "org/gnome/desktop/wm/preferences" = {
-      button-layout = "appmenu:minimize,close";
-      focus-mode = "sloppy";
-    };
-    "org/gnome/evince/default" = {
-      inverted-colors = true;
-      show-sidebar = false;
-      sizing-mode = "fit-width";
-    };
-    "org/gnome/evolution/calendar" = {
-      use-24hour-format = true;
-    };
-    "org/gnome/evolution/mail" = {
-      composer-magic-smileys = true;
-      composer-unicode-smileys = true;
-      image-loading-policy = "always";
-      layout = 1;
-      message-list-sort-on-header-click = "always";
-      show-animated-images = true;
-      show-to-do-bar = false;
-    };
-    "org/gnome/evolution/plugin/external-editor" = {
-      command = "neovide -- -c 'set spell' -c 'startinsert'";
-      launch-on-key-press = true;
-    };
-    "org/gnome/evolution/shell" = {
-      icon-only-buttons-in-header-bar = true;
-      statusbar-visible = false;
-      webkit-minimum-font-size = 16;
-    };
-    "org/gnome/Loupe" = {
-      show-properties = false;
-    };
-    "org/gnome/mutter" = {
-      center-new-windows = true;
-    };
-    "org/gnome/nautilus/preferences" = {
-      click-policy = "single";
-      show-hidden-files = true;
-    };
-    "org/gnome/nautilus/compression" = {
-      default-compression-format = "tar.xz";
-    };
-    "org/gnome/settings-daemon/plugins/color" = {
-      night-light-enabled = true;
-      night-light-schedule-automatic = false;
-    };
-    "org/gnome/settings-daemon/plugins/power" = {
-      sleep-inactive-ac-type = "nothing";
-    };
-    "org/gnome/shell" = {
-      favorite-apps = [
-        "neovide.desktop"
-        "org.gnome.Evolution.desktop"
-        "brave-browser.desktop"
-        "gimp.desktop"
-        "org.gnome.Nautilus.desktop"
-      ];
-      last-selected-power-profile = "performance";
-    };
-    "org/gnome/shell/extensions/appindicator" = {
-      icon-size = 20;
-    };
-    "org/gnome/shell/extensions/clipboard-indicator" = {
-      clear-on-boot = false;
-      disable-down-arrow = true;
-      display-mode = 2;
-      keep-selected-on-clear = true;
-      move-item-first = true;
-      notify-on-copy = false;
-      notify-on-cycle = false;
-      private-mode-binding = ["<Control>F8"];
-      topbar-preview-size = 11;
-    };
-    "org/gnome/shell/extensions/dash-to-dock" = {
-      background-opacity = 0.80000000000000004;
-      dash-max-icon-size = 48;
-      dock-position = "BOTTOM";
-      height-fraction = 0.90000000000000002;
-      intellihide-mode = "ALL_WINDOWS";
-      multi-monitor = true;
-      preferred-monitor = -2;
-      preferred-monitor-by-connector = "LVDS-1";
-    };
-    "org/gnome/shell/extensions/just-perfection" = {
-      accent-color-icon = true;
-      max-displayed-search-results = 0;
-      power-icon = false;
-    };
-    "org/gnome/shell/extensions/vitals" = {
-      hide-zeros = false;
-      hot-sensors = [
-        "_memory_usage_"
-        "_system_load_1m_"
-        "__network-rx_max__"
-        "_storage_free_"
-      ];
-      icon-style = 1;
-      menu-centered = true;
-      position-in-panel = 0;
-      show-battery = false;
-      show-fan = false;
-      use-higher-precision = false;
-    };
-    "org/gnome/shell/weather" = {
-      automatic-location = true;
-    };
-    "org/gnome/terminal/legacy" = {
-      menu-accelerator-enabled = false;
-    };
-    "org/gtk/gtk4/settings/file-chooser" = {
-      show-hidden = true;
-    };
-    "org/gtk/settings/file-chooser" = {
-      show-hidden = true;
-      sort-directories-first = true;
-    };
-  };
-
-  editorconfig = {
-    enable = true;
-    settings = {
-      "*" = {
-        charset = "utf-8";
-        end_of_line = "lf";
-        insert_final_newline = true;
-        trim_trailing_whitespace = true;
-      };
-    };
-  };
-
-  xdg.desktopEntries = {
-    cmus = {
-      type = "Application";
-      name = "Cmus";
-      comment = "Play and organize your music collection";
-      icon = "cmus";
-      exec = "cmus";
-      terminal = true;
-      categories = ["Player" "Audio"];
-      settings = {
-        TryExec = "cmus";
-        Keywords = "Music;Player;";
-      };
-    };
-
-    kitty = {
-      type = "Application";
-      name = "Kitty";
-      genericName = "Terminal emulator";
-      comment = "Fast, feature-rich, GPU based terminal";
-      icon = "kitty";
-      exec = "kitty --start-as fullscreen";
-      startupNotify = true;
-      categories = ["System" "TerminalEmulator"];
-      settings = {
-        Version = "1.0";
-        TryExec = "kitty";
-        X-TerminalArgExec = "--";
-        X-TerminalArgTitle = "--title";
-        X-TerminalArgAppId = "--class";
-        X-TerminalArgDir = "--working-directory";
-        X-TerminalArgHold = "--hold";
-      };
-    };
-  };
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "application/pdf" = "org.gnome.Evince.desktop";
-      "image/png" = "org.gnome.Loupe.desktop";
-      "x-scheme-handler/mailto" = "userapp-Evolution-I70E62.desktop";
-      # NOTE: Can't set Brave as default browser.
-      # Why? IDK! Set it here instead, manually.
-      "text/html" = "brave-browser.desktop";
-      "application/xhtml+xml" = "brave-browser.desktop";
-      "x-scheme-handler/http" = "brave-browser.desktop";
-      "x-scheme-handler/https" = "brave-browser.desktop";
-      "x-scheme-handler/about" = "brave-browser.desktop";
-      "x-scheme-handler/unknown" = "brave-browser.desktop";
-    };
-    associations = {
-      added = {
-        "application/x-zerosize" = "neovide.desktop";
-      };
-    };
-  };
-
-  xdg.autostart = {
-    enable = true;
-    entries = [
-      # "${pkgs.neovide}/share/applications/neovide.desktop"
-      "${config.home.homeDirectory}/.local/share/applications/neovide.desktop"
-      # "${pkgs.brave}/share/applications/brave-browser.desktop" #autostarts with wrong font
-      # "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
-      "/usr/share/applications/org.gnome.Evolution.desktop"
-    ];
-  };
-
-  ## TODO: does gnome-keyring take care of this?
-  # services = {
-  #   gpg-agent = {
-  #     enable = true;
-  #     enableSshSupport = true;
-  #   };
-  # };
-
   systemd.user = {
     enable = true;
     services = {
@@ -1335,4 +914,241 @@
       };
     };
   };
+
+  dconf.settings = with lib.hm.gvariant; {
+    "org/gnome/desktop/interface" = {
+      accent-color = "green";
+      color-scheme = "prefer-dark";
+      cursor-size = 24;
+      cursor-theme = "Bibata-Modern-Ice";
+    };
+    "org/gnome/desktop/input-sources" = {
+      sources = [(mkTuple ["xkb" "br"])];
+    };
+    "org/gnome/evolution/calendar" = {
+      use-24hour-format = true;
+    };
+    "org/gnome/evolution/mail" = {
+      composer-magic-smileys = true;
+      composer-unicode-smileys = true;
+      image-loading-policy = "always";
+      layout = 1;
+      message-list-sort-on-header-click = "always";
+      show-animated-images = true;
+      show-to-do-bar = false;
+    };
+    "org/gnome/evolution/plugin/external-editor" = {
+      command = "neovide -- -c 'set spell' -c 'startinsert'";
+      launch-on-key-press = true;
+    };
+    "org/gnome/evolution/shell" = {
+      icon-only-buttons-in-header-bar = true;
+      statusbar-visible = false;
+      webkit-minimum-font-size = 16;
+    };
+    "org/gnome/settings-daemon/plugins/color" = {
+      night-light-enabled = true;
+      night-light-schedule-automatic = false;
+    };
+    "org/gnome/shell/extensions/appindicator" = {
+      icon-size = 20;
+    };
+    "org/gnome/shell/extensions/clipboard-indicator" = {
+      clear-on-boot = false;
+      disable-down-arrow = true;
+      display-mode = 2;
+      keep-selected-on-clear = true;
+      move-item-first = true;
+      notify-on-copy = false;
+      notify-on-cycle = false;
+      private-mode-binding = ["<Control>F8"];
+      topbar-preview-size = 11;
+    };
+    "org/gnome/shell/extensions/dash-to-dock" = {
+      background-opacity = 0.80000000000000004;
+      dash-max-icon-size = 48;
+      dock-position = "BOTTOM";
+      height-fraction = 0.90000000000000002;
+      intellihide-mode = "ALL_WINDOWS";
+      multi-monitor = true;
+      preferred-monitor = -2;
+      preferred-monitor-by-connector = "LVDS-1";
+    };
+    "org/gnome/shell/extensions/just-perfection" = {
+      accent-color-icon = true;
+      max-displayed-search-results = 0;
+      power-icon = false;
+    };
+    "org/gnome/shell/extensions/vitals" = {
+      hide-zeros = false;
+      hot-sensors = [
+        "_memory_usage_"
+        "_system_load_1m_"
+        "__network-rx_max__"
+        "_storage_free_"
+      ];
+      icon-style = 1;
+      menu-centered = true;
+      position-in-panel = 0;
+      show-battery = false;
+      show-fan = false;
+      use-higher-precision = false;
+    };
+  };
+
+  # Home Manager is pretty good at managing dotfiles. The primary way to manage
+  # plain files is through 'home.file'.
+  home.file = {
+    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
+    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
+    # # symlink to the Nix store copy.
+    # ".screenrc".source = dotfiles/screenrc;
+
+    # # You can also set the file content immediately.
+    # ".gradle/gradle.properties".text = ''
+    #   org.gradle.console=verbose
+    #   org.gradle.daemon.idletimeout=3600000
+    # '';
+  };
+
+  # NOTE: Cannot be done with home.file because nix complains about impurity
+  home.activation = {
+    trashLink = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      run ln -sf "${config.home.homeDirectory}/.local/share/Trash/files" "${config.home.homeDirectory}/Trash"
+      run ln -sf "${config.home.homeDirectory}/.config/nushell/history.txt" "${config.home.homeDirectory}/.nu_history"
+    '';
+  };
+
+  xdg.desktopEntries = {
+    cmus = {
+      type = "Application";
+      name = "Cmus";
+      comment = "Play and organize your music collection";
+      icon = "cmus";
+      exec = "cmus";
+      terminal = true;
+      categories = ["Player" "Audio"];
+      settings = {
+        TryExec = "cmus";
+        Keywords = "Music;Player;";
+      };
+    };
+
+    kitty = {
+      type = "Application";
+      name = "Kitty";
+      genericName = "Terminal emulator";
+      comment = "Fast, feature-rich, GPU based terminal";
+      icon = "kitty";
+      exec = "kitty --start-as fullscreen";
+      startupNotify = true;
+      categories = ["System" "TerminalEmulator"];
+      settings = {
+        Version = "1.0";
+        TryExec = "kitty";
+        X-TerminalArgExec = "--";
+        X-TerminalArgTitle = "--title";
+        X-TerminalArgAppId = "--class";
+        X-TerminalArgDir = "--working-directory";
+        X-TerminalArgHold = "--hold";
+      };
+    };
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = "org.gnome.Evince.desktop";
+      "image/png" = "org.gnome.Loupe.desktop";
+      # NOTE: Evolution-(ID) changes on switching machines
+      # "x-scheme-handler/mailto" = "userapp-Evolution-I70E62.desktop";
+      # NOTE: Can't set Brave as default browser.
+      # Why? IDK! Set it here instead, manually.
+      "text/html" = "brave-browser.desktop";
+      "application/xhtml+xml" = "brave-browser.desktop";
+      "x-scheme-handler/http" = "brave-browser.desktop";
+      "x-scheme-handler/https" = "brave-browser.desktop";
+      "x-scheme-handler/about" = "brave-browser.desktop";
+      "x-scheme-handler/unknown" = "brave-browser.desktop";
+    };
+    associations = {
+      added = {
+        "application/x-zerosize" = "neovide.desktop";
+      };
+    };
+  };
+
+  xdg.autostart = {
+    enable = true;
+    entries = [
+      # "${pkgs.neovide}/share/applications/neovide.desktop"
+      # "${config.home.homeDirectory}/.local/share/applications/neovide.desktop"
+      "${pkgs.brave}/share/applications/brave-browser.desktop" #autostarts with wrong font
+      "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
+    ];
+  };
+
+  # Home Manager can also manage your environment variables through
+  # 'home.sessionVariables'. These will be explicitly sourced when using a
+  # shell provided by Home Manager. If you don't want to manage your shell
+  # through Home Manager then you have to manually source 'hm-session-vars.sh'
+  # located at either
+  #
+  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+  #
+  # or
+  #
+  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
+  #
+  # or
+  #
+  #  /etc/profiles/per-user/yilisharcs/etc/profile.d/hm-session-vars.sh
+  #
+  home.sessionVariables = {
+    VISUAL = "nvim";
+    EDITOR = "nvim";
+    LESS = "-FRX";
+    SQLITE_HISTORY = "${config.home.homeDirectory}/.local/state/sqlite3/sqlite_history";
+    STARSHIP_LOG = "error";
+    ZK_NOTEBOOK_DIR = "$HOME/notebook";
+  };
+
+  home.shellAliases = {
+    # muscle memory
+    ":q" = "exit";
+
+    # convenience
+    grep = "grep --color=auto";
+    fetch = "fastfetch";
+    nsp = "nix search nixpkgs";
+    pomo = "porsmo";
+    speedtest = "speedtest-rs";
+    wiki = "wiki-tui";
+    yt = "yt-dlp";
+
+    # nushell scripts
+    gitcon = "gitcon.nu";
+    gitlist = "gstat.nu";
+    mask = "maskfile.nu";
+    tokeicon = "tokeicon.nu";
+    wut = "helpless.nu";
+
+    # kitty
+    icat = "kitty icat";
+  };
+
+  editorconfig = {
+    enable = true;
+    settings = {
+      "*" = {
+        charset = "utf-8";
+        end_of_line = "lf";
+        insert_final_newline = true;
+        trim_trailing_whitespace = true;
+      };
+    };
+  };
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 }
