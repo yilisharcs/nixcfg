@@ -300,24 +300,28 @@
     # Terminal packages
     bat              # Better cat
     curl             # CLI featureful downloader
+    entr             # Event Notify Test Runner
     fd               # Better find
     file
     fzf              # Fuzzy finder
     gdu              # Disk space analyzer
     kitty            # Modern terminal emulator with image support
+    mask             # Task runner with markdown
     nushell          # A modern shell
-    ouch             # Compression/extraction utility
     ripgrep          # Better grep
     stow             # Symlink manager
     time             # Simple command stopwatch
     tree             # Intended directory list
     tmux             # Terminal multiplexer
-    unrar
     wget             # CLI recursive downloader
     wl-clipboard     # Wayland clipboard utility
     xclip            # X11 clipboard utility
     yazi             # File manager
-    zstd             # Blazingly-fast compression/extraction algorithm
+
+    # Compression/extraction utility and dependencies
+    ouch
+    unrar
+    zstd
   ];
 
   environment.gnome.excludePackages = with pkgs; [

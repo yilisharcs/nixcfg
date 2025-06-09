@@ -248,7 +248,7 @@
       nix-direnv.enable = true;
       config = {
         global = {
-          log_filter = "loading";
+          log_filter = "^loading";
           strict_env = true;
           warn_timeout = "30m";
         };
@@ -668,7 +668,7 @@
           unset_alt   = { fg = "red";  bg = "black"; };
         };
         icon = {
-          dirs = [
+          prepend_dirs = [
             { name = "Projects"; text = ""; }
             { name = "Nixcfg"; text = ""; }
           ];
@@ -1129,7 +1129,8 @@
     entries = [
       # "${pkgs.neovide}/share/applications/neovide.desktop"
       # "${config.home.homeDirectory}/.local/share/applications/neovide.desktop"
-      "${config.home.homeDirectory}/.nix-profile/share/applications/neovim-kitty.desktop"
+      # TODO: simplify this
+      "${config.home.homeDirectory}/.local/state/nix/profiles/home-manager/home-path/share/applications/neovim-kitty.desktop"
       "${pkgs.brave}/share/applications/brave-browser.desktop"
       "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
     ];
