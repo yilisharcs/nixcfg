@@ -31,7 +31,6 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  # i18.inputMethod.enable = true; # like fcitx5
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -43,6 +42,7 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
+  # i18.inputMethod.enable = true; # like fcitx5
 
   # Enable the GNOME Desktop Environment.
   services = {
@@ -113,27 +113,6 @@
           show-sidebar = false;
           sizing-mode = "fit-width";
         };
-        # "org/gnome/evolution/calendar" = {
-        #   use-24hour-format = true;
-        # };
-        # "org/gnome/evolution/mail" = {
-        #   composer-magic-smileys = true;
-        #   composer-unicode-smileys = true;
-        #   image-loading-policy = "always";
-        #   layout = mkUint32 1;
-        #   message-list-sort-on-header-click = "always";
-        #   show-animated-images = true;
-        #   show-to-do-bar = false;
-        # };
-        # "org/gnome/evolution/plugin/external-editor" = {
-        #   command = "neovide -- -c 'set spell' -c 'startinsert'";
-        #   launch-on-key-press = true;
-        # };
-        # "org/gnome/evolution/shell" = {
-        #   icon-only-buttons-in-header-bar = true;
-        #   statusbar-visible = false;
-        #   webkit-minimum-font-size = mkUint32 16;
-        # };
         "org/gnome/Loupe" = {
           show-properties = false;
         };
@@ -243,15 +222,17 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.yilisharcs = {
     isNormalUser = true;
+    hashedPassword = "$y$j9T$grKbKdksAB0H5ZVcqvDmA.$xFjkCjD1sMaN5J51tEipJHlAFqOwdqzcec02PcmLBy1";
     description = "yilisharcs";
     extraGroups = [
       "networkmanager"
-      "wheel" # Enable ‘sudo’ for the user.
+      "wheel"            # Enable ‘sudo’ for the user.
     ];
     # packages = with pkgs; [
     # #  thunderbird
     # ];
   };
+  users.mutableUsers = false;
 
   # Install firefox.
   # programs.firefox.enable = true;
@@ -278,16 +259,66 @@
       viAlias = true;
       vimAlias = true;
     };
+
+    # hyprland = {
+    #   enable = true;
+    #   withUWSM = true;
+    # };
+    # hyprlock.enable = true;
+
   };
+
+  # services = {
+  #   # desktopManager.plasma6.enable = true;
+  #   displayManager.sddm = {
+  #     enable = true;
+  #     wayland.enable = true;
+  #     theme = "sddm-astronaut-theme";
+  #     settings = {
+  #       Theme= {
+  #         CursorTheme = "Bibata-Modern-Ice";
+  #         ThemeDir = "${pkgs.kdePackages.sddm}/share/sddm/themes";
+  #       };
+  #     };
+  #   };
+  # };
+
+  # programs.dconf.profiles.user.databases = [
+  #   {
+  #     settings."org/gnome/desktop/interface" = {
+  #       cursor-theme = "Bibata-Modern-Ice";
+  #       gtk-theme = "Adwaita";
+  #       icon-theme = "Flat-Remix-Red-Dark";
+  #       document-font-name = "Cantarell 11";
+  #       font-name = "Cantarell 11";
+  #       monospace-font-name = "Noto Sans Mono Medium 11";
+  #     };
+  #   }
+  # ];
+
+
+
+
+
 
   # users.groups.libvirtd.members = ["yilisharcs"];
   # virtualisation.libvirtd.enable = true;
   # virtualisation.spiceUSBRedirection.enable = true;
 
+  virtualisation.vmVariant = {
+    # following configuration is added only when building VM with build-vm
+    virtualisation = {
+      memorySize =  2048; # Use 2048MiB memory.
+      cores = 3;
+    };
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # GUI user packages
+    # sddm-astronaut
+
+    # # GUI user packages
     bibata-cursors
     brave            # Chromium browser
     dconf-editor
