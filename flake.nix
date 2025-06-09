@@ -1,5 +1,9 @@
 {
-  description = "yilisharcs' NixOS Configurations";
+  description = ''
+    yilisharcs' NixOS Configurations
+
+    Template: https://www.youtube.com/watch?v=OFGyKMSJzXY&list=PLCQqUlIAw2cCuc3gRV9jIBGHeekVyBUnC&index=3
+  '';
 
   inputs = {
     # Determinate Nix
@@ -24,31 +28,21 @@
     home-manager,
     neovim-nightly-overlay,
     ...
-  }: let inherit (self) outputs; in {                      # NOTE@1
+  }: let inherit (self) outputs; in {
     overlays = import ./overlays { inherit inputs; };
     # NOTE: 'nixos' is the default hostname
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs outputs; };           # HACK@1: outputs from let statement
+      specialArgs = { inherit inputs outputs; };
       modules = [
         determinate.nixosModules.default
         ./hosts/nixos
-
-        # home-manager.nixosModules.home-manager
-        # {
-        #   home-manager = {
-        #     useGlobalPkgs = true;
-        #     useUserPackages = true;
-        #     users.yilisharcs = ./home.nix;
-        #     backupFileExtension = "backup";
-        #     extraSpecialArgs = { inherit inputs; };
-        #   };
-        # }
       ];
     };
     homeConfigurations = {
       "yilisharcs@nixos" = home-manager.lib.homeManagerConfiguration {
-        # pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        extraSpecialArgs = { inherit inputs outputs; };           # HACK@1: outputs from let statement
+        # NOTE: This might be a point of failure
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        extraSpecialArgs = { inherit inputs outputs; };
         modules = [
           ./home/yilisharcs/nixos.nix
         ];

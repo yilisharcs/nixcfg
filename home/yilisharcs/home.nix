@@ -15,6 +15,9 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
+  # NOTE: Only necessary because the Determinate NixOS iso ships with 25.11
+  home.enableNixpkgsReleaseCheck = false;
+
   # gtk = {
   #   enable = true;
   #   cursorTheme = {

@@ -1,6 +1,15 @@
 # Common configuration for all hosts
 
 { lib, inputs, outputs, ... }: {
+  imports = [
+    ./users
+    inputs.home-manager.nixosModules.default
+  ];
+  home-manager = {
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs outputs; };
+    backupFileExtension = "backup";
+  };
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -41,6 +50,7 @@
     # optimise.automatic = true;
     # registry = (lib.mapAttrs (_: flake: { inherit flake; }))
     #   ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-    # nixPath = [ "/etc/nix/path" ];
   };
+  ## NOTE: this interferes with home-manager's sessionVariables
+  # users.defaultUserShell = pkgs.nushell;
 }

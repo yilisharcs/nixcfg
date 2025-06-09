@@ -5,10 +5,18 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  # You can import other NixOS modules here
+  imports = [
+    # If you want to use modules from other flakes (such as nixos-hardware):
+    # inputs.hardware.nixosModules.common-cpu-amd
+    # inputs.hardware.nixosModules.common-ssd
+
+    # You can also split up your configuration and import pieces of it here:
+    # ./users.nix
+
+    # Import your generated (nixos-generate-config) hardware configuration
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -219,28 +227,79 @@
     };
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.yilisharcs = {
-    isNormalUser = true;
-    hashedPassword = "$y$j9T$grKbKdksAB0H5ZVcqvDmA.$xFjkCjD1sMaN5J51tEipJHlAFqOwdqzcec02PcmLBy1";
-    description = "yilisharcs";
-    extraGroups = [
-      "networkmanager"
-      "wheel"            # Enable ‘sudo’ for the user.
-    ];
-    # packages = with pkgs; [
-    # #  thunderbird
-    # ];
-  };
-  users.mutableUsers = false;
-
-  # Install firefox.
-  # programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   programs = {
+    # chromium = {
+    #   enable = true;
+    #   defaultSearchProviderEnabled = true;
+    #   defaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}&t=brave";
+    #   extensions = [
+    #     "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark reader
+    #     "cofdbpoegempjloogbagkncekinflcnj" # DeepL
+    #     "ghmbeldphafepmbegfdlkpapadhbakde" # Proton Pass
+    #     "eninkmbmgkpkcelmohdlgldafpkfpnaf" # Reddit Untranslate
+    #     "fakeocdnmmmnokabaiflppclocckihoj" # Sprucemarks
+    #     "dbepggeogbaibhgnhhndojpepiihcmeb" # Vimium
+    #     "kkmlkkjojmombglmlpbpapmhcaljjkde" # Zhongwen: Zh-En Dictionary
+    #   ];
+    #   extraOpts = {
+    #     # Extensions
+    #     ExtensionSettings = {
+    #       # Dark reader
+    #       "eimadpbcbfnmbkopoojfekhnkhdbieeh" = {
+    #         toolbar_pin = "force_pinned";
+    #         file_url_navigation_allowed = true;
+    #       };
+    #       # Proton Pass
+    #       "ghmbeldphafepmbegfdlkpapadhbakde" = {
+    #         toolbar_pin = "force_pinned";
+    #       };
+    #       # # Sprucemarks
+    #       # "fakeocdnmmmnokabaiflppclocckihoj" = {
+    #       #   options_ui = {
+    #       #     page = "dark.html";
+    #       #   };
+    #       # };
+    #       # Vimium
+    #       "dbepggeogbaibhgnhhndojpepiihcmeb" = {
+    #         toolbar_pin = "force_pinned";
+    #         file_url_navigation_allowed = true;
+    #       };
+    #       # Zhongwen: Zh-En Dictionary
+    #       "kkmlkkjojmombglmlpbpapmhcaljjkde" = {
+    #         toolbar_pin = "force_pinned";
+    #       };
+    #     };
+    #
+    #     # Generative AI
+    #     GenAiDefaultSettings = 2;
+    #
+    #     # Miscellaneous
+    #     AllowDinosaurEasterEgg = false;
+    #     AllowSystemNotifications = true;
+    #     BookmarkBarEnabled = false;
+    #     BrowserThemeColor = "#128470"; # get color from windows
+    #     DefaultBrowserSettingEnabled = true;
+    #     DeveloperToolsAvailability = 1;
+    #     SpellcheckEnabled = true;
+    #     SpellcheckLanguage = [
+    #       "en"
+    #       "pt-BR"
+    #     ];
+    #
+    #     # Safe Browsing settings
+    #     DisableSafeBrowsingProceedAnyway = false;
+    #     SafeBrowsingProtectionLevel = 1;
+    #
+    #     # Startup, Home page and New Tab page
+    #     RestoreOnStartup = 1;
+    #     ShowHomeButton = true;
+    #   };
+    # };
+    # firefox.enable = false; # default browser for all users
+
     # Version control system
     git = {
       enable = true;
@@ -249,16 +308,68 @@
         core.editor = "nvim";
         diff.tool = "nvimdiff";
         merge.tool = "nvimdiff";
+        pull.rebase = true;
+        rebase.autoStash = true;
         safe.directory = "/etc/nixos";
       };
     };
 
+    # gnupg.agent = {
+    #   enable = true;
+    #   pinentryPackage = pkgs.pinentry-gnome3;
+    # };
+    #
+    # # pager utility
+    # less = {
+    #   enable = true;
+    #   envVariables = {
+    #     LESS = "-FRX";
+    #   };
+    # };
+
     # Text editor
     neovim = {
       enable = true;
+      defaultEditor = true;
       viAlias = true;
       vimAlias = true;
     };
+
+    ## terminal multiplexer
+    # tmux = {
+    #   enable = true;
+    #   aggressiveResize = true;
+    #   baseIndex = 1;
+    #   clock24 = true;
+    #   escapeTime = 0;
+    #   historyLimit = 5000;
+    #   keyMode = "emacs";
+    #   newSession = true;
+    #   shortcut = "t";
+    #   terminal = "tmux-256color";
+    #   extraConfig = ''
+    #     set -g display-time 4000    # Increase tmux messages display duration from 750ms to 4s
+    #
+    #     set-option -g window-status-current-format '[ *#I:#W#F ]'
+    #     set -g status-style 'bg=green fg=#000000,bold'
+    #     set -g status-left-length 0 # no limit to status length
+    #     set -g status-right-length 0
+    #     set -g status-left '[#S] #{user}@#h'
+    #     set -g status-right '[%F]'
+    #     set -g status-justify centre
+    #     set -g status-interval 5
+    #     setw -g automatic-rename on
+    #
+    #     setw -g mode-keys vi
+    #     setw -g mode-style 'bg=#fab387 fg=#000000'
+    #     bind -T copy-mode-vi 'v' send -X begin-selection
+    #     bind -T copy-mode-vi 'y' send -X copy-pipe-and-cancel 'xclip -sel clip'
+    #   '';
+    # };
+
+    # virt-manager = {
+    #   enable = true;
+    # };
 
     # hyprland = {
     #   enable = true;
@@ -297,10 +408,6 @@
   # ];
 
 
-
-
-
-
   # users.groups.libvirtd.members = ["yilisharcs"];
   # virtualisation.libvirtd.enable = true;
   # virtualisation.spiceUSBRedirection.enable = true;
@@ -318,7 +425,7 @@
   environment.systemPackages = with pkgs; [
     # sddm-astronaut
 
-    # # GUI user packages
+    # GUI user packages
     bibata-cursors
     brave            # Chromium browser
     dconf-editor
