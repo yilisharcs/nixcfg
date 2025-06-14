@@ -84,9 +84,6 @@
       };
       keymap = {
         mgr.prepend_keymap = [
-          # <C-m> is <Enter>, <C-i> is <Tab>
-          { on = "<C-m>"; run = "open"; }
-          { on = "<C-i>"; run = "spot"; desc = "Spot hovered file"; }
           { on = ":"; run = "shell 'nu' --block"; desc = "Launch a shell"; }
 
           # Smart enter
@@ -132,11 +129,6 @@
           { on = ["g" "v"]; run = "cd ~/Videos";                       desc = "Go ~/Videos"; }
           { on = ["g" "z"]; run = "cd ~/.local/share/nvim/lazy";       desc = "Go to lazydir"; }
         ];
-
-        # TODO Make `C-m` `C-h` `C-c` and `C-[` work in the Help panel
-        pick.prepend_keymap   = [{ on = "<C-m>"; run = "close --submit"; }];
-        input.prepend_keymap  = [{ on = "<C-m>"; run = "close --submit"; }];
-        cmp.prepend_keymap    = [{ on = "<C-m>"; run = "close --submit"; }];
       };
     };
   };

@@ -30,6 +30,13 @@
             "102nd" = "leftshift";
             capslock = "layer(control)";
           };
+          "shift:S".capslock = "capslock";
+          # Common terminal experience for GUI apps
+          "control:C" = {
+            "[" = "esc";
+            i = "tab";
+            m = "enter";
+          };
         };
       };
     };
