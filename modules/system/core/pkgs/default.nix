@@ -25,4 +25,6 @@
     tmux             # Terminal multiplexer
     wget             # CLI recursive downloader
   ];
+
+  environment.localBinInPath = true;
 }

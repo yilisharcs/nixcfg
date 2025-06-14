@@ -1,7 +1,4 @@
 {
-  # NOTE: this shouldn't be set globally
-  environment.localBinInPath = true;
-
   imports = [
     ./configuration.nix
     ../../modules/system/core
