@@ -26,29 +26,26 @@
     # Video player
     vlc
 
-    # PDF viewer
-    evince
-
-    # Image viewer
-    loupe
-
     # GNOME suite
+    dconf-editor
+    evince                 # PDF viewer
     gnome-calculator
     gnome-disk-utility
     gnome-system-monitor
-    # seahorse
-    # gnome-keyring
+    loupe                  # Image viewer
+    seahorse
+    gnome-keyring
   ];
 
-  xdg.mime = {
-    enable = true;
-    defaultApplications = {
-      "application/pdf" = "org.gnome.Evince.desktop";
-      # FIXME: COSMIC files doesn't play nice with Loupe for some reason;
-      # it's opening images in the browser instead. Why???
-      # "image/jpeg" = "org.gnome.Loupe.desktop";
-    };
-  };
+  # xdg.mime = {
+  #   enable = true;
+  #   defaultApplications = {
+  #     "application/pdf" = "org.gnome.Evince.desktop";
+  #     # FIXME: COSMIC files doesn't play nice with Loupe for some reason;
+  #     # it's opening images in the browser instead. Why???
+  #     "image/jpeg" = "org.gnome.Loupe.desktop";
+  #   };
+  # };
 
 
   # # TODO: turn this into its own module

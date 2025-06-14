@@ -50,14 +50,14 @@ if $env.switch? == "true" {
 ```nu
 git add .
 nixos-rebuild build-vm --flake .#S500CA
-./result/bin/run-S500CA-vm -display gtk,zoom-to-fit=on
+./result/bin/run-S500CA-vm -display sdl,gl=on # gtk,zoom-to-fit=on
 ```
 
 ## ls
 
 > Shows the directory structure of the flake
 
-You can inspect it yourself by running `nix run nixpkgs#mask eza`.
+You can inspect it yourself by running `nix run nixpkgs#mask ls`.
 
 ```sh
 eza --tree --sort=type --color=always | less -FRX
