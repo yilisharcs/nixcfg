@@ -1,9 +1,5 @@
 {
-  description = ''
-    yilisharcs' NixOS Configurations
-
-    Template: https://www.youtube.com/watch?v=OFGyKMSJzXY&list=PLCQqUlIAw2cCuc3gRV9jIBGHeekVyBUnC&index=3
-  '';
+  description = "yilisharcs' NixOS Config";
 
   inputs = {
     # Determinate Nix
@@ -11,13 +7,13 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1"; # NixOS, rolling release
     nixpkgs-stable.url = "https://flakehub.com/f/NixOS/nixpkgs/0"; # NixOS, current stable
 
-    # Home-manager
+    # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Extra overlays
+    # 3rd-party overlays
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
@@ -29,22 +25,13 @@
     neovim-nightly-overlay,
     ...
   }: let inherit (self) outputs; in {
-    overlays = import ./overlays { inherit inputs; };
-    # NOTE: 'nixos' is the default hostname
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs outputs; };
-      modules = [
-        determinate.nixosModules.default
-        ./hosts/nixos
-      ];
-    };
-    homeConfigurations = {
-      "yilisharcs@nixos" = home-manager.lib.homeManagerConfiguration {
-        # NOTE: This might be a point of failure
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        extraSpecialArgs = { inherit inputs outputs; };
+    ## FIXME: home manager complains if this is set (or something else)
+    # overlays = import ./overlays { inherit inputs; };
+    nixosConfigurations = {
+      "S500CA" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
         modules = [
-          ./home/yilisharcs/nixos.nix
+          ./hosts/S500CA
         ];
       };
     };

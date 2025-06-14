@@ -1,17 +1,18 @@
-# My Nix Config
+# yilisharcs' NixOS Config
 
-TODO: Make a better readme.
+My NixOS configs and mask commands to test them. Don't expect this to be well-written; I'm enthusiastic, but I'm new at this. I knew not how to extend the template I found online and had to build my own from (mostly) scratch. This took time and headaches, but at last, it seems to be 90% in working order, pending finishing touches.
 
-# Getting started
+# Installation steps
 
-TODO: It's Determinate NixOS now, not Debian.
+Install [NixOS by Determinate Systems](https://github.com/DeterminateSystems/nixos-iso) and run the following commands:
+
+TODO: add the commands
+
+NOTE: It'd be wise to run the following command to generate hardware-specific configuration:
 
 ```sh
-nix run nixpkgs#git -- clone https://github.com/yilisharcs/nixcfg
-sudo nixos-rebuild switch --flake .#nixos
+sudo nixos-generate-config --show-hardware-config > /etc/nixos/hardware-configuration.nix
 ```
-
-I don't know why `nix flake init -t $url` doesn't work. I can't be bothered to figure out right now.
 
 # Things that must be done but I'm not in a hurry to do
 
@@ -21,18 +22,47 @@ I don't know why `nix flake init -t $url` doesn't work. I can't be bothered to f
 
 # MASKFILE RULES
 
-I love mask. It's only natural that I shove some code blocks in here to make my life easier.
+I love mask. It's only natural that I shove some code blocks in here to make my life easier. Did you expect otherwise? 😉
+
+## nix
+
+> Rebuilds the configuration
+
+NOTE: This might fit better as a global maskfile
+
+**OPTIONS**
+* switch
+  * flags: --switch
+  * desc: Create a new entry in the bootloader
+
+```nu
+if $env.switch? == "true" {
+	sudo nixos-rebuild switch --flake .#S500CA
+} else {
+	sudo nixos-rebuild test --flake .#S500CA
+}
+```
 
 ## vm
 
 > Launches a virtual machine to test the new configuration
 
 ```nu
-nixos-rebuild build-vm --flake .#nixos
-./result/bin/run-nixos-vm -display gtk,zoom-to-fit=on
+git add .
+nixos-rebuild build-vm --flake .#S500CA
+./result/bin/run-S500CA-vm -display gtk,zoom-to-fit=on
 ```
 
-# Thank you
+## ls
 
-[@nixhero](https://www.youtube.com/@nixhero): [Getting Started with Nix Home Manager](https://www.youtube.com/watch?v=cZDiqGWPHKI)
-[@Sascha Koenig](https://www.youtube.com/@m3tam3re): [Rebuilding my NixOS config - Part 0: 🔧 NixOS Flakes & Git Basics: Everything You Need to Know](https://www.youtube.com/watch?v=43VvFgPsPtY&list=PLCQqUlIAw2cCuc3gRV9jIBGHeekVyBUnC&index=1)
+> Shows the directory structure of the flake
+
+You can inspect it yourself by running `nix run nixpkgs#mask eza`.
+
+```sh
+eza --tree --sort=type --color=always | less -FRX
+```
+
+# Inspiration
+
+[@LibrePhoenix](https://www.youtube.com/@librephoenix): [How to Start Adding Modularity to your NixOS Config](https://www.youtube.com/watch?v=bV3hfalcSKs)
