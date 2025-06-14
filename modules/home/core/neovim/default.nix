@@ -15,11 +15,4 @@
       ];
     };
   };
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "application/x-zerosize" = "nvim.desktop";
-    };
-  };
 }

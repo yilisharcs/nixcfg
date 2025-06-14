@@ -35,9 +35,8 @@
     };
   };
 
-  # NOTE: COSMIC is at the moment unable to launch
-  # terminal programs that provide .desktop files.
-  # Necessary until there's a way to change the default terminal.
+  # NOTE: COSMIC is at the moment unable to launch terminal programs that provide
+  # .desktop files. Necessary until there's a way to change the default terminal.
   xdg.desktopEntries = {
     nvim = {
       type = "Application";
@@ -45,7 +44,7 @@
       genericName = "Text Editor";
       comment = "Edit text files";
       icon = "nvim";
-      exec = ''kitty nvim'';
+      exec = ''kitty nvim %F'';
       terminal = false;
       startupNotify = false;
       mimeType = [
