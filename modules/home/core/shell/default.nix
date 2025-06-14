@@ -26,12 +26,18 @@
     nsp = "nix search nixpkgs";
 
     # nushell scripts
-    # FIXME: pull these scripts into the nix config
     gitcon = "gitcon.nu";
     gitlist = "gstat.nu";
     mask = "maskfile.nu";
     tokeicon = "tokeicon.nu";
     wut = "helpless.nu";
+  };
+
+  # TODO: this and the script aliases
+  # should be their own module
+  home.file.".local/bin" = {
+    recursive = true;
+    source = ./bin;
   };
 
   programs = {
