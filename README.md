@@ -6,19 +6,42 @@ My NixOS configs and mask commands to test them. Don't expect this to be well-wr
 
 Install [NixOS by Determinate Systems](https://github.com/DeterminateSystems/nixos-iso) and run the following commands:
 
-TODO: add the commands
-
-NOTE: It'd be wise to run the following command to generate hardware-specific configuration:
-
 ```sh
-sudo nixos-generate-config --show-hardware-config > /etc/nixos/hardware-configuration.nix
+nix run nixpkgs#git clone https://github.com/yilisharcs/nixcfg
+
+sudo nixos-rebuild switch --flake nixcfg#S500CA
 ```
 
-# Things that must be done but I'm not in a hurry to do
+> [!WARNING]
+>
+> If you're not me, it'd be wise to follow the steps below before running `nixos-rebuild`:
 
-- git clone ~/.dotfiles and stow contents
-- git clone Projects in ~/Projects/*
-- restore neovide once multigrid is stabilized, round chars render correctly, and has native image support
+```sh
+cd nixcfg/hosts
+mkdir newhost && cp S500CA/default.nix newhost/default.nix
+nixos-generate-config --dir newhost/
+sudo nixos-rebuild switch --flake .#newhost
+```
+
+# TODO list
+
+- [ ] Configure ssh agent (VERY IMPORTANT)
+- [ ] Fix neovim clipboard with xclip
+- [ ] Handle potential issue with tmux clipboard on the tty
+- [ ] Fix theming of GTK and Qt applications (or alternatively, avoid qt programs like the plague)
+- [ ] Configure virtual machines
+- [ ] Bring over some of my dotfiles into this repo
+- [ ] `git clone` Projects in ~/Projects/*
+- [ ] Restore neovide once multigrid is stabilized, round chars render correctly, and has native image support
+- [ ] Do something about home manager complaining about nix settings and overlays
+- [ ] Set wallpaper
+- [ ] Check out more hardware options
+- [ ] Add missing icon for syncthing.desktop
+- [ ] Fix focus: breaks when changing workspaces; does not move to urgent window automatically
+- [ ] Create a dev-tools module
+- [x] Fix: Loupe and Evince (so far) take ages to load, and the mime associations are sometimes hijacked by Brave
+- [ ] Configure Evolution and make it stop crashing randomly (conjecture: might have something to do with an xdg-portal)
+- [ ] etc...
 
 # MASKFILE RULES
 
