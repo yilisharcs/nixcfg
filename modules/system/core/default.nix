@@ -5,6 +5,5 @@
     ./keyboard
     ./locale
     ./nixconf
-    ./pkgs
   ];
 }

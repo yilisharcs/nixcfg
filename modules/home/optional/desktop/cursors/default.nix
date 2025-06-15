@@ -14,13 +14,6 @@
     size = 24;
   };
   gtk = {
-    enable = true;
-    # NOTE@FONTS: this shouldn't be here.
-    font = {
-      package = pkgs.cantarell-fonts;
-      name = "Cantarell";
-      size = 12;
-    };
     # iconTheme = {
     #   name = "breeze-dark";
     #   package = "";
@@ -30,10 +23,10 @@
     #   name = "Adwaita Dark";
     # };
   };
-  qt = {
-    enable = true;
-    # platformTheme.name = "gtk";
-    style.name = "breeze-dark";
-    style.package = pkgs.kdePackages.breeze;
-  };
+  # qt = {
+  #   enable = true;
+  #   # platformTheme.name = "gtk";
+  #   style.name = "breeze-dark";
+  #   style.package = pkgs.kdePackages.breeze;
+  # };
 }

@@ -12,23 +12,17 @@
     ./zoxide.nix
   ];
 
-  home.packages = with pkgs; [
-    eza     # Bash ls alias
-    fzf     # Ctrl-r keybinding
-  ];
-
   home.shell.enableShellIntegration = true;
 
   home.shellAliases = {
     # convenience
     ":q" = "exit";
-    grep = "rg";
     nsp = "nix search nixpkgs";
 
     # nushell scripts
     gitcon = "gitcon.nu";
     gitlist = "gstat.nu";
-    mask = "maskfile.nu";
+    # mask = "maskfile.nu";
     tokeicon = "tokeicon.nu";
     wut = "helpless.nu";
   };
@@ -41,6 +35,7 @@
   };
 
   programs = {
+    # A modern shell
     nushell = {
       enable = true;
       envFile.text = ''
@@ -144,7 +139,6 @@
         ".." = "cd ..";
         cp = "cp -iv";
         rm = "rm -I";
-        ls = "eza";
       };
       shellOptions = [
         "checkwinsize"

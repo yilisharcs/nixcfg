@@ -8,8 +8,7 @@
   imports = [
     ../home/core
     ../home/optional/terminal
-    ../home/optional/desktop/cursors
-    ../home/optional/desktop/kitty
+    ../home/optional/desktop
   ];
 
   home.activation = {

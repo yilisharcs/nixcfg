@@ -1,17 +1,5 @@
 {
-  pkgs,
-  ...
-}:
-
-{
   programs = {
-    gh = {
-      enable = true;
-      settings = {
-        git_protocol = "ssh";
-      };
-    };
-
     git = {
       enable = true;
       aliases = {
@@ -30,6 +18,13 @@
         pull.rebase = true;
         rebase.autoStash = true;
         safe.directory = "/etc/nixos";
+      };
+    };
+
+    gh = {
+      enable = true;
+      settings = {
+        git_protocol = "ssh";
       };
     };
   };

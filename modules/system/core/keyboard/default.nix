@@ -8,7 +8,6 @@
   # Configure keymap in X11
   services.xserver.xkb = lib.mkDefault {
     layout = "br,us";
-    options = "terminate:ctrl_alt_bksp";
   };
 
   # console = {
@@ -41,5 +40,4 @@
       };
     };
   };
-
 }

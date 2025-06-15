@@ -4,12 +4,11 @@
 }:
 
 {
-  environment.systemPackages = [
+  home.packages= [
     pkgs.brave
   ];
 
-  xdg.mime = {
-    enable = true;
+  xdg.mimeApps = {
     defaultApplications = {
       # "application/xhtml+xml" = "brave-browser.desktop"; # NOTE: what is this for?
       "text/html" = "brave-browser.desktop";
@@ -20,8 +19,9 @@
     };
   };
 
-  environment.variables = {
-    # TODO: test with firefox also installed
-    DEFAULT_BROWSER = "${pkgs.brave}/bin/brave";
-  };
+  # TODO: use home variables
+  # environment.variables = {
+  #   # TODO: test with firefox also installed
+  #   DEFAULT_BROWSER = "${pkgs.brave}/bin/brave";
+  # };
 }

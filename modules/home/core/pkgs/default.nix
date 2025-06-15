@@ -6,25 +6,24 @@
 {
   imports = [
     ./bat
+    ./eza
+    ./fd
+    ./fzf
     ./git
     ./less
     ./neovim
+    ./ripgrep
+    ./tmux
+    ./xkb
+    ./yazi
   ];
 
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     curl             # CLI featureful downloader
-    eza              # Better ls/tree
-    fd               # Better find
     file
-    fzf              # Fuzzy finder
     man-pages        # Linux manpages
     mask             # Task runner with markdown
-    nushell          # A modern shell
-    ripgrep          # Better grep
     time             # Simple command stopwatch
-    tmux             # Terminal multiplexer
     wget             # CLI recursive downloader
   ];
-
-  environment.localBinInPath = true;
 }

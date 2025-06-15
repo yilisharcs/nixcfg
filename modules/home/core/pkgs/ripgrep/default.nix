@@ -1,6 +1,6 @@
 {
+  # Better grep
   programs = {
-    ripgrep-all.enable = true;
     ripgrep = {
       enable = true;
       arguments = [
@@ -13,5 +13,9 @@
         "--smart-case"
       ];
     };
+  };
+
+  home.shellAliases = {
+    grep = "rg";
   };
 }

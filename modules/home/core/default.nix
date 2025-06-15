@@ -1,14 +1,7 @@
 {
   imports = [
     ./editorconfig
-    ./fd
-    ./fzf
-    ./git
-    ./neovim
-    ./ripgrep
+    ./pkgs
     ./shell
-    ./tmux
-    ./xkb
-    ./yazi
   ];
 }
