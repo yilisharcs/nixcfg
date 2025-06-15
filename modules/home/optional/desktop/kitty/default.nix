@@ -71,4 +71,9 @@
       };
     };
   };
+
+  xdg.mimeApps.defaultApplications = {
+    "application/x-terminal-emulator" = "kitty.desktop";
+    "x-scheme-handler/terminal" = "kitty.desktop";
+  };
 }
