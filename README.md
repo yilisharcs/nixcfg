@@ -39,7 +39,8 @@ sudo nixos-rebuild switch --flake .#newhost
 - [ ] Add missing icon for syncthing.desktop
 - [ ] Fix focus: breaks when changing workspaces; does not move to urgent window automatically
 - [ ] Create a dev-tools module
-- [ ] Fix: Loupe and Evince (so far) take ages to load, and the mime associations are sometimes hijacked by Brave
+- [x] Fix: Loupe and Evince (so far) take ages to load
+- [ ] Fix: Loupe has low priority despite setting mimetype correctly
 - [x] Configure Evolution and make it stop crashing randomly (conjecture: might have something to do with an xdg-portal)
 - [ ] etc...
 

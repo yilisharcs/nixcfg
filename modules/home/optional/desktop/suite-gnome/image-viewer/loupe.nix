@@ -6,7 +6,6 @@
 {
   home.packages = [
     pkgs.loupe
-    pkgs.glib
   ];
 
   dconf.settings = {
