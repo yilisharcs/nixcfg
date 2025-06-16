@@ -30,6 +30,10 @@
           count_cut      = { fg = "black"; bg = "red"; };
           count_selected = { fg = "black"; bg = "yellow"; };
         };
+        tabs = {
+          active   = { bg = "blue"; fg = "black"; bold = true; };
+          inactive = { fg = "blue"; bg = "black"; };
+        };
         mode = {
           normal_main = { bg = "blue"; fg = "black"; bold = true; };
           normal_alt  = { fg = "blue"; bg = "black"; };
@@ -125,7 +129,7 @@
           { on = ["g" "n"]; run = "cd ~/.dotfiles/nvim/.config/nvim";  desc = "Go to nvim/init.lua"; }
           { on = ["g" "p"]; run = "cd ~/Projects";                     desc = "Go ~/Projects"; }
           { on = ["g" "r"]; run = "cd ~/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f"; desc = "Go to cargo registry"; }
-          { on = ["g" "s"]; run = "cd ~/.dotfiles/bin/.local/bin";     desc = "Go to private /bin"; }
+          { on = ["g" "s"]; run = "cd ~/.local/bin";                   desc = "Go to private /bin"; }
           { on = ["g" "v"]; run = "cd ~/Videos";                       desc = "Go ~/Videos"; }
           { on = ["g" "z"]; run = "cd ~/.local/share/nvim/lazy";       desc = "Go to lazydir"; }
         ];

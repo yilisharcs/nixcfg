@@ -22,7 +22,7 @@
     # nushell scripts
     gitcon = "gitcon.nu";
     gitlist = "gstat.nu";
-    # mask = "maskfile.nu";
+    mask = "maskfile.nu";
     tokeicon = "tokeicon.nu";
     wut = "helpless.nu";
   };
