@@ -14,6 +14,11 @@
     ZK_NOTEBOOK_DIR = "$HOME/notebook";
   };
 
+  home.file.".config/zk/templates" = {
+    recursive = true;
+    source = ./templates;
+  };
+
   programs = {
     # zettelkasten helper
     zk = {
