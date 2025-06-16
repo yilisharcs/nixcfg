@@ -9,6 +9,7 @@
     ./btop
     ./cmus
     ./fastfetch
+    ./gdu
     ./jujutsu
     ./taskwarrior
     ./yt-dlp
@@ -17,7 +18,6 @@
 
   home.packages = with pkgs; [
     entr             # Event Notify Test Runner
-    gdu              # Disk space analyzer
     ripgrep-all      # ripgrep extension
     trash-cli
     w3m              # TTY browser
