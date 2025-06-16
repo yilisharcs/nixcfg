@@ -10,7 +10,7 @@
     ./evolution
     ./fonts
     ./kitty
-    # ./suite-gnome
+    ./suite-gnome
   ];
 
   home.packages= with pkgs; [

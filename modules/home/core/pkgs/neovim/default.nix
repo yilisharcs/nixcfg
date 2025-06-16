@@ -25,5 +25,6 @@
   xdg.mimeApps.defaultApplications = {
     "application/octet-stream" = "nvim.desktop";
     "application/x-zerosize" = "nvim.desktop";
+    "text/plain" = "nvim.desktop";
   };
 }

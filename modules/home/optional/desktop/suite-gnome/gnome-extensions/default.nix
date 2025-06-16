@@ -1,21 +1,18 @@
 {
-  config,
   pkgs,
+  ...
 }:
 
 {
-  # FIXME@GNOME-shell-ext: this shouldn't be here(?)
-  programs = {
-    gnome-shell = {
-      enable = true;
-      extensions = with pkgs.gnomeExtensions; [
-        { package = appindicator; }
-        { package = clipboard-indicator; }
-        { package = dash-to-dock; }
-        { package = just-perfection; }
-        { package = vitals; }
-      ];
-    };
+  programs.gnome-shell = {
+    enable = true;
+    extensions = with pkgs.gnomeExtensions; [
+      { package = appindicator; }
+      { package = clipboard-indicator; }
+      { package = dash-to-dock; }
+      { package = just-perfection; }
+      { package = vitals; }
+    ];
   };
 
   dconf.settings = {

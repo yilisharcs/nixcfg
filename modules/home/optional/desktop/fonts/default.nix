@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   ...
 }:
@@ -21,6 +22,13 @@
   gtk.font = {
     package = pkgs.cantarell-fonts;
     name = "Cantarell";
-    size = 12;
+    size = lib.mkDefault 11;
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      document-font-name = "Cantarell 11";
+      font-name = "Cantarell 11";
+    };
   };
 }

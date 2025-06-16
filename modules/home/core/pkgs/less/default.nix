@@ -12,6 +12,7 @@
       ^P         up
       ^N         down
       ^D         delete
+      ^W         word-backspace
 
       #env
       LESS=-FRX

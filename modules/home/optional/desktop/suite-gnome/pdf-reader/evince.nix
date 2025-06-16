@@ -4,11 +4,11 @@
 }:
 
 {
-  environment.systemPackages = [
+  home.packages = [
     pkgs.evince
   ];
 
-  xdg.mime.defaultApplications = {
+  xdg.mimeApps.defaultApplications = {
     "application/pdf" = "org.gnome.Evince.desktop";
   };
 }

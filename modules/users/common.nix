@@ -20,5 +20,6 @@
     # Necessary until there's a way to change the default terminal.
     # NOTE: the kitty symlink can fail if ~/.local/bin/ doesn't exist.
     # TODO: figure out how to create empty directories with nix
+    # FIXME: this shouldn't be here.
   };
 }

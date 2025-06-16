@@ -144,62 +144,11 @@
   # };
   #
 
-  # dconf.settings = with lib.hm.gvariant; {
-  #   "org/gnome/desktop/interface" = {
-  #     accent-color = "green";
-  #     color-scheme = "prefer-dark";
-  #     cursor-size = 24;
-  #     cursor-theme = "Bibata-Modern-Ice";
-  #   };
-  #   "org/gnome/desktop/input-sources" = {
-  #     sources = [(mkTuple ["xkb" "br"])];
-  #   };
-  #   "org/gnome/evolution/calendar" = {
-  #     use-24hour-format = true;
-  #   };
-  #   "org/gnome/evolution/mail" = {
-  #     composer-magic-smileys = true;
-  #     composer-unicode-smileys = true;
-  #     image-loading-policy = "always";
-  #     layout = 1;
-  #     message-list-sort-on-header-click = "always";
-  #     show-animated-images = true;
-  #     show-to-do-bar = false;
-  #   };
-  #   "org/gnome/evolution/plugin/external-editor" = {
-  #     # command = "neovide -- -c 'set spell' -c 'startinsert'";
-  #     command = "kitty nvim -c 'set spell' -c 'startinsert'";
-  #     launch-on-key-press = true;
-  #   };
-  #   "org/gnome/evolution/shell" = {
-  #     icon-only-buttons-in-header-bar = true;
-  #     statusbar-visible = false;
-  #     webkit-minimum-font-size = 16;
-  #   };
-  #   "org/gnome/settings-daemon/plugins/color" = {
-  #     night-light-enabled = true;
-  #     night-light-schedule-automatic = false;
-  #   };
-  #   "org/gnome/shell" = {
-  #     favorite-apps = [
-  #       # "neovide.desktop"
-  #       "neovim-kitty.desktop"
-  #       "org.gnome.Evolution.desktop"
-  #       "brave-browser.desktop"
-  #       "org.inkscape.Inkscape.desktop"
-  #       "org.gnome.Calendar.desktop"
-  #       "org.gnome.Music.desktop"
-  #       "org.gnome.Nautilus.desktop"
-  #     ];
-  #   };
-  # };
-
   # xdg.desktopEntries = {
 
   # xdg.mimeApps = {
   #   enable = true;
   #   defaultApplications = {
-  #     "application/pdf" = "org.gnome.Evince.desktop";
   #     "image/png" = "org.gnome.Loupe.desktop";
   #     # NOTE: Evolution-(ID) changes on switching machines
   #     # "x-scheme-handler/mailto" = "userapp-Evolution-I70E62.desktop";

@@ -22,8 +22,8 @@
       show-to-do-bar = false;
     };
     "org/gnome/evolution/plugin/external-editor" = {
-      # command = "neovide -- -c 'set spell' -c 'startinsert'";
-      command = "kitty nvim -c 'set spell' -c 'startinsert'";
+      # command = "neovide -- -c 'set spell'";
+      command = "kitty nvim -c 'set spell'";
       launch-on-key-press = true;
     };
     "org/gnome/evolution/shell" = {
