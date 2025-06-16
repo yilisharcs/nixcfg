@@ -14,13 +14,6 @@
     ./vcs
   ];
 
-  # ## TODO: make this into a shared module
-  # programs.ssh = {
-  #   enable = true;
-  #   addKeysToAgent = "ask";
-  # };
-  # programs.gpg.enable = true;
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = lib.mkDefault username;

@@ -10,6 +10,7 @@
     ./fd
     ./fzf
     ./git
+    ./gpg
     ./less
     ./neovim
     ./ripgrep
