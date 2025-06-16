@@ -24,6 +24,9 @@
 
     # Video player
     vlc
+
+    # Torrent client
+    qbittorrent
   ];
 
   gtk.enable = true;

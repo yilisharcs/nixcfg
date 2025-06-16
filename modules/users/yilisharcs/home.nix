@@ -9,6 +9,7 @@
 {
   imports = [
     ../common.nix
+    ./qbittorrent
     ./syncthing
     ./vcs
   ];
@@ -68,7 +69,6 @@
     # obs-studio
     # picard                         # music metadata editor
     # porsmo                         # cli pomodoro app
-    # qbittorrent
     # speedtest-rs
     # typst                          # markup-based typesetting system
     # # uutils-coreutils-noprefix      # gnu coreutils rust rewrite
