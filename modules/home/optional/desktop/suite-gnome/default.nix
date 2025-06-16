@@ -65,14 +65,6 @@
       button-layout = "appmenu:minimize,close";
       focus-mode = "sloppy";
     };
-    "org/gnome/evince/default" = {
-      inverted-colors = true;
-      show-sidebar = false;
-      sizing-mode = "fit-width";
-    };
-    "org/gnome/Loupe" = {
-      show-properties = false;
-    };
     "org/gnome/mutter" = {
       center-new-windows = true;
     };

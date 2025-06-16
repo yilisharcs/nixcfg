@@ -9,6 +9,7 @@
   ];
 
   dconf.settings = {
+    # NOTE: this does nothing
     "org/gnome/Loupe" = {
       show-properties = false;
     };
