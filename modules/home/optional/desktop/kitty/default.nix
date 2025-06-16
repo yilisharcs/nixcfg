@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
@@ -6,6 +8,19 @@
 {
   home.shellAliases = {
     icat = "kitty icat";
+  };
+
+  home.activation = {
+    # Necessary until there's a way to change the default terminal.
+    kittyDefaultTerm = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      run mkdir -p "${config.home.homeDirectory}/.local/bin"
+      run ln -sf "/etc/profiles/per-user/yilisharcs/bin/kitty" "${config.home.homeDirectory}/.local/bin/cosmic-term"
+      run ln -sf "/etc/profiles/per-user/yilisharcs/bin/kitty" "${config.home.homeDirectory}/.local/bin/kgx"
+    '';
+  };
+
+  home.file.".config/kitty/current-theme.conf" = {
+    source = ./theme.conf;
   };
 
   programs = {
@@ -26,6 +41,7 @@
         shell = "${pkgs.nushell}/bin/nu";
       };
       extraConfig = ''
+        include current-theme.conf
         font_size 13.0
         font_family      family='JetBrainsMono Nerd Font'
         bold_font        family='JetBrainsMono Nerd Font' style=Bold
