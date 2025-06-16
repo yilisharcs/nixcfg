@@ -5,33 +5,20 @@
 
 {
   imports = [
+    ./bin-scripts
     # TODO: should these be optional?
-    ./carapace.nix
-    ./direnv.nix
-    ./starship.nix
-    ./zoxide.nix
+    ./carapace
+    ./direnv
+    ./starship
+    ./zoxide
   ];
 
   home.shell.enableShellIntegration = true;
 
   home.shellAliases = {
     # convenience
-    ":q" = "exit";
-    nsp = "nix search nixpkgs";
-
-    # nushell scripts
-    gitcon = "gitcon.nu";
-    gitlist = "gstat.nu";
-    mask = "maskfile.nu";
-    tokeicon = "tokeicon.nu";
-    wut = "helpless.nu";
-  };
-
-  # TODO: this and the script aliases
-  # should be their own module
-  home.file.".local/bin" = {
-    recursive = true;
-    source = ./bin;
+    ":q"     = "exit";
+    nsp      = "nix search nixpkgs";
   };
 
   programs = {

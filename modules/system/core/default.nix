@@ -6,6 +6,4 @@
     ./locale
     ./nixconf
   ];
-
-  environment.localBinInPath = true;
 }
