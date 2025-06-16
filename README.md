@@ -30,7 +30,7 @@ sudo nixos-rebuild switch --flake .#newhost
 - [ ] Handle potential issue with tmux clipboard on the tty
 - [ ] Fix theming of GTK and Qt applications (or alternatively, avoid qt programs like the plague)
 - [ ] Configure virtual machines
-- [ ] Bring over some of my dotfiles into this repo
+- [x] Bring over some of my dotfiles into this repo
 - [ ] `git clone` Projects in ~/Projects/*
 - [ ] Restore neovide once multigrid is stabilized, round chars render correctly, and has native image support
 - [ ] Do something about home manager complaining about nix settings and overlays
@@ -42,6 +42,7 @@ sudo nixos-rebuild switch --flake .#newhost
 - [x] Fix: Loupe and Evince (so far) take ages to load
 - [ ] Fix: Loupe has low priority despite setting mimetype correctly
 - [x] Configure Evolution and make it stop crashing randomly (conjecture: might have something to do with an xdg-portal)
+- [ ] Create ~/.local/bin for every user without home-manager (systemd.tmpfiles? systemd.user.tmpfiles.users?)
 - [ ] etc...
 
 # MASKFILE RULES

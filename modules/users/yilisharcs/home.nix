@@ -149,7 +149,6 @@
   # xdg.mimeApps = {
   #   enable = true;
   #   defaultApplications = {
-  #     "image/png" = "org.gnome.Loupe.desktop";
   #     # NOTE: Evolution-(ID) changes on switching machines
   #     # "x-scheme-handler/mailto" = "userapp-Evolution-I70E62.desktop";
   #   };

@@ -20,8 +20,11 @@
       name = "Cmus";
       comment = "Play and organize your music collection";
       icon = "cmus";
-      exec = "cmus";
-      terminal = true;
+      # NOTE: waiting for cosmic to fix their stuff
+      exec = "kitty cmus";
+      terminal = false;
+      # exec = "cmus";
+      # terminal = true;
       categories = ["Player" "Audio"];
       settings = {
         TryExec = "cmus";
