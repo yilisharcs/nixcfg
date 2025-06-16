@@ -116,22 +116,22 @@
           }
 
           # Goto
-          { on = ["g" "/"]; run = "cd /";                              desc = "Go to root"; }
-          { on = ["g" "b"]; run = "cd ~/notebook";                     desc = "Go ~/notebook"; }
-          { on = ["g" "B"]; run = "cd ~/vault";                        desc = "Go ~/vault"; }
-          { on = ["g" "c"]; run = "cd ~/.config";                      desc = "Go ~/.config"; }
-          { on = ["g" "d"]; run = "cd ~/Downloads";                    desc = "Go ~/Downloads"; }
-          { on = ["g" "e"]; run = "cd ~/Documents";                    desc = "Go ~/Documents"; }
-          { on = ["g" "f"]; run = "follow";                            desc = "Follow hovered symlink"; }
-          { on = ["g" "i"]; run = "cd ~/Pictures";                     desc = "Go ~/Pictures"; }
-          { on = ["g" "l"]; run = "cd ~/.dotfiles";                    desc = "Go ~/.dotfiles"; }
-          { on = ["g" "m"]; run = "cd ~/Music";                        desc = "Go ~/Music"; }
-          { on = ["g" "n"]; run = "cd ~/.dotfiles/nvim/.config/nvim";  desc = "Go to nvim/init.lua"; }
-          { on = ["g" "p"]; run = "cd ~/Projects";                     desc = "Go ~/Projects"; }
-          { on = ["g" "r"]; run = "cd ~/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f"; desc = "Go to cargo registry"; }
-          { on = ["g" "s"]; run = "cd ~/.local/bin";                   desc = "Go to private /bin"; }
-          { on = ["g" "v"]; run = "cd ~/Videos";                       desc = "Go ~/Videos"; }
-          { on = ["g" "z"]; run = "cd ~/.local/share/nvim/lazy";       desc = "Go to lazydir"; }
+          { on = ["g" "/"]; run = "cd /";                                       desc = "Go to root"; }
+          { on = ["g" "b"]; run = "cd ~/notebook";                              desc = "Go ~/notebook"; }
+          { on = ["g" "B"]; run = "cd ~/vault";                                 desc = "Go ~/vault"; }
+          { on = ["g" "c"]; run = "cd ~/.config";                               desc = "Go ~/.config"; }
+          { on = ["g" "d"]; run = "cd ~/Downloads";                             desc = "Go ~/Downloads"; }
+          { on = ["g" "e"]; run = "cd ~/Documents";                             desc = "Go ~/Documents"; }
+          { on = ["g" "f"]; run = "follow";                                     desc = "Follow hovered symlink"; }
+          { on = ["g" "i"]; run = "cd ~/Pictures";                              desc = "Go ~/Pictures"; }
+          { on = ["g" "l"]; run = "cd ~/Nixcfg";                                desc = "Go ~/Nixcfg"; }
+          { on = ["g" "m"]; run = "cd ~/Music";                                 desc = "Go ~/Music"; }
+          { on = ["g" "n"]; run = "cd ~/Nixcfg/modules/users/yilisharcs/nvim";  desc = "Go to nvim/init.lua"; }
+          { on = ["g" "p"]; run = "cd ~/Projects";                              desc = "Go ~/Projects"; }
+          { on = ["g" "r"]; run = "cd ~/.cargo/registry/src";                   desc = "Go to cargo registry"; }
+          { on = ["g" "s"]; run = "cd ~/.local/bin";                            desc = "Go to private /bin"; }
+          { on = ["g" "v"]; run = "cd ~/Videos";                                desc = "Go ~/Videos"; }
+          { on = ["g" "z"]; run = "cd ~/.local/share/nvim/lazy";                desc = "Go to lazydir"; }
         ];
       };
     };
