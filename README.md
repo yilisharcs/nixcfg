@@ -43,6 +43,7 @@ sudo nixos-rebuild switch --flake .#newhost
 - [ ] Fix: Loupe has low priority despite setting mimetype correctly
 - [x] Configure Evolution and make it stop crashing randomly (conjecture: might have something to do with an xdg-portal)
 - [ ] Create ~/.local/bin for every user without home-manager (systemd.tmpfiles? systemd.user.tmpfiles.users?)
+- [ ] Put all templates in a special folder
 - [ ] etc...
 
 # MASKFILE RULES
