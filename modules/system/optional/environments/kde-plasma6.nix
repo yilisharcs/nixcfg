@@ -5,7 +5,7 @@
 
 {
   imports = [
-    ./common.nix
+    ./common
   ];
 
   # TODO: include useful KDE packages

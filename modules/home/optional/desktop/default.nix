@@ -6,7 +6,6 @@
 {
   imports = [
     ./browser/brave.nix
-    ./cursors
     ./evolution
     ./fonts
     ./kitty

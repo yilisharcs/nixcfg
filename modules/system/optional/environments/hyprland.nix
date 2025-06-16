@@ -1,6 +1,6 @@
 {
   imports = [
-    ./common.nix
+    ./common
   ];
 
   # TODO: THIS IS INCOMPLETE
