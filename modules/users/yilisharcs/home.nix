@@ -9,6 +9,7 @@
 {
   imports = [
     ../common.nix
+    ./nvim
     ./qbittorrent
     ./syncthing
     ./vcs
