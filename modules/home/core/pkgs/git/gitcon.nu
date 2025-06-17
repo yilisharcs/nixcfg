@@ -1,1 +1,1 @@
-../../scripts/gitcon.nu
+../../../scripts/gitcon.nu

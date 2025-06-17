@@ -1,1 +1,1 @@
-../../scripts/maskfile.nu
+../../../scripts/maskfile.nu

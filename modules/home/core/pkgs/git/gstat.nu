@@ -1,1 +1,0 @@
-../../scripts/gstat.nu

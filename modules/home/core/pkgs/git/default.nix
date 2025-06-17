@@ -31,7 +31,7 @@
 
   home.shellAliases = {
     gitcon  = "gitcon.nu";
-    gitlist = "gstat.nu";
+    gitlist = "gitlist.nu";
   };
 
   home.file = {
