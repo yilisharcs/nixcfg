@@ -5,7 +5,7 @@ if vim.g.neovide then
     callback = function()
       vim.cmd([[
         if argc(-1) == 0
-          cd ~/.dotfiles
+          cd ~/Nixcfg
         endif
       ]])
     end
