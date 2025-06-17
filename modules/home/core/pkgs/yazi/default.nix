@@ -44,8 +44,20 @@
         };
         icon = {
           prepend_dirs = [
-            { name = "Projects"; text = ""; }
-            { name = "Nixcfg"; text = ""; }
+            { name = ".git";      text = ""; fg = "#f54d27"; }
+            { name = ".jj";       text = ""; fg = "#f54d27"; }
+            { name = "Documents"; text = ""; fg = "#85ea2d"; }
+            { name = "Downloads"; text = ""; fg = "#85ea2d"; }
+            { name = "Games";     text = "󰺶"; fg = "#85ea2d"; }
+            { name = "Library";   text = ""; fg = "#85ea2d"; }
+            { name = "Music";     text = ""; fg = "#85ea2d"; }
+            { name = "Nixcfg";    text = ""; fg = "#85ea2d"; }
+            { name = "Pictures";  text = ""; fg = "#85ea2d"; }
+            { name = "Projects";  text = ""; fg = "#85ea2d"; }
+            { name = "Videos";    text = ""; fg = "#85ea2d"; }
+          ];
+          prepend_files = [
+            { name = "maskfile.md"; text = ""; fg = "#6d8086"; }
           ];
         };
       };
