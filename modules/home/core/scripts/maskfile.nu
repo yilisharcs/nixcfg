@@ -20,6 +20,6 @@ def --wrapped main [...rest] {
   if ($path == "/") {
     mask ...$rest
   } else {
-    mask --maskfile ([$path "/maskfile.md"] | str join) ...$rest
+    mask --maskfile ([$path "maskfile.md"] | path join) ...$rest
   }
 }

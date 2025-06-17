@@ -12,6 +12,7 @@
     ./git
     ./gpg
     ./less
+    ./mask
     ./neovim
     ./ripgrep
     ./tmux
@@ -23,7 +24,6 @@
     curl             # CLI featureful downloader
     file
     man-pages        # Linux manpages
-    mask             # Task runner with markdown
     time             # Simple command stopwatch
     wget             # CLI recursive downloader
   ];
