@@ -61,7 +61,7 @@ NOTE: This might fit better as a global maskfile
   * flags: --switch
   * desc: Create a new entry in the bootloader
 
-```nushell
+```nu
 if $env.switch? == "true" {
 	sudo nixos-rebuild switch --flake .#S500CA
 } else {
@@ -83,9 +83,7 @@ nixos-rebuild build-vm --flake .#S500CA
 
 > Shows the directory structure of the flake
 
-You can inspect it yourself by running `nix run nixpkgs#mask ls`.
-
-```bash
+```nu
 eza --tree --sort=type --color=always | less -FRX
 ```
 
