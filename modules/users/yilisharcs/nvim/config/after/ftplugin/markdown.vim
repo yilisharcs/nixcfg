@@ -1,7 +1,6 @@
 setlocal colorcolumn=0
 setlocal wrap nornu
 setlocal nolist
-setlocal noexpandtab
 setlocal suffixesadd+=.md,.lemon
 setlocal iskeyword+=-,'
 let &l:commentstring='<!-- %s -->'

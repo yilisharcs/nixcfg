@@ -1,5 +1,4 @@
 setlocal colorcolumn=120
-setlocal expandtab
 setlocal keywordprg=:help
 
 " Source config
