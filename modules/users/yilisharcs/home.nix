@@ -81,7 +81,6 @@
     # # hyperfine                      # cmdline benchmarking tool
     # # mprocs                         # parallel command runner
     # # sqlite
-    # tokei                          # loc counter
   ];
 
   # programs = {

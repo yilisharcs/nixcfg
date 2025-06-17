@@ -6,11 +6,6 @@
 {
   imports = [
     ./bin-scripts
-    # TODO: should these be optional?
-    ./carapace
-    ./direnv
-    ./starship
-    ./zoxide
   ];
 
   home.shellAliases = {

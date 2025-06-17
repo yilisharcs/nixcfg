@@ -18,6 +18,7 @@
     ./tmux
     ./xkb
     ./yazi
+    ./zoxide
   ];
 
   home.packages = with pkgs; [

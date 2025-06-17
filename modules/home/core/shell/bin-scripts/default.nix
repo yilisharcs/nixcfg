@@ -19,7 +19,6 @@
   # };
 
   home.shellAliases = {
-    tokeicon = "tokeicon.nu";
     wut      = "helpless.nu";
   };
 }

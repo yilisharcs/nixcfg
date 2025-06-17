@@ -7,11 +7,15 @@
   imports = [
     ./bacon
     ./btop
+    ./carapace
     ./cmus
+    ./direnv
     ./fastfetch
     ./gdu
     ./jujutsu
+    ./starship
     ./taskwarrior
+    ./tokei
     ./yt-dlp
     ./zk
   ];
