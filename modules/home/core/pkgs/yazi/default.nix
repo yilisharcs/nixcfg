@@ -127,6 +127,10 @@
             desc = "Restore trashed file";
           }
 
+          # Plugins: zoxide & fzf
+          { on = "z"; run = "plugin zoxide"; desc = "Jump to a directory via zoxide"; }
+          { on = "Z"; run = "plugin fzf";    desc = "Jump to a file/directory via fzf"; }
+
           # Goto
           { on = ["g" "/"]; run = "cd /";                                       desc = "Go to root"; }
           { on = ["g" "b"]; run = "cd ~/notebook";                              desc = "Go ~/notebook"; }
