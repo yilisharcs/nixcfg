@@ -16,6 +16,7 @@
     ./starship
     ./taskwarrior
     ./tokei
+    ./wiki-tui
     ./yt-dlp
     ./zk
   ];
@@ -24,11 +25,11 @@
     entr             # Event Notify Test Runner
     ffmpeg           # Universal media converter
     imagemagick      # Bitmap image tool
+    pciutils         # (Provides `lspci`)
     porsmo           # CLI pomodoro app
     ripgrep-all      # ripgrep extension
     speedtest-rs     # Check your internet speed
     trash-cli
     w3m              # TTY browser
-    wiki-tui
   ];
 }
