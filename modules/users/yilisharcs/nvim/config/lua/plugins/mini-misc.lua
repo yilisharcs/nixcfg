@@ -3,7 +3,7 @@ return {
   version = false,
   event = "BufReadPost [^:]*",
   config = function()
-    require("mini.misc").setup_auto_root({ ".git", ".jj", "Makefile" })
+    require("mini.misc").setup_auto_root({ ".git", ".jj", "flake.nix" })
     require("mini.misc").setup_restore_cursor({ center = false })
   end
 }
