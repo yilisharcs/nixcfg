@@ -19,8 +19,6 @@
   # };
 
   home.shellAliases = {
-    gitcon   = "gitcon.nu";
-    gitlist  = "gstat.nu";
     tokeicon = "tokeicon.nu";
     wut      = "helpless.nu";
   };

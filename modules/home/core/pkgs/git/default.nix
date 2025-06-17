@@ -28,4 +28,14 @@
       };
     };
   };
+
+  home.shellAliases = {
+    gitcon  = "gitcon.nu";
+    gitlist = "gstat.nu";
+  };
+
+  home.file = {
+    ".local/bin/gitcon.nu".source = ./gitcon.nu;
+    ".local/bin/gitlist.nu".source = ./gitlist.nu;
+  };
 }
