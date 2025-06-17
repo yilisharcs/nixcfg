@@ -6,7 +6,7 @@ My NixOS configs and mask commands to test them. Don't expect this to be well-wr
 
 Install [NixOS by Determinate Systems](https://github.com/DeterminateSystems/nixos-iso) and run the following commands:
 
-```sh
+```bash
 nix run nixpkgs#git clone https://github.com/yilisharcs/nixcfg
 
 sudo nixos-rebuild switch --flake nixcfg#S500CA
@@ -16,7 +16,7 @@ sudo nixos-rebuild switch --flake nixcfg#S500CA
 >
 > If you're not me, it'd be wise to create your own user and follow the steps below before running `nixos-rebuild`:
 
-```sh
+```bash
 cd nixcfg/hosts
 mkdir newhost && cp S500CA/default.nix newhost/default.nix
 nixos-generate-config --dir newhost/
@@ -61,7 +61,7 @@ NOTE: This might fit better as a global maskfile
   * flags: --switch
   * desc: Create a new entry in the bootloader
 
-```nu
+```nushell
 if $env.switch? == "true" {
 	sudo nixos-rebuild switch --flake .#S500CA
 } else {
@@ -85,7 +85,7 @@ nixos-rebuild build-vm --flake .#S500CA
 
 You can inspect it yourself by running `nix run nixpkgs#mask ls`.
 
-```sh
+```bash
 eza --tree --sort=type --color=always | less -FRX
 ```
 
