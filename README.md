@@ -14,7 +14,7 @@ sudo nixos-rebuild switch --flake nixcfg#S500CA
 
 > [!WARNING]
 >
-> If you're not me, it'd be wise to follow the steps below before running `nixos-rebuild`:
+> If you're not me, it'd be wise to create your own user and follow the steps below before running `nixos-rebuild`:
 
 ```sh
 cd nixcfg/hosts

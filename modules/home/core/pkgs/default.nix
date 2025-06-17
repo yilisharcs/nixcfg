@@ -28,6 +28,7 @@
     file
     man-pages        # Linux manpages
     time             # Simple command stopwatch
+    tinyxxd          # Hex dump utility
     wget             # CLI recursive downloader
   ];
 
