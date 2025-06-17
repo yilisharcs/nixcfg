@@ -9,6 +9,7 @@
     ./evolution
     ./fonts
     ./kitty
+    ./qbittorrent
     ./suite-gnome
   ];
 
