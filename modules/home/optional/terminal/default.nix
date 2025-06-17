@@ -12,6 +12,7 @@
     ./direnv
     ./fastfetch
     ./gdu
+    ./hardware-utils
     ./jujutsu
     ./starship
     ./taskwarrior
@@ -25,7 +26,6 @@
     entr             # Event Notify Test Runner
     ffmpeg           # Universal media converter
     imagemagick      # Bitmap image tool
-    pciutils         # (Provides `lspci`)
     porsmo           # CLI pomodoro app
     ripgrep-all      # ripgrep extension
     speedtest-rs     # Check your internet speed
