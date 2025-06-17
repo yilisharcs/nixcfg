@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
@@ -30,4 +32,11 @@
   ];
 
   home.shell.enableShellIntegration = true;
+
+  home.sessionPath = ["$HOME/.local/bin"];
+  home.activation = {
+    mkLocalBinDir = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      run mkdir -p "${config.home.homeDirectory}/.local/bin"
+    '';
+  };
 }
