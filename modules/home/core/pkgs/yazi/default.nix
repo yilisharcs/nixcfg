@@ -126,7 +126,8 @@
           { on = ["g" "i"]; run = "cd ~/Pictures";                              desc = "Go ~/Pictures"; }
           { on = ["g" "l"]; run = "cd ~/Nixcfg";                                desc = "Go ~/Nixcfg"; }
           { on = ["g" "m"]; run = "cd ~/Music";                                 desc = "Go ~/Music"; }
-          { on = ["g" "n"]; run = "cd ~/Nixcfg/modules/users/yilisharcs/nvim";  desc = "Go to nvim/init.lua"; }
+          { on = ["g" "n"]; run = "cd ~/Nixcfg/modules/users/yilisharcs/nvim";  desc = "Go to nix repo nvim/init.lua"; }
+          { on = ["g" "N"]; run = "cd ~/.config/nvim";                          desc = "Go to symlinked nvim/init.lua"; }
           { on = ["g" "p"]; run = "cd ~/Projects";                              desc = "Go ~/Projects"; }
           { on = ["g" "r"]; run = "cd ~/.cargo/registry/src";                   desc = "Go to cargo registry"; }
           { on = ["g" "s"]; run = "cd ~/.local/bin";                            desc = "Go to private /bin"; }
