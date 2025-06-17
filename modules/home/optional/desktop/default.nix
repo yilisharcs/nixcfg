@@ -10,6 +10,7 @@
     ./evolution
     ./fonts
     ./kitty
+    ./obs-studio
     ./qbittorrent
     ./suite-gnome
     # ./sqlite
@@ -31,7 +32,6 @@
     onlyoffice-desktopeditors
 
     gnome-boxes                    # virtual machines
-    obs-studio
     picard                         # music metadata editor
   ];
 
