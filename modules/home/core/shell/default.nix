@@ -13,8 +13,6 @@
     ./zoxide
   ];
 
-  home.shell.enableShellIntegration = true;
-
   home.shellAliases = {
     # convenience
     ":q"     = "exit";

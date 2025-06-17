@@ -27,4 +27,6 @@
     time             # Simple command stopwatch
     wget             # CLI recursive downloader
   ];
+
+  home.shell.enableShellIntegration = true;
 }
