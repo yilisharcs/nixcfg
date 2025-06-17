@@ -11,6 +11,7 @@
     ./kitty
     ./qbittorrent
     ./suite-gnome
+    # ./sqlite
   ];
 
   home.packages= with pkgs; [
@@ -25,8 +26,12 @@
     # Video player
     vlc
 
-    # Torrent client
-    qbittorrent
+    # Office suite
+    onlyoffice-desktopeditors
+
+    gnome-boxes                    # virtual machines
+    obs-studio
+    picard                         # music metadata editor
   ];
 
   gtk.enable = true;

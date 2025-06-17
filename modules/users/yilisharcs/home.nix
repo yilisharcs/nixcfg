@@ -52,21 +52,8 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    # ffmpeg
-    # gnome-boxes                    # virtual machines
-    # # hunspell                       # spell checker
-    # # hunspellDicts.en_US
-    # # hunspellDicts.pt_BR
-    # imagemagick
     # # ldtk                           # lightweight level editor
-    onlyoffice-desktopeditors        # Office suite
-    # obs-studio
-    # picard                         # music metadata editor
-    # porsmo                         # cli pomodoro app
-    # speedtest-rs
     # typst                          # markup-based typesetting system
-    # # uutils-coreutils-noprefix      # gnu coreutils rust rewrite
-    # # wiki-tui
     #
     # LSP
     lua-language-server
@@ -80,7 +67,6 @@
     # # dev libs and tools
     # # hyperfine                      # cmdline benchmarking tool
     # # mprocs                         # parallel command runner
-    # # sqlite
   ];
 
   # programs = {
@@ -99,17 +85,6 @@
   #   #   ];
   #   # };
   #   # firefox.enable = false;
-  #
-  #
-  #   gpg = {
-  #     enable = true;
-  #   };
-  #
-  #
-  #   # ssh = {
-  #   #   enable = true;
-  #   #   addKeysToAgent = "ask";
-  #   # };
   #
   # };
   #
@@ -136,8 +111,6 @@
   #   };
   # };
   #
-
-  # xdg.desktopEntries = {
 
   # xdg.mimeApps = {
   #   enable = true;
@@ -179,7 +152,6 @@
   #   VISUAL = "nvim";
   #   EDITOR = "nvim";
   #   # BROWSER = "brave";
-  #   SQLITE_HISTORY = "${config.home.homeDirectory}/.local/state/sqlite3/sqlite_history";
   # };
   #
   #
