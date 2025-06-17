@@ -68,6 +68,7 @@ return {
           "--hidden",
           "--follow",
           "--type d",
+          "--no-ignore",
           "--exact-depth 1",
           ". "
         }, " ") ..
