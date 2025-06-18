@@ -31,11 +31,13 @@
 
   home.shellAliases = {
     gitcon  = "gitcon.nu";
+    gitgrep  = "gitgrep.nu";
     gitlist = "gitlist.nu";
   };
 
   home.file = {
     ".local/bin/gitcon.nu".source = ./gitcon.nu;
+    ".local/bin/gitgrep.nu".source = ./gitgrep.nu;
     ".local/bin/gitlist.nu".source = ./gitlist.nu;
   };
 }
