@@ -53,46 +53,12 @@
     # '')
 
     # # ldtk                           # lightweight level editor
-    # typst                          # markup-based typesetting system
     #
-    # LSP
-    lua-language-server
-    nil                            # nix
-    ra-multiplex                   # rust-analyzer multiplex server
-    rust-analyzer
-    tinymist                       # typst
-    websocat                       # typst-preview.nvim dep
-    vim-language-server
     #
     # # dev libs and tools
     # # hyperfine                      # cmdline benchmarking tool
     # # mprocs                         # parallel command runner
   ];
-
-  #
-  # systemd.user = {
-  #   enable = true;
-  #   services = {
-  #     "ra-mux" = {
-  #       Unit = {
-  #         Description = "Rust-analyzer Multiplex Server";
-  #         After = ["graphical-session.target"];
-  #         PartOf = ["graphical-session.target"];
-  #       };
-  #       Install = {
-  #         # NOTE: doesn't work with default.target (BECAUSE OF GNOME)
-  #         WantedBy = ["graphical-session.target"];
-  #       };
-  #       Service = {
-  #         Type = "simple";
-  #         ExecStart = "${pkgs.ra-multiplex}/bin/ra-multiplex server";
-  #         ExecReload = "${pkgs.ra-multiplex}/bin/ra-multiplex reload";
-  #         Restart = "always";
-  #       };
-  #     };
-  #   };
-  # };
-  #
 
   # xdg.mimeApps = {
   #   enable = true;
@@ -130,13 +96,9 @@
   #
   #  /etc/profiles/per-user/yilisharcs/etc/profile.d/hm-session-vars.sh
   #
-  # home.sessionVariables = {
-  #   VISUAL = "nvim";
-  #   EDITOR = "nvim";
-  #   # BROWSER = "brave";
-  # };
-  #
-  #
+  home.sessionVariables = {
+    # EDITOR = "nvim";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

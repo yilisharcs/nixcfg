@@ -14,6 +14,7 @@
     ./gdu
     ./hardware-utils
     ./jujutsu
+    ./lang-tools
     ./starship
     ./taskwarrior
     ./tokei

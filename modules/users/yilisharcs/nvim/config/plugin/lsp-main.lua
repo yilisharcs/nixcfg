@@ -1,12 +1,12 @@
 vim.lsp.enable({
   "luals",
   "nil-nix",
-  -- "rust-analyzer",
-  -- "typls",
+  "rust-analyzer",
+  "typls",
   "vimls",
 })
 
-vim.lsp.set_log_level("off")
+vim.lsp.set_log_level("debug")
 
 vim.diagnostic.config({
   virtual_text = true,
