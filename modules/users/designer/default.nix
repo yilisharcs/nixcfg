@@ -14,7 +14,7 @@ in
       #
       # Virtual Machines
       "kvm"
-      "libvirt"
+      "libvirtd"
 
       # Internet
       "networkmanager"

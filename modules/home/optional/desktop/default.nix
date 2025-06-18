@@ -31,11 +31,16 @@
     # Office suite
     onlyoffice-desktopeditors
 
-    gnome-boxes                    # virtual machines
-    picard                         # music metadata editor
+    # Music metadata editor
+    picard
   ];
 
   gtk.enable = true;
   qt.enable = true;
   xdg.mimeApps.enable = true;
+
+  dconf.settings."org/virt-manager/virt-manager/connections" = {
+    autoconnect = ["qemu:///system"];
+    uris = ["qemu:///system"];
+  };
 }

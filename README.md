@@ -29,7 +29,7 @@ sudo nixos-rebuild switch --flake .#newhost
 - [ ] Fix neovim clipboard with xclip
 - [ ] Handle potential issue with tmux clipboard on the tty
 - [ ] Fix theming of GTK and Qt applications (or alternatively, avoid qt programs like the plague)
-- [ ] Configure virtual machines
+- [x] Configure virtual machines
 - [x] Bring over some of my dotfiles into this repo
 - [ ] `git clone` Projects in ~/Projects/*
 - [ ] Restore neovide once multigrid is stabilized, round chars render correctly, and has native image support
