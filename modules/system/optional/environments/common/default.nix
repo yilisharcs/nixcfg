@@ -5,6 +5,7 @@
 
 {
   imports = [
+    ./browser/brave.nix
     ./cursors
   ];
 

@@ -69,24 +69,6 @@
     # # mprocs                         # parallel command runner
   ];
 
-  # programs = {
-  #   # # chromium fork with built-in adblocker
-  #   # chromium = {
-  #   #   enable = true;
-  #   #   package = pkgs.brave;
-  #   #   extensions = [
-  #   #     { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # Dark reader
-  #   #     { id = "cofdbpoegempjloogbagkncekinflcnj"; } # DeepL
-  #   #     { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # Proton Pass
-  #   #     { id = "eninkmbmgkpkcelmohdlgldafpkfpnaf"; } # Reddit Untranslate
-  #   #     { id = "fakeocdnmmmnokabaiflppclocckihoj"; } # Sprucemarks
-  #   #     { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium
-  #   #     { id = "kkmlkkjojmombglmlpbpapmhcaljjkde"; } # Zhongwen: Zh-En Dictionary
-  #   #   ];
-  #   # };
-  #   # firefox.enable = false;
-  #
-  # };
   #
   # systemd.user = {
   #   enable = true;
