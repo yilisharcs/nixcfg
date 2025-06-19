@@ -9,6 +9,7 @@
 {
   imports = [
     ../common.nix
+    ./mask-projects
     ./nvim
     ./qbittorrent
     ./syncthing
