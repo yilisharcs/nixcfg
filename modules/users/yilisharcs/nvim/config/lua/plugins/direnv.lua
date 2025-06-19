@@ -4,14 +4,20 @@ return {
   config = function()
     vim.api.nvim_create_autocmd({ "User" }, {
       pattern = "DirenvLoaded",
-      group = vim.api.nvim_create_augroup("Direnv_Flake_LSP", { clear = true }),
+      group = vim.api.nvim_create_augroup("Direnv_Flake_RaMux", { clear = true }),
       callback = function()
-        -- Because Rust-analyzer is configured per-project with flakes,
-        -- it doesn't exist in the path before the lsp command is invoked.
         if vim.bo.filetype == "rust" then
-          local bufnr = vim.api.nvim_get_current_buf()
-          local client = vim.lsp.get_clients({ bufnr = bufnr })
-          if vim.fn.empty(client) == 1 then vim.cmd("edit") else end
+          ---@diagnostic disable: need-check-nil
+          local handle = io.popen("ps -e | grep ra-multiplex")
+          local result = handle:read("*a")
+          handle:close()
+
+          if result == "" then
+            ---@diagnostic disable-next-line: missing-fields
+            vim.uv.spawn("ra-multiplex", { args = { "server" }, detached = true },
+              function() end)
+            vim.cmd("edit")
+          end
         end
       end
     })
