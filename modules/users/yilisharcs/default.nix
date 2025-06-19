@@ -5,7 +5,7 @@ in
 {
   # Declare the user
   users.users.${username} = {
-    initialHashedPassword = "$y$j9T$grKbKdksAB0H5ZVcqvDmA.$xFjkCjD1sMaN5J51tEipJHlAFqOwdqzcec02PcmLBy1";
+    initialPassword = "senha";
     isNormalUser = true;
     description = "${username}";
     extraGroups = [
