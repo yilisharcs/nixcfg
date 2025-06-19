@@ -43,8 +43,8 @@
         include current-theme.conf
         font_size 13.0
         font_family      family='JetBrainsMono Nerd Font'
-        bold_font        family='JetBrainsMono Nerd Font' style=Bold
-        bold_italic_font family='JetBrainsMono Nerd Font' style='Bold Italic'
+        # bold_font        family='JetBrainsMono Nerd Font' style=Bold
+        # bold_italic_font family='JetBrainsMono Nerd Font' style='Bold Italic'
         modify_font cell_height 105%
       '';
     };
