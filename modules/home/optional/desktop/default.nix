@@ -5,6 +5,7 @@
 
 {
   imports = [
+    ./color-themes
     ./cursors-gtk
     ./evolution
     ./fonts
@@ -15,7 +16,7 @@
     # ./sqlite
   ];
 
-  home.packages= with pkgs; [
+  home.packages = with pkgs; [
     # Graphics editors
     gimp
     inkscape

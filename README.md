@@ -28,7 +28,7 @@ sudo nixos-rebuild switch --flake .#newhost
 - [x] Configure ssh agent (VERY IMPORTANT)
 - [ ] Fix neovim clipboard with xclip
 - [ ] Handle potential issue with tmux clipboard on the tty
-- [ ] Fix theming of GTK and Qt applications (or alternatively, avoid qt programs like the plague)
+- [x] Fix theming of GTK and Qt applications
 - [x] Configure virtual machines
 - [x] Bring over some of my dotfiles into this repo
 - [ ] `git clone` Projects in ~/Projects/*
