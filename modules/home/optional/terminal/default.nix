@@ -27,6 +27,7 @@
     entr             # Event Notify Test Runner
     ffmpeg           # Universal media converter
     imagemagick      # Bitmap image tool
+    pastel           # CLI color tool
     porsmo           # CLI pomodoro app
     ripgrep-all      # ripgrep extension
     speedtest-rs     # Check your internet speed
