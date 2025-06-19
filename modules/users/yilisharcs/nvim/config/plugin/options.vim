@@ -5,6 +5,10 @@ set path+=.dotfiles/**1/.config/**;,.dotfiles/**1;
 " " Sync clipboard between OS and Neovim.
 " set clipboard+=unnamedplus
 " let g:clipboard='xclip'
+nnoremap <leader>p "+p
+nnoremap <leader>y "+y
+xnoremap <leader>p "+p
+xnoremap <leader>y "+y
 
 set ignorecase
 set smartcase

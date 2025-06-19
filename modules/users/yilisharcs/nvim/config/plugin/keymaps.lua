@@ -57,6 +57,11 @@ vim.keymap.set("n", "cu", function()
     and "<CMD>botright copen | wincmd p<CR>" or "<CMD>cclose<CR>"
 end, { expr = true, desc = "Toggle quickfix list" })
 
+vim.keymap.set("n", "co", function()
+  return vim.fn.empty(vim.fn.filter(vim.fn.getwininfo(), "v:val.loclist")) == 1
+    and "<CMD>botright lopen | wincmd p<CR>" or "<CMD>lclose<CR>"
+end, { expr = true, desc = "Toggle location list" })
+
 vim.keymap.set("n", "<C-k>", "<CMD>cpfile<CR>zz", { desc = "Quickfix previous file" })
 vim.keymap.set("n", "<C-j>", "<CMD>cnfile<CR>zz", { desc = "Quickfix next file" })
 vim.keymap.set("n", "<C-p>", "<CMD>cprev<CR>zz", { desc = 'Quickfix previous error' })
