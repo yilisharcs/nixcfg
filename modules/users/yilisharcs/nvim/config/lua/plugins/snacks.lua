@@ -19,7 +19,12 @@ return {
     input = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
-    scratch = { enable = true },
+    scratch = {
+      enable = true,
+      win = {
+        height = 24
+      }
+    },
     styles = {
       notification_history = {
         width = 0.9,
