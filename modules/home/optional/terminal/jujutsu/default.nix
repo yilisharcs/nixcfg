@@ -7,7 +7,8 @@
         default-command = ["log" "--reversed"];
       };
       aliases = {
-        init = ["git" "init"];
+        init = ["git" "init" "--colocate"];
+        clone = ["git" "clone" "--colocate"];
       };
     };
   };
