@@ -30,27 +30,22 @@ hi @label.vimdoc guifg=NvimLightGreen gui=bold
 hi gitcommitSummary guifg=#87d787 gui=bold
 hi! link @markup.heading.gitcommit gitcommitSummary
 
-let g:terminal_colors_mia = [
-      \ '#282828',
-      \ '#ee5396',
-      \ '#25be6a',
-      \ '#f9e2af',
-      \ '#78a9ff',
-      \ '#be95ff',
-      \ '#33b1ff',
-      \ '#dfdfe0',
-      \ '#484848',
-      \ '#f16da6',
-      \ '#46c880',
-      \ '#fafecb',
-      \ '#8cb6ff',
-      \ '#c8a5ff',
-      \ '#52bdff',
-      \ '#e4e4e5']
-
-for i in range(g:terminal_ansi_colors->len())
-  let g:terminal_color_{i} = g:terminal_colors_mia[i]
-endfor
+let g:terminal_color_0  = '#282828'
+let g:terminal_color_1  = '#ee5396'
+let g:terminal_color_2  = '#25be6a'
+let g:terminal_color_3  = '#f9e2af'
+let g:terminal_color_4  = '#78a9ff'
+let g:terminal_color_5  = '#be95ff'
+let g:terminal_color_6  = '#33b1ff'
+let g:terminal_color_7  = '#dfdfe0'
+let g:terminal_color_8  = '#484848'
+let g:terminal_color_9  = '#f16da6'
+let g:terminal_color_10 = '#46c880'
+let g:terminal_color_11 = '#fafecb'
+let g:terminal_color_12 = '#8cb6ff'
+let g:terminal_color_13 = '#c8a5ff'
+let g:terminal_color_14 = '#52bdff'
+let g:terminal_color_15 = '#e4e4e5'
 
 hi Pmenu guibg=#181825
 hi PmenuExtra guibg=#181825
@@ -59,7 +54,7 @@ hi! link PmenuSbar Pmenu
 hi BlinkCmpDoc guifg=#cdd6f4 guibg=#181825
 hi! link BlinkCmpDocBorder BlinkCmpDoc
 
-hi MiniHipatternsNote guifg=#a6e3a1 gui=bold,reverse
+hi MiniHipatternsNote guifg=#a6e3a1 gui=bold,reverse ctermfg=7 cterm=bold,reverse
 
 hi MiniIconsAzure guifg=#74c7ec
 hi MiniIconsBlue guifg=#89b4fa
@@ -71,21 +66,21 @@ hi MiniIconsPurple guifg=#cba6f7
 hi MiniIconsRed guifg=#f38ba8
 hi MiniIconsYellow guifg=#f9e2af
 
-hi NeogitStagedchanges guifg=#87d787 gui=bold
-hi NeogitUnstagedchanges guifg=#fab387 gui=bold
-hi NeogitUntrackedfiles guifg=#f38ba8 gui=bold
-hi NeogitUnmergedchanges guifg=#cba6f7 gui=bold
-hi NeogitGraphPurple guifg=#fab387
+hi NeogitStagedchanges guifg=#87d787 gui=bold ctermfg=2 cterm=bold
+hi NeogitUnstagedchanges guifg=#fab387 gui=bold ctermfg=3 cterm=bold
+hi NeogitUntrackedfiles guifg=#f38ba8 gui=bold ctermfg=1 cterm=bold
+hi NeogitUnmergedchanges guifg=#cba6f7 gui=bold ctermfg=5 cterm=bold
+hi NeogitGraphPurple guifg=#fab387 ctermfg=2 cterm=bold
 hi! link NeogitPopupConfigEnabled Statement
 hi! link NeogitPopupOptionEnabled Statement
 hi! link NeogitPopupSwitchEnabled Statement
 
 hi! link RainbowDelimiterRed Special
 hi! link RainbowDelimiterYellow Delimiter
-hi RainbowDelimiterBlue guifg=#87d787
+hi RainbowDelimiterBlue guifg=#87d787 ctermfg=2
 hi! link RainbowDelimiterOrange Special
 hi! link RainbowDelimiterGreen Delimiter
-hi RainbowDelimiterViolet guifg=#87d787
+hi RainbowDelimiterViolet guifg=#87d787 ctermfg=2
 hi clear RainbowDelimiterCyan
 
 hi RenderMarkdownCode guibg=#181825
