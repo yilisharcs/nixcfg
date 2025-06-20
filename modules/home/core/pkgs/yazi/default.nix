@@ -21,6 +21,7 @@
       enable = true;
       shellWrapperName = "yf";
       plugins  = {
+        chmod = pkgs.yaziPlugins.chmod;
         ouch = pkgs.yaziPlugins.ouch;
         smart-enter = pkgs.yaziPlugins.smart-enter;
       };
@@ -112,6 +113,9 @@
             run = "shell 'ouch c -S \"$@\" .tar.zst' --interactive --cursor=15 --orphan";
             desc = "Compress as tar.zst";
           }
+
+          # chmod
+          { on = "C"; run  = "plugin chmod"; desc = "Change file permissions"; }
 
           # Backup
           # NOTE: This convoluted way of backing up files as opposed to the simpler
