@@ -10,6 +10,7 @@ hi StatusLine guibg=#edf6f4 guifg=#313244
 hi! link TabLineFill ColorColumn
 hi! link CursorLineNr String
 
+hi Visual ctermbg=6
 hi MsgArea guifg=#5fd75f gui=bold
 hi QuickFixLine gui=bold
 
@@ -66,6 +67,8 @@ hi MiniIconsPurple guifg=#cba6f7
 hi MiniIconsRed guifg=#f38ba8
 hi MiniIconsYellow guifg=#f9e2af
 
+hi NeogitDiffAddHighlight guifg=#ffd787 guibg=#005523 ctermfg=2
+hi NeogitDiffDeleteHighlight guifg=#d78787 guibg=#563434 ctermfg=1
 hi NeogitStagedchanges guifg=#87d787 gui=bold ctermfg=2 cterm=bold
 hi NeogitUnstagedchanges guifg=#fab387 gui=bold ctermfg=3 cterm=bold
 hi NeogitUntrackedfiles guifg=#f38ba8 gui=bold ctermfg=1 cterm=bold

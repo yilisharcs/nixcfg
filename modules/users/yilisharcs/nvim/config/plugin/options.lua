@@ -35,10 +35,6 @@ vim.opt.shortmess:append({ s = true })
 vim.o.splitright = true
 vim.o.splitbelow = true
 
--- Indentation guide
-vim.o.list = true
-vim.opt.listchars = { tab = "› ", nbsp = "␣", space = "•" }
-
 -- Fold opts
 vim.o.foldcolumn = "0"
 vim.o.foldmethod = "indent"
@@ -80,11 +76,14 @@ vim.o.inccommand = "split"
 -- Nushell doesn't grok vi
 vim.o.shell = vim.fn.exepath("bash")
 
--- Color configuration
+-- Display vs TTY
+vim.o.list = true
+vim.o.termguicolors = true
+vim.opt.listchars = { tab = "› ", nbsp = "␣", space = "•" }
+
 if vim.env.DISPLAY == nil then
   vim.o.termguicolors = false
-else
-  vim.o.termguicolors = true
+  vim.opt.listchars:append({ space = " " })
 end
 
 vim.cmd.colorscheme("lunamia")
