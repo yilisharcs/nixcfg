@@ -9,4 +9,7 @@
       cores = 3;
     };
   };
+
+  # NOTE: To enable this persistently, run this
+  # command: `sudo virsh net-autostart default`
 }
