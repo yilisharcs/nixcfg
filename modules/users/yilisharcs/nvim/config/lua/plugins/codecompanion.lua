@@ -90,7 +90,7 @@ return {
         return require("codecompanion.adapters").extend("openai_compatible", {
           env = {
             url = "https://openrouter.ai/api",
-            api_key = "cmd: cat /home/yilisharcs/projects/.env", -- "cmd:pass show llm/openrouter/key",
+            api_key = "cmd: pass show openrouter/key",
             chat_url = "/v1/chat/completions",
           },
           schema = {

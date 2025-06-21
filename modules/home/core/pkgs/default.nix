@@ -16,6 +16,7 @@
     ./less
     ./mask
     ./neovim
+    ./pass
     ./ripgrep
     ./tmux
     ./xkb
