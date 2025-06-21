@@ -12,7 +12,5 @@
     mask = "maskfile.nu";
   };
 
-  home.file.".local/bin/maskfile.nu" = {
-    source = ./maskfile.nu;
-  };
+  home.file.".local/bin/maskfile.nu".source = ./maskfile.nu;
 }

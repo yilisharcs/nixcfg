@@ -1,7 +1,5 @@
 {
-  home.file.".local/bin/vm.sh" = {
-    source = ./vm.sh;
-  };
+  home.file.".local/bin/vm.sh".source = ./vm.sh;
 
   xdg.desktopEntries = {
     "WindowsVM" = {

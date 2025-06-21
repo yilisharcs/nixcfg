@@ -10,9 +10,7 @@
     theme = "spotify";
   };
 
-  home.file.".local/share/icons/hicolor/128x128/apps/cmus.png" = {
-    source = ./cmus.png;
-  };
+  home.file.".local/share/icons/hicolor/128x128/apps/cmus.png".source = ./cmus.png;
 
   xdg.desktopEntries = {
     cmus = {

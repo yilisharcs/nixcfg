@@ -13,7 +13,5 @@
     tokeicon = "tokeicon.nu";
   };
 
-  home.file.".local/bin/tokeicon.nu" = {
-    source = ./tokeicon.nu;
-  };
+  home.file.".local/bin/tokeicon.nu".source = ./tokeicon.nu;
 }

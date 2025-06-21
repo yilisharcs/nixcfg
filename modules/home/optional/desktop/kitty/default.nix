@@ -18,9 +18,7 @@
     '';
   };
 
-  home.file.".config/kitty/current-theme.conf" = {
-    source = ./theme.conf;
-  };
+  home.file.".config/kitty/current-theme.conf".source = ./theme.conf;
 
   programs = {
     kitty = {

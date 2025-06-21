@@ -4,9 +4,7 @@
 }:
 
 {
-  home.file.".local/bin/helpless.nu" = {
-    source = ./helpless.nu;
-  };
+  home.file.".local/bin/helpless.nu".source = ./helpless.nu;
 
   programs.nushell = {
     enable = true;

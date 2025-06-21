@@ -9,7 +9,5 @@
     pkgs.gdu
   ];
 
-  home.file.".config/gdu/gdu.yaml" = {
-    source = ./gdu.yaml;
-  };
+  home.file.".config/gdu/gdu.yaml".source = ./gdu.yaml;
 }
