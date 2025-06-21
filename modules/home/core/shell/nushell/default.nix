@@ -1,10 +1,26 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
 
 {
   home.file.".local/bin/helpless.nu".source = ./helpless.nu;
+
+  home.activation =
+    let
+      scratch = "${config.home.homeDirectory}/.local/bin/scratch.nu";
+    in
+      {
+    nuMutableScratchFile = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      run touch ${scratch}
+      run chmod 755 ${scratch}
+      run echo "#!/usr/bin/env nu
+
+      print $\"(ansi yellow_bold)Scratch is empty.(ansi reset)\"" > ${scratch}
+    '';
+  };
 
   programs.nushell = {
     enable = true;
