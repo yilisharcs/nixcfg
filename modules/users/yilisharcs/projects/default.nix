@@ -2,7 +2,7 @@
   home.file = {
     "Projects/_templates" = {
       source = ./templates;
-      recursive = true;
+      recursive = false;
     };
 
     "Projects/maskfile.md".source = ./maskfile.md;

@@ -21,7 +21,7 @@ let path = ($name | str downcase | str kebab-case)
 let desc = (input $" (ansi green_bold)=>(ansi reset) Project Description: (ansi yellow_bold)")
 
 if not ($path | path exists) {
-    cp --recursive (["_templates" $template] | path join) $path
+    cp --recursive --preserve [] (["_templates" $template] | path join) $path
 } else {
     print $"(ansi red_bold) Error: (ansi yellow_bold)./($path) (ansi red_bold)exists.(ansi reset)"
 }
@@ -49,6 +49,10 @@ rg --no-follow --files-with-matches GENIT_PROJECT_*
     | save --force $e
 }
 | ignore
+
+# NOTE: This is because certain files
+# are ignored in the nix repo otherwise
+mv .gitignore.bak .gitignore
 
 print $" (ansi green_bold)::(ansi reset) Created new project at (ansi green_bold)(pwd)(ansi reset)"
 print ""
