@@ -72,10 +72,7 @@
   # xdg.autostart = {
   #   enable = true;
   #   entries = [
-  #     # "${pkgs.neovide}/share/applications/neovide.desktop"
-  #     # "${config.home.homeDirectory}/.local/share/applications/neovide.desktop"
-  #     # TODO: simplify this
-  #     "${config.home.homeDirectory}/.local/state/nix/profiles/home-manager/home-path/share/applications/neovim-kitty.desktop"
+  #     "${config.home.homeDirectory}/.local/state/nix/profiles/home-manager/home-path/share/applications/nvim.desktop"
   #     "${pkgs.brave}/share/applications/brave-browser.desktop"
   #     "${pkgs.evolution}/share/applications/org.gnome.Evolution.desktop"
   #   ];

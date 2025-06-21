@@ -38,14 +38,17 @@
     "org/gnome/desktop/datetime" = {
       automatic-timezone = true;
     };
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = ["terminate:ctrl_alt_bksp"];
+    };
     "org/gnome/desktop/interface" = {
       accent-color = "green";
       color-scheme = "prefer-dark";
     };
     "org/gnome/desktop/peripherals/keyboard" = {
-      delay = mkUint32 375;
+      delay = mkUint32 200;
       repeat = true;
-      repeat-interval = mkUint32 18;
+      repeat-interval = mkUint32 20;
     };
     "org/gnome/desktop/peripherals/keyboard" = {
       edge-scrolling-enabled = true;

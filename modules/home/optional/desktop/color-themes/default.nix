@@ -23,4 +23,7 @@
   # NOTE: May require `xdg.portal` to sync with popups.
   # This has only been tested with COSMIC DE.
   # https://docs.windswept.digital/nixos/gtk-and-qt
+
+  # NOTE: GNOME does not like Breeze. Consider
+  # disabling this for gtk apps if running GNOME.
 }

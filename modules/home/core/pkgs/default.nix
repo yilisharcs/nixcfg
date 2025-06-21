@@ -34,6 +34,7 @@
 
   home.shell.enableShellIntegration = true;
 
+  # NOTE: GNOME does not respect sessionPath
   home.sessionPath = ["$HOME/.local/bin"];
   home.activation = {
     mkLocalBinDir = lib.hm.dag.entryAfter ["writeBoundary"] ''
