@@ -118,9 +118,7 @@
           { on = "C"; run  = "plugin chmod"; desc = "Change file permissions"; }
 
           # Backup
-          # NOTE: This convoluted way of backing up files as opposed to the simpler
-          # `cp $0 $0.bak` is so that nix-generated files can be edited immediately
-          { on = "b"; run = "shell 'cp $0 $0.tmp && mv $0 $0.bak && mv $0.tmp $0'"; desc = "Create file backup"; }
+          { on = "b"; run = "shell 'cp $0 $0.bak'"; desc = "Create file backup"; }
 
           # Pager
           { on = "i"; run = "shell 'bat $0' --block"; }
