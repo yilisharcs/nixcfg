@@ -9,8 +9,8 @@
 {
   imports = [
     ../common.nix
-    ./mask-projects
     ./nvim
+    ./projects
     ./qbittorrent
     ./syncthing
     ./vcs

@@ -1,0 +1,25 @@
+# Blacklist EVERYTHING
+*
+!*/
+!.gitignore
+
+# License
+!LICENSE
+
+# Documentation
+!README.md
+!/docs/man/*
+
+# Maskfile
+!maskfile.md
+
+# Direnv
+!.envrc
+
+# Nix flake
+!flake.{nix,lock}
+
+# Crate files
+!rust-toolchain.toml
+!Cargo.{toml,lock}
+!/src/**/*.rs
