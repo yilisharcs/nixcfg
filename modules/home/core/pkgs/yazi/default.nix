@@ -118,7 +118,7 @@
           { on = "C"; run  = "plugin chmod"; desc = "Change file permissions"; }
 
           # Backup
-          { on = "b"; run = "shell 'cp $0 $0.bak'"; desc = "Create file backup"; }
+          { on = "b"; run = "shell 'cp -r $0 $0.bak'"; desc = "Backup current file"; }
 
           # Pager
           { on = "i"; run = "shell 'bat $0' --block"; }
