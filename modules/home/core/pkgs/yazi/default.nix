@@ -152,6 +152,7 @@
           { on = ["g" "r"]; run = "cd ~/.cargo/registry/src";                   desc = "Go to cargo registry"; }
           { on = ["g" "s"]; run = "cd ~/.local/bin";                            desc = "Go to private /bin"; }
           { on = ["g" "v"]; run = "cd ~/Videos";                                desc = "Go ~/Videos"; }
+          { on = ["g" "y"]; run = "cd ~/Games";                                 desc = "Go ~/Games"; }
           { on = ["g" "z"]; run = "cd ~/.local/share/nvim/lazy";                desc = "Go to lazydir"; }
         ];
       };

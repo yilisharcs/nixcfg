@@ -31,7 +31,6 @@ sudo nixos-rebuild switch --flake .#newhost
 - [x] Fix theming of GTK and Qt applications
 - [x] Configure virtual machines
 - [x] Bring over some of my dotfiles into this repo
-- [ ] `git clone` Projects in ~/Projects/*
 - [ ] Restore neovide once multigrid is stabilized, round chars render correctly, and has native image support
 - [ ] Do something about home manager complaining about nix settings and overlays
 - [ ] Set wallpaper
@@ -44,6 +43,7 @@ sudo nixos-rebuild switch --flake .#newhost
 - [x] Configure Evolution and make it stop crashing randomly (conjecture: might have something to do with an xdg-portal)
 - [ ] Create ~/.local/bin for every user without home-manager (systemd.tmpfiles? systemd.user.tmpfiles.users?)
 - [ ] Put all templates in a special folder
+- [ ] Being real, this repo is garbage. I should restructure this at some point
 - [ ] etc...
 
 # MASKFILE RULES

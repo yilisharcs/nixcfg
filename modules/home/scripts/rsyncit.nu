@@ -19,6 +19,7 @@ mkdir $destdir
   ".ssh"
   "Documents"
   "Downloads"
+  "Games"
   "Library"
   "Music"
   "notebook"
