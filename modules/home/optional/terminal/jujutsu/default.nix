@@ -4,11 +4,14 @@
     enable = true;
     settings = {
       ui = {
-        default-command = ["log" "--reversed"];
+        default-command = ["ls"];
       };
       aliases = {
-        init = ["git" "init" "--colocate"];
         clone = ["git" "clone" "--colocate"];
+        fetch = ["git" "fetch"];
+        init  = ["git" "init" "--colocate"];
+        ls    = ["log" "--summary"];
+        push  = ["git" "push"];
       };
     };
   };
