@@ -7,6 +7,7 @@
 
 {
   home.file.".local/bin/helpless.nu".source = ./helpless.nu;
+  home.file.".local/bin/rsyncit.nu".source = ./rsyncit.nu; # TODO: make a systemd service and timer
 
   home.activation =
     let

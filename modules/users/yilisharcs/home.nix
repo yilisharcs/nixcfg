@@ -13,6 +13,7 @@
     ./projects
     ./qbittorrent
     ./syncthing
+    # ./systemd-backup
     ./vcs
   ];
 
