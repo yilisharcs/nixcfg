@@ -4,7 +4,8 @@
 
 # SYNOPSIS
 
-TBD
+GENIT_PROJECT_PATH [**-h|--help**]<br>
+GENIT_PROJECT_PATH [**-v|--version**]<br>
 
 # DESCRIPTION
 
@@ -16,7 +17,6 @@ This section contains commands for the task runner **mask**. If you're not a
 developer, you may skip to the next section. Otherwise, please install the
 following dev-dependencies:
 
-* **entr**
 * **mask**
 * **nushell**
 * **pandoc**
@@ -63,119 +63,24 @@ if $env.release? == "true" {
 > Builds the manpage from the maskfile.md source file
 
 ```nu
-let root = (cargo locate-project | from json | get root | path dirname)
-let mandir = ([$root "docs/man"] | path join)
-
-if ($mandir | path exists) {
-	ls $mandir
-	| each { rm $in.name }
-	| ignore
-} else {
-	mkdir $mandir
-}
-
-mut pkg = ""
-mut semver = ""
-
-cargo pkgid
-| path basename
-| if ($in | str contains "@") {
-  $pkg = ($in | str replace --regex ".*#(.*)@.*" "$1")
-  $semver = ($in | str replace --regex ".*@" "")
-} else {
-  $pkg = ($in | str replace --regex "#.*" "")
-  $semver = ($in | str replace --regex ".*#" "")
-}
-
-let pkgname = ($pkg | str title-case)
-let pkgbin = ($pkg | str replace --regex " .*" "" | str downcase)
-let date = (date now | to text | split row " " | get 1 2 3 | str join " ")
-let mansection = 1 # Executables or shell commands
-
-open maskfile.md
-| lines
-| insert 0 $"% ($pkgbin)\(($mansection)\) ($pkgbin) ($semver) | ($pkgname) Manual"
-| insert 1 "%"
-| insert 2 $"% ($date)"
-| insert 3 ""
-| each {
-	# Tab char (^I)
-	$in | str replace --all "	" "  "
-}
-| each {
-	if ($in | str starts-with "# ") {
-		prepend (char hamburger)
-	} else {
-		return $in
-	}
-}
-| flatten
-| to text
-| split row (char hamburger)
+open Cargo.toml
 | do {
-	let mask_index = (
-		$in
-		| enumerate
-		| where $it.item =~ "# MASKFILE RULES"
-		| first
-		| get index
-	)
+    let mansection = 1 # Executables or shell commands
+    let root = (cargo locate-project | from json | get root | path dirname)
+    let ver = ($in | get package | get version)
+    let name = ($in | get package | get name)
+    let bin = (
+        $in
+        | if bin in $in {
+            $in.bin.name.0
+        } else {
+            $in.package.name
+        }
+    )
 
-	$in
-	| update $mask_index {
-		lines
-		| enumerate
-		| do {
-			let subheader = (
-				$in
-				| skip until { $in.item | str starts-with "## " }
-				| first
-				| get index
-			)
-
-			$in
-			| each {
-				if ($in.item | is-empty) or ($in.index < $subheader) {
-					return $in.item
-				} else if ($in.item | str starts-with "> ") {
-					$in.item
-					| str replace -r "^" "|"
-					| prepend ""
-					| append ""
-				} else if ($in.item | str starts-with "~") and not ($in.item | str ends-with "~") {
-					$in.item
-					| str replace -r "^" "| "
-					| prepend ""
-				} else if ($in.item | str starts-with "~") and ($in.item | str ends-with "~") {
-					$in.item
-					| str replace -r "^" "| "
-					| append ""
-				} else {
-					$in.item
-					| str replace -r "^" "| "
-				}
-			}
-		} $in
-		| to text
-	}
+    ./docs/manpage.nu --root $root --ver $ver --name $name --bin $bin --mansection $mansection
+    # man $"([$root "docs/man"] | path join)/($bin).($mansection).zst"
 }
-| to text
-| pandoc --standalone --from markdown-smart-tex_math_dollars --to man
-| zstd --compress --force -19 -o $"($mandir)/($pkgbin).($mansection).zst"
-
- # man $"($mandir)/($pkgbin).($mansection).zst"
-```
-
-## entr
-
-### entr man
-
-> Automatically rebuilds the manpage on save
-
-NOTE: only needed for testing purposes
-
-```sh
-fd maskfile.md | entr -cs "mask man > testman.1"
 ```
 
 # ACKNOWLEDGEMENTS

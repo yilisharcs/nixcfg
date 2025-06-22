@@ -28,6 +28,14 @@ if not ($path | path exists) {
 
 cd $path
 
+# NOTE: This is because certain files
+# are ignored in the nix repo otherwise
+mv .gitignore.bak .gitignore
+
+# Executable permissions are stripped away by
+# `cp --preserve []` and must be manually reset
+chmod 755 docs/manpage.nu
+
 rg --no-follow --files-with-matches GENIT_PROJECT_*
 | lines
 | each {|e|
@@ -49,10 +57,6 @@ rg --no-follow --files-with-matches GENIT_PROJECT_*
     | save --force $e
 }
 | ignore
-
-# NOTE: This is because certain files
-# are ignored in the nix repo otherwise
-mv .gitignore.bak .gitignore
 
 print $" (ansi green_bold)::(ansi reset) Created new project at (ansi green_bold)(pwd)(ansi reset)"
 print ""
