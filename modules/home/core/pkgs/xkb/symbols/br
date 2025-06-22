@@ -39,7 +39,7 @@ xkb_symbols "abnt2" {
   key <AC03> { [            d,              D,             bar,            dead_hook ] };
   key <AC04> { [            f,              F,         percent,          ordfeminine ] };
   key <AC10> { [    semicolon,          colon,      dead_tilde,                  bar ] };
-  key <AC11> { [   apostrophe,       quotedbl,           grave,          dead_macron ] };
+  key <AC11> { [   apostrophe,       quotedbl,      dead_grave,          dead_macron ] };
 
   key <BKSL> { [   dead_acute,     dead_tilde,          degree,         questiondown ] };
 
