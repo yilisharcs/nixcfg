@@ -18,6 +18,7 @@
     ./starship
     ./taskwarrior
     ./tokei
+    ./udiskie2
     ./wiki-tui
     ./yt-dlp
     ./zk
