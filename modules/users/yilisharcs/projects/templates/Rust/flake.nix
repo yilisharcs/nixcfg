@@ -53,6 +53,7 @@
             mask                           # markdown task runner
             nushell
             pandoc                         # markup converter
+            ra-multiplex
             rusty-man                      # man pages for rustdoc
             sccache                        # cache tool for build artifacts
 
