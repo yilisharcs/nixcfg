@@ -7,17 +7,17 @@
 {
   # Configure keymap in X11
   services.xserver.xkb = lib.mkDefault {
-    layout = "br,us";
+    layout = "us";
+    options = "terminate:ctrl_alt_bksp,compose:menu";
   };
 
   # console = {
   #   font = "Lat2-Terminus16";
   # };
 
-  # NOTE@KEYBOARD Home Manager manages the symbols file at ../../../home/core/xkb
-  # FIXME: consolidate all keyboard configuration into this file
-
   environment.systemPackages = [pkgs.keyd];
+
+  environment.variables.XCOMPOSEFILE = "${pkgs.keyd}/share/keyd/keyd.compose";
 
   services.keyd = {
     enable = true;
@@ -26,15 +26,63 @@
         ids = ["*"];
         settings = {
           "main" = {
+            "`" = "~";
             "102nd" = "leftshift";
             capslock = "layer(control)";
           };
-          "shift:S".capslock = "capslock";
+          "shift:S" = {
+            "~" = "~";
+            leftshift = "capslock";
+            rightshift = "capslock";
+          };
           # Common terminal experience for GUI apps
           "control:C" = {
             "[" = "esc";
             i = "tab";
             m = "enter";
+          };
+          "altgr" = {
+            # Doesn't require DISPLAY
+            d = "|";
+            f = "%";
+            s = "\\";
+            w = "?";
+
+            a = "ã";
+            e = "é";
+            i = "í";
+            o = "õ";
+            u = "ú";
+            "equal" = "§";
+            "]" = "ª";
+            "\\" = "º";
+            c = "ç";
+            m = "—";
+            n = "ñ";
+            r = "®";
+            t = "™";
+            ";" = "oneshot(macron)";
+            "'" = "oneshot(greve)";
+          };
+          macron = {
+            a = "ā";
+            e = "ē";
+            i = "ī";
+            o = "ō";
+            u = "ū";
+          };
+          greve = {
+            a = "à";
+            e = "è";
+            i = "ì";
+            o = "ò";
+            u = "ù";
+          };
+          "altgr+shift" = {
+            a = "â";
+            e = "ê";
+            o = "ô";
+            c = "©";
           };
         };
         extraConfig = ''
@@ -115,9 +163,9 @@
           1 = G-1
           2 = G-2
           3 = G-3
-          4 = G-4
-          5 = G-5
-          6 = G-6
+          4 = ₤
+          5 = ¢
+          6 = ¬
           7 = G-7
           8 = G-8
           9 = G-9

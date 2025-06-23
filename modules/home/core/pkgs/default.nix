@@ -19,7 +19,6 @@
     ./pass
     ./ripgrep
     ./tmux
-    ./xkb
     ./yazi
     ./zoxide
   ];
