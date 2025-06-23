@@ -5,6 +5,7 @@
     settings = {
       ui = {
         default-command = ["ls"];
+        diff-formatter = ["difft" "--color=always" "$left" "$right"];
       };
       aliases = {
         clone = ["git" "clone" "--colocate"];

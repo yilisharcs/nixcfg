@@ -2,6 +2,10 @@
   programs = {
     git = {
       enable = true;
+      difftastic = {
+        enable = true;
+        enableAsDifftool = true;
+      };
       aliases = {
         last = "log -1 HEAD";
         logd = "log --decorate --oneline --graph";
