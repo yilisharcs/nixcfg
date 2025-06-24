@@ -10,6 +10,7 @@
     ./evolution
     ./fonts
     ./kitty
+    # ./neovide
     ./obs-studio
     ./qbittorrent
     ./suite-gnome

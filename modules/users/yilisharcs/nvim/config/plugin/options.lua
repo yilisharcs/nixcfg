@@ -1,6 +1,7 @@
 -- NOTE: https://github.com/pop-os/cosmic-comp/issues/1181
 vim.keymap.set({ "n", "x" }, "<leader>p", '"+p')
 vim.keymap.set({ "n", "x" }, "<leader>y", '"+y')
+vim.keymap.set({ "n", "x" }, "<leader>Y", '"+Y')
 -- -- Sync clipboard between OS and Neovim.
 -- vim.opt.clipboard:append({ "unnamedplus" })
 -- vim.g.clipboard = "xclip"
