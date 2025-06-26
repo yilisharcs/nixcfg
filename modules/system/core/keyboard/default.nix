@@ -61,8 +61,16 @@
             n = "ñ";
             r = "®";
             t = "™";
+            "[" = "oneshot(agudo)";
             ";" = "oneshot(macron)";
             "'" = "oneshot(greve)";
+          };
+          agudo = {
+            a = "á";
+            e = "é";
+            i = "í";
+            o = "ó";
+            u = "ú";
           };
           macron = {
             a = "ā";
