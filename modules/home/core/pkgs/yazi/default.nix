@@ -118,7 +118,8 @@
           { on = "C"; run  = "plugin chmod"; desc = "Change file permissions"; }
 
           # Backup
-          { on = "b"; run = "shell 'cp -r $0 $0.bak'"; desc = "Backup current file"; }
+          # NOTE: Adding a date suffix ensures backed-up files won't be overwritten by accident
+          { on = "b"; run = "shell 'cp -r $0 $0-$(date +%s).bak'"; desc = "Backup current file"; }
 
           # Pager
           { on = "i"; run = "shell 'bat $0' --block"; }
