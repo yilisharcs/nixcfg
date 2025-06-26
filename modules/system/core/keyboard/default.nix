@@ -31,7 +31,7 @@
             capslock = "layer(control)";
           };
           "shift:S" = {
-            "~" = "~";
+            "`" = "`";
             leftshift = "capslock";
             rightshift = "capslock";
           };
