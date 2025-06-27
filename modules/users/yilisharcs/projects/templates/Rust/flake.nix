@@ -22,7 +22,10 @@
       let
         # Import nixpkgs for our specific system
         pkgs = nixpkgs.legacyPackages.${system};
-        overrides = (builtins.fromTOML (builtins.readFile (self + "/rust-toolchain.toml")));
+
+        # Read package configuration files
+        # manifest  = (builtins.fromTOML (builtins.readFile ./Cargo.toml));
+        overrides = (builtins.fromTOML (builtins.readFile ./rust-toolchain.toml));
       in
         {
         # devShells.default is the development environment
@@ -33,8 +36,9 @@
           nativeBuildInputs = with pkgs; [
             # pkg-config
             mold                           # extremely fast linker
+            pandoc                         # markup converter
 
-            # Rust toolchain
+            # Toolchain
             rustup
             cargo-auditable
           ];
@@ -46,13 +50,11 @@
 
           # Packages to include in the shell environment
           packages = with pkgs; [
-            # Dev tools
             entr                           # file watcher
             git                            # version control system
             jujutsu
             mask                           # markdown task runner
             nushell
-            pandoc                         # markup converter
             ra-multiplex
             rusty-man                      # man pages for rustdoc
             sccache                        # cache tool for build artifacts
@@ -74,7 +76,7 @@
           # These are set when the shell is active
           PROJECT_NAME = "GENIT_PROJECT_PATH";
           RUSTC_VERSION = overrides.toolchain.channel;
-          RUST_BACKTRACE = 1;
+          # RUST_BACKTRACE = 1;
           LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath buildInputs;
         };
       });

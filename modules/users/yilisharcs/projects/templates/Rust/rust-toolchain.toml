@@ -2,5 +2,5 @@
 # This file declares the Rust toolchain used by the project.
 # Documentation: https://rust-lang.github.io/rustup/overrides.html#the-toolchain-file
 [toolchain]
-channel = "1.87.0"
+channel = "stable"
 components = ["rust-analyzer"]
