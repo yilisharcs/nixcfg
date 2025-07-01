@@ -136,6 +136,10 @@
           { on = "z"; run = "plugin zoxide"; desc = "Jump to a directory via zoxide"; }
           { on = "Z"; run = "plugin fzf";    desc = "Jump to a file/directory via fzf"; }
 
+          # Hardlink
+          # NOTE: <C--> is a dedicated terminal keybinding for zooming out
+          { on = "<C-S-->"; run = "hardlink";    desc = "Hardlink yanked files"; }
+
           # Goto
           { on = ["g" "/"]; run = "cd /";                                       desc = "Go to root"; }
           { on = ["g" "b"]; run = "cd ~/notebook";                              desc = "Go ~/notebook"; }
