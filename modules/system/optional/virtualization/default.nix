@@ -1,4 +1,13 @@
 {
+  pkgs,
+  ...
+}:
+
+{
+  environment.systemPackages = [
+    pkgs.virtiofsd
+  ];
+
   programs.virt-manager.enable = true;
 
   virtualisation = {
