@@ -18,11 +18,11 @@ xkb_symbols "abnt2" {
   // key <AE08> { [            8,       asterisk,     bracketleft,            trademark ] };
   // key <AE09> { [            9,      parenleft,    bracketright,            plusminus ] };
   // key <AE10> { [            0,     parenright,      braceright,               degree ] };
-  // key <AE11> { [        minus,     underscore,       backslash,         questiondown ] };
+  key <AE11> { [        minus,     underscore,         notsign,         questiondown ] };
   key <AE12> { [        equal,           plus,         section,          dead_ogonek ] };
 
   // key <AD01> { [            q,              Q,           slash                       ] };
-  // key <AD02> { [            w,              W,        question                       ] };
+  key <AD02> { [            w,              W,        question                       ] };
   key <AD03> { [            e,              E,          eacute,          ecircumflex ] };
   key <AD04> { [            r,              R,      registered,           registered ] };
   key <AD05> { [            t,              T,       trademark,             notequal ] };
@@ -35,9 +35,9 @@ xkb_symbols "abnt2" {
   key <AD12> { [ bracketright,     braceright,       masculine                       ] };
 
   key <AC01> { [            a,              A,          atilde,          acircumflex ] };
-  // key <AC02> { [            s,              S,       backslash,               ssharp ] };
-  // key <AC03> { [            d,              D,             bar,            dead_hook ] };
-  // key <AC04> { [            f,              F,         percent,          ordfeminine ] };
+  key <AC02> { [            s,              S,       backslash,               ssharp ] };
+  key <AC03> { [            d,              D,             bar,            dead_hook ] };
+  key <AC04> { [            f,              F,         percent,          ordfeminine ] };
   key <AC10> { [    semicolon,          colon,      dead_tilde,                  bar ] };
   key <AC11> { [   apostrophe,       quotedbl,      dead_grave,          dead_macron ] };
 
