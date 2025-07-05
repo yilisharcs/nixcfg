@@ -15,6 +15,7 @@
     ./qbittorrent
     ./suite-gnome
     # ./sqlite
+    ./xkb
   ];
 
   home.packages = with pkgs; [

@@ -7,7 +7,7 @@
 {
   # Configure keymap in X11
   services.xserver.xkb = lib.mkDefault {
-    layout = "us";
+    layout = "br,us";
     options = "terminate:ctrl_alt_bksp,compose:menu";
   };
 
@@ -48,22 +48,22 @@
             s = "\\";
             w = "?";
 
-            a = "ã";
-            e = "é";
-            i = "í";
-            o = "õ";
-            u = "ú";
-            "equal" = "§";
-            "]" = "ª";
-            "\\" = "º";
-            c = "ç";
-            m = "—";
-            n = "ñ";
-            r = "®";
-            t = "™";
-            "[" = "oneshot(agudo)";
-            ";" = "oneshot(macron)";
-            "'" = "oneshot(greve)";
+            # a = "ã";
+            # e = "é";
+            # i = "í";
+            # o = "õ";
+            # u = "ú";
+            # "equal" = "§";
+            # "]" = "ª";
+            # "\\" = "º";
+            # c = "ç";
+            # m = "—";
+            # n = "ñ";
+            # r = "®";
+            # t = "™";
+            # "[" = "oneshot(agudo)";
+            # ";" = "oneshot(macron)";
+            # "'" = "oneshot(greve)";
           };
           agudo = {
             a = "á";
@@ -86,12 +86,12 @@
             o = "ò";
             u = "ù";
           };
-          "altgr+shift" = {
-            a = "â";
-            e = "ê";
-            o = "ô";
-            c = "©";
-          };
+          # "altgr+shift" = {
+          #   a = "â";
+          #   e = "ê";
+          #   o = "ô";
+          #   c = "©";
+          # };
         };
         extraConfig = ''
           [main]
@@ -171,9 +171,9 @@
           1 = G-1
           2 = G-2
           3 = G-3
-          4 = ₤
-          5 = ¢
-          6 = ¬
+          4 = G-4
+          5 = G-5
+          6 = G-6
           7 = G-7
           8 = G-8
           9 = G-9
