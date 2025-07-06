@@ -20,32 +20,28 @@
 
   home.file.".config/kitty/current-theme.conf".source = ./theme.conf;
 
-  programs = {
-    kitty = {
-      enable = true;
-      shellIntegration.mode = "no-rc no-cursor no-title";
-      keybindings = {
-        "f11" = "toggle_maximized";
-        "ctrl+equal"   = "change_font_size all +2.0";
-        "ctrl+minus"   = "change_font_size all -2.0";
-        "ctrl+0"       = "change_font_size all 0";
-        "ctrl+shift+v" = "paste_from_clipboard";
-      };
-      settings = {
-        clear_all_shortcuts = "yes";
-        cursor_shape = "block";
-        copy_on_select = "no";
-        shell = "${pkgs.nushell}/bin/nu";
-      };
-      extraConfig = ''
-        include current-theme.conf
-        font_size 13.0
-        font_family      family='JetBrainsMono Nerd Font'
-        # bold_font        family='JetBrainsMono Nerd Font' style=Bold
-        # bold_italic_font family='JetBrainsMono Nerd Font' style='Bold Italic'
-        modify_font cell_height 105%
-      '';
+  programs.kitty = {
+    enable = true;
+    shellIntegration.mode = "no-rc no-cursor no-title";
+    keybindings = {
+      "f11" = "toggle_maximized";
+      "ctrl+equal"   = "change_font_size all +2.0";
+      "ctrl+minus"   = "change_font_size all -2.0";
+      "ctrl+0"       = "change_font_size all 0";
+      "ctrl+shift+v" = "paste_from_clipboard";
     };
+    settings = {
+      clear_all_shortcuts = "yes";
+      cursor_shape = "block";
+      copy_on_select = "no";
+      shell = "${pkgs.nushell}/bin/nu";
+    };
+    extraConfig = ''
+      include current-theme.conf
+      font_size 13.0
+      font_family      family='JetBrainsMono Nerd Font'
+      modify_font cell_height 105%
+    '';
   };
 
   # NOTE: COSMIC is at the moment unable to launch terminal programs that provide
@@ -81,6 +77,27 @@
       settings = {
         TryExec = "nvim";
         Keywords = "Text;editor;";
+      };
+    };
+    # NOTE: programs.kitty.shellIntegration.mode = "no-title" doesn't seem to
+    # be working. Therefore, create a new desktop file instead of debug it.
+    kitty = {
+      type = "Application";
+      name = "Kitty";
+      genericName = "Terminal emulator";
+      comment = "Fast, feature-rich, GPU based terminal";
+      icon = "kitty";
+      exec = ''kitty --title Kitty'';
+      startupNotify = true;
+      categories = ["System" "TerminalEmulator"];
+      settings = {
+        Version = "1.0";
+        TryExec = "kitty";
+        X-TerminalArgExec = "--";
+        X-TerminalArgTitle = "--title";
+        X-TerminalArgAppId = "--class";
+        X-TerminalArgDir = "--working-directory";
+        X-TerminalArgHold = "--hold";
       };
     };
   };
