@@ -1,7 +1,7 @@
 augroup Auto_Cmds
   au!
   " Highlight copied text
-  au TextYankPost * lua vim.hl.on_yank({ timeout = 500 })
+  au TextYankPost * lua vim.hl.on_yank({ higroup = "Visual", timeout = 500 })
 
   " Reads external file changes
   au CursorHold * if &buftype!='nofile' | checktime | endif
