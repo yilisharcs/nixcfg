@@ -18,7 +18,16 @@
     '';
   };
 
-  home.file.".config/kitty/current-theme.conf".source = ./theme.conf;
+  home.file = {
+    ".config/kitty/current-theme.conf" = {
+      source = ./current-theme.conf;
+    };
+    ".config/kitty/themes" = {
+      source = ./themes;
+      recursive = true;
+    };
+  };
+
 
   programs.kitty = {
     enable = true;
