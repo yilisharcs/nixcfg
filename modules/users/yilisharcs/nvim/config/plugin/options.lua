@@ -87,4 +87,4 @@ if vim.env.DISPLAY == nil then
   vim.opt.listchars:append({ space = " " })
 end
 
-vim.cmd.colorscheme("lunamia")
+vim.cmd.colorscheme("tricky")
