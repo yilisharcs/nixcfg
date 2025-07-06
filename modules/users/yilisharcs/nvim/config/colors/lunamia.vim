@@ -89,3 +89,25 @@ hi clear RainbowDelimiterCyan
 hi RenderMarkdownCode guibg=#181825
 
 hi! link @lsp.type.property.lua Type
+hi LualineNormalA guibg=#181825 guifg=#89b4fa gui=bold
+hi LualineNormalB guibg=#313244 guifg=#89b4fa gui=bold
+hi LualineNormalC guibg=#181825 guifg=#edf6f4
+
+hi LualineInsertA guibg=#181825 guifg=#a6e3a1 gui=bold
+hi LualineInsertB guibg=#313244 guifg=#a6e3a1 gui=bold
+
+hi! link LualineTerminalA LualineInsertA
+hi! link LualineTerminalB LualineInsertB
+
+hi LualineVisualA guibg=#181825 guifg=#cba6f7 gui=bold
+hi LualineVisualB guibg=#313244 guifg=#cba6f7 gui=bold
+
+hi LualineReplaceA guibg=#181825 guifg=#f38ba8 gui=bold
+hi LualineReplaceB guibg=#313244 guifg=#f38ba8 gui=bold
+
+hi LualineCommandA guibg=#181825 guifg=#fab387 gui=bold
+hi LualineCommandB guibg=#313244 guifg=#fab387 gui=bold
+
+hi LualineInactiveA guibg=#767676 guifg=#0f0f0f gui=bold
+hi LualineInactiveB guibg=#313244 guifg=#0f0f0f gui=bold
+hi LualineInactiveC guibg=#767676 guifg=#edf6f4 gui=bold
