@@ -22,6 +22,7 @@ hi DiffChange gui=bold
 hi DiffText   gui=bold
 hi DiffDelete gui=bold
 
+hi MatchParen gui=bold
 hi NonText guifg=#878092 guibg=NONE
 hi EndOfBuffer guibg=NONE
 hi Delimiter guifg=NvimLightGrey2
