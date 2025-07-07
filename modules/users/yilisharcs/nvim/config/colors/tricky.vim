@@ -61,9 +61,9 @@ hi NeogitUnstagedchanges     guifg=#ffaf00 gui=bold ctermfg=3 cterm=bold
 hi NeogitUntrackedfiles      guifg=#d7005f gui=bold ctermfg=1 cterm=bold
 hi NeogitUnmergedchanges     guifg=#ff5faf gui=bold ctermfg=5 cterm=bold
 hi NeogitGraphPurple         guifg=#ffaf00 ctermfg=2 cterm=bold
-hi! link NeogitPopupConfigEnabled Type
-hi! link NeogitPopupOptionEnabled Type
-hi! link NeogitPopupSwitchEnabled Type
+hi! link NeogitPopupConfigEnabled Special
+hi! link NeogitPopupOptionEnabled Special
+hi! link NeogitPopupSwitchEnabled Special
 "}}
 
 "{{
