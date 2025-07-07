@@ -54,6 +54,8 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
+    gemini-cli
+
     # # ldtk                           # lightweight level editor
     #
     #
