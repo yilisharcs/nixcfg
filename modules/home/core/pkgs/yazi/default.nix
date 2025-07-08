@@ -34,7 +34,13 @@
         tabs = {
           active   = { bg = "blue"; fg = "black"; bold = true; };
           inactive = { fg = "blue"; bg = "black"; };
+          # sep_inner = { open = ""; close = ""; };
+          # sep_outer = { open = ""; close = ""; };
         };
+        # status = {
+        #   sep_left  = { open = ""; close = ""; };
+        #   sep_right = { open = ""; close = ""; };
+        # };
         mode = {
           normal_main = { bg = "blue"; fg = "black"; bold = true; };
           normal_alt  = { fg = "blue"; bg = "black"; };
