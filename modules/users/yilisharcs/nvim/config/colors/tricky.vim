@@ -9,6 +9,10 @@ hi! link TabLineFill ColorColumn
 hi! link CursorLineNr Special
 hi CursorLine guibg=NONE
 
+hi CommentHide guifg=#0e0024 ctermfg=0
+hi CommentShow guifg=#afafff ctermfg=8
+hi Comment ctermfg=8
+
 hi Visual ctermbg=6
 hi! link MsgArea Special
 hi QuickFixLine gui=bold,reverse

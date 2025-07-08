@@ -140,10 +140,10 @@ vim.keymap.set("n", "<leader><F10>", "<CMD>!chmod -x %<CR>",
 vim.keymap.set("n", "<C-.>", function()
   if vim.g.toggle_comment_hl == true or vim.g.toggle_comment_hl == nil then
     vim.g.toggle_comment_hl = false
-    vim.cmd("hi Comment guifg=#000000")
+    vim.cmd("hi! link Comment CommentHide")
   else
     vim.g.toggle_comment_hl = true
-    vim.cmd("hi Comment guifg=#5fafff")
+    vim.cmd("hi! link Comment CommentShow")
   end
 end)
 

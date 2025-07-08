@@ -10,6 +10,10 @@ hi StatusLine guibg=#edf6f4 guifg=#313244
 hi! link TabLineFill ColorColumn
 hi! link CursorLineNr String
 
+hi CommentHide guifg=Black ctermfg=0
+hi CommentShow guifg=#5fafff ctermfg=8
+hi Comment ctermfg=8
+
 hi Visual ctermbg=6
 hi MsgArea guifg=#5fd75f gui=bold
 hi QuickFixLine gui=bold
