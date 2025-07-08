@@ -80,11 +80,10 @@ vim.o.shell = vim.fn.exepath("bash")
 -- Display vs TTY
 vim.o.list = true
 vim.o.termguicolors = true
-vim.opt.listchars = { tab = "› ", nbsp = "␣", space = "•" }
+vim.opt.listchars = { nbsp = "␣", tab = "› ", trail = "•" }
 
 if vim.env.DISPLAY == nil then
   vim.o.termguicolors = false
-  vim.opt.listchars:append({ space = " " })
 end
 
 vim.cmd.colorscheme("tricky")
