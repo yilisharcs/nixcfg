@@ -22,9 +22,6 @@
   ];
 
   dconf.settings = with lib.gvariant; {
-    "org/gnome/Console" = {
-      custom-font = "JetBrainsMono Nerd Font 10";
-    };
     "org/gnome/GWeather4" = {
       temperature-unit = "centigrade";
     };

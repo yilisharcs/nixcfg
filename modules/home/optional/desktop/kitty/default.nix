@@ -47,11 +47,18 @@
     };
     extraConfig = ''
       include current-theme.conf
-      font_size 13.0
-      font_family      family='JetBrainsMonoNL Nerd Font'
-      bold_font        family='JetBrainsMonoNL Nerd Font' style='Bold'
-      bold_italic_font family='JetBrainsMonoNL Nerd Font' style='Bold Italic'
-      modify_font cell_height 105%
+
+      ## Iosevka
+      font_family      family='Iosevka Nerd Font'
+      font_size 14.0
+      window_padding_width 0 0 0 1
+
+      ## JetBrainsMonoNL
+      # font_family      family='JetBrainsMonoNL Nerd Font'
+      # bold_font        family='JetBrainsMonoNL Nerd Font' style='Bold'
+      # bold_italic_font family='JetBrainsMonoNL Nerd Font' style='Bold Italic'
+      # font_size 13.0
+      # modify_font cell_height 105%
     '';
   };
 

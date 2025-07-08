@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     cantarell-fonts
     nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
     noto-fonts-emoji
   ];
 
@@ -26,6 +27,9 @@
   };
 
   dconf.settings = {
+    "org/gnome/Console" = {
+      custom-font = "JetBrainsMono Nerd Font 10";
+    };
     "org/gnome/desktop/interface" = {
       document-font-name = "Cantarell 11";
       font-name = "Cantarell 11";
