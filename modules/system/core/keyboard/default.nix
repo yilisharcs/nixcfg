@@ -41,7 +41,7 @@
             i = "tab";
             m = "enter";
           };
-          # "altgr" = {
+          "altgr" = {
           #   # Doesn't require DISPLAY
           #   d = "|"; # outputs }
           #   f = "%";
@@ -61,31 +61,31 @@
           #   n = "ñ";
           #   r = "®";
           #   t = "™";
-          #   "[" = "oneshot(agudo)";
-          #   ";" = "oneshot(macron)";
-          #   "'" = "oneshot(greve)";
-          # };
-          # agudo = {
-          #   a = "á";
-          #   e = "é";
-          #   i = "í";
-          #   o = "ó";
-          #   u = "ú";
-          # };
-          # macron = {
-          #   a = "ā";
-          #   e = "ē";
-          #   i = "ī";
-          #   o = "ō";
-          #   u = "ū";
-          # };
-          # greve = {
-          #   a = "à";
-          #   e = "è";
-          #   i = "ì";
-          #   o = "ò";
-          #   u = "ù";
-          # };
+            "[" = "oneshot(agudo)";
+            ";" = "oneshot(macron)";
+            "'" = "oneshot(greve)";
+          };
+          agudo = {
+            a = "á";
+            e = "é";
+            i = "í";
+            o = "ó";
+            u = "ú";
+          };
+          macron = {
+            a = "ā";
+            e = "ē";
+            i = "ī";
+            o = "ō";
+            u = "ū";
+          };
+          greve = {
+            a = "à";
+            e = "è";
+            i = "ì";
+            o = "ò";
+            u = "ù";
+          };
           # "altgr+shift" = {
           #   a = "â";
           #   e = "ê";
