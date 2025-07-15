@@ -148,6 +148,7 @@
 
           # Goto
           { on = ["g" "/"]; run = "cd /";                                       desc = "Go to root"; }
+          { on = ["g" "a"]; run = "cd ~/Documents/Archivum";                    desc = "Go to the archive"; }
           { on = ["g" "b"]; run = "cd ~/notebook";                              desc = "Go ~/notebook"; }
           { on = ["g" "B"]; run = "cd ~/vault";                                 desc = "Go ~/vault"; }
           { on = ["g" "c"]; run = "cd ~/.config";                               desc = "Go ~/.config"; }
