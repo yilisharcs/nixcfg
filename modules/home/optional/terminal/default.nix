@@ -12,6 +12,7 @@
     ./direnv
     ./fastfetch
     ./gdu
+    ./glow
     ./hardware-utils
     ./jujutsu
     ./lang-tools
